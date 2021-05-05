@@ -14,7 +14,7 @@ export const schema = {
                     "name": "title",
                     "isArray": false,
                     "type": "String",
-                    "isRequired": false,
+                    "isRequired": true,
                     "attributes": []
                 },
                 "views": {
@@ -37,19 +37,6 @@ export const schema = {
                     "type": "ID",
                     "isRequired": false,
                     "attributes": []
-                },
-                "User": {
-                    "name": "User",
-                    "isArray": false,
-                    "type": {
-                        "model": "User"
-                    },
-                    "isRequired": false,
-                    "attributes": [],
-                    "association": {
-                        "connectionType": "BELONGS_TO",
-                        "targetName": "videoUserId"
-                    }
                 }
             },
             "syncable": true,
@@ -103,13 +90,6 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "user_i": {
-                    "name": "user_i",
-                    "isArray": false,
-                    "type": "Int",
-                    "isRequired": false,
-                    "attributes": []
-                },
                 "Videos": {
                     "name": "Videos",
                     "isArray": true,
@@ -123,6 +103,13 @@ export const schema = {
                         "connectionType": "HAS_MANY",
                         "associatedWith": "userID"
                     }
+                },
+                "name": {
+                    "name": "name",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
                 }
             },
             "syncable": true,
@@ -153,5 +140,5 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "version": "3258a6839d5d77a78e134df3093ee49e"
+    "version": "02aae5a474e736d3b7621fc8e43a96b3"
 };
