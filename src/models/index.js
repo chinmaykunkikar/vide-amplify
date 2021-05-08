@@ -4,9 +4,8 @@ import { schema } from './schema';
 
 
 
-const { Video, User } = initSchema(schema);
+const { Video } = initSchema(schema);
 
 export {
-  Video,
-  User
+  Video
 };

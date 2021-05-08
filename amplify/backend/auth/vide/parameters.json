@@ -1,7 +1,7 @@
 {
     "identityPoolName": "testAuthIdentityPool",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "vide8ed2c3f1",
+    "resourceNameTruncated": "videcb9196fb",
     "userPoolName": "vide",
     "autoVerifiedAttributes": [
         "phone_number"
@@ -18,15 +18,16 @@
     "passwordPolicyMinLength": 6,
     "passwordPolicyCharacters": [],
     "requiredAttributes": [
-        "preferred_username"
+        "preferred_username",
+        "name"
     ],
     "userpoolClientGenerateSecret": false,
     "userpoolClientRefreshTokenValidity": 30,
     "userpoolClientWriteAttributes": [],
     "userpoolClientReadAttributes": [],
-    "userpoolClientLambdaRole": "vide8ed2c3f1_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "videcb9196fb_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "8ed2c3f1",
+    "sharedId": "cb9196fb",
     "resourceName": "vide",
     "authSelections": "identityPoolAndUserPool",
     "authRoleArn": {
