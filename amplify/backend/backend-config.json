@@ -28,5 +28,11 @@
         }
       }
     }
+  },
+  "storage": {
+    "vide": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation"
+    }
   }
 }
