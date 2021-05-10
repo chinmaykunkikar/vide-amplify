@@ -2,5 +2,5 @@ type Video @model @auth(rules: [{allow: public}]) {
   id: ID!
   title: String!
   description: String
-  resource_uri: String
+  resourceURI: String
 }

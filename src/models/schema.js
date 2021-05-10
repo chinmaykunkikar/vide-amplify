@@ -24,8 +24,8 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "resource_uri": {
-                    "name": "resource_uri",
+                "resourceURI": {
+                    "name": "resourceURI",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
@@ -60,5 +60,5 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "version": "40c4d2f3f58299ae0cef67295091a3fb"
+    "version": "3dee93a56c503170b74b8c49a3be64e7"
 };
