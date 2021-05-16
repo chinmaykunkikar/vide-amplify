@@ -5,6 +5,7 @@ import Menu from './pages/Menu'
 import Home from './pages/Home'
 import Signin from './pages/Signin'
 import NewVideo from './pages/NewVideo'
+import Signup from './pages/Signup'
 
 const MainRouter = ({ data }) => {
   return (
@@ -13,6 +14,7 @@ const MainRouter = ({ data }) => {
       <Switch>
         <Route exact path='/' component={Home} />
         <Route exact path='/signin' component={Signin} />
+        <Route exact path='/signup' component={Signup} />
         <PrivateRoute path='/videos/new' component={NewVideo} />
       </Switch>
     </div>

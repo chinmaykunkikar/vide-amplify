@@ -8,6 +8,7 @@ import Signout from '../components/Signout'
 
 const Menu = () => {
   const [isSignedin] = React.useState(authHelper.isAuthenticated())
+  console.log(isSignedin)
   return (
     <AppBar position='static'>
       <Toolbar>
@@ -21,11 +22,20 @@ const Menu = () => {
         <div style={{ position: 'absolute', right: '12px' }}>
           <span style={{ float: 'right' }}>
             {!isSignedin && (
-              <Link to='/signin'>
-                <Button color='secondary' variant='outlined'>
-                  Sign In
-                </Button>
-              </Link>
+              <span>
+                <Link to='/signin'>
+                  <Button color='secondary' variant='outlined'
+                    style={{ margin: '8px' }}>
+                    Sign In
+                  </Button>
+                </Link>
+                <Link to='/signup'>
+                  <Button color='secondary' variant='outlined'
+                    style={{ margin: '8px' }}>
+                    SignUp
+                  </Button>
+                </Link>
+              </span>
             )}
             {isSignedin && (
               <span>
@@ -33,8 +43,10 @@ const Menu = () => {
                   <Button
                     color='secondary'
                     variant='outlined'
-                    style={{ margin: '8px' }}>
-                    <VideoCallOutlinedIcon style={{ marginRight: '8px' }} />
+                    style={{ margin: '8px' }}
+                    startIcon={
+                      <VideoCallOutlinedIcon style={{ marginRight: '8px' }} />
+                    }>
                     New Video
                   </Button>
                 </Link>
