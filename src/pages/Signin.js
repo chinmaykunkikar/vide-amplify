@@ -41,7 +41,6 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-
 const Signin = props => {
   const classes = useStyles()
   const [values, setValues] = useState({
@@ -54,12 +53,9 @@ const Signin = props => {
   async function signIn() {
     const email = values.email
     const password = values.password
-    try {
-      const user = await Auth.signIn(email, password)
-      user && setValues({ ...values, redirectToReferrer: true })
-    } catch (error) {
-      setValues({ ...values, error: error })
-    }
+    await Auth.signIn(email, password)
+      .then(setValues({ ...values, redirectToReferrer: true }))
+      .catch(error => setValues({ ...values, error: error }))
   }
 
   const handleChange = name => event => {
