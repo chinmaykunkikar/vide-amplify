@@ -7,6 +7,7 @@ import authHelper from '../utils/authHelper'
 import Signout from '../components/Signout'
 
 const Menu = () => {
+  const [isSignedin] = React.useState(authHelper.isAuthenticated())
   return (
     <AppBar position='static'>
       <Toolbar>
@@ -19,14 +20,14 @@ const Menu = () => {
         </div>
         <div style={{ position: 'absolute', right: '12px' }}>
           <span style={{ float: 'right' }}>
-            {!authHelper.isAuthenticated() && (
+            {!isSignedin && (
               <Link to='/signin'>
                 <Button color='secondary' variant='outlined'>
                   Sign In
                 </Button>
               </Link>
             )}
-            {authHelper.isAuthenticated() && (
+            {isSignedin && (
               <span>
                 <Link to='/videos/new'>
                   <Button

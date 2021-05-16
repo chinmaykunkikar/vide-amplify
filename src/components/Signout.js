@@ -3,19 +3,19 @@ import { Auth } from 'aws-amplify'
 import { Button } from '@material-ui/core'
 
 async function signOut() {
-  try {
-    await Auth.signOut()
-  } catch (error) {
-    console.log('error signing out: ', error)
-  }
+  await Auth.signOut()
+    .then(() => true)
+    .catch(error => console.log(error))
 }
 
 const Signout = props => {
   const { ...rest } = props
   return (
-    <Button onClick={signOut} {...rest}>
-      Sign Out
-    </Button>
+    <>
+      <Button onClick={signOut} {...rest}>
+        Sign Out
+      </Button>
+    </>
   )
 }
 
