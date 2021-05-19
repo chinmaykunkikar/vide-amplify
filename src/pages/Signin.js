@@ -6,10 +6,10 @@ import {
   CardContent,
   Icon,
   TextField,
-  Typography,
+  Typography
 } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
-import { Auth, Amplify } from 'aws-amplify'
+import { Amplify, Auth } from 'aws-amplify'
 import { Redirect } from 'react-router'
 import awsconfig from '../aws-exports'
 
@@ -86,6 +86,7 @@ const Signin = props => {
           value={values.email}
           onChange={handleChange('email')}
           margin='normal'
+          variant="outlined"
         />
         <br />
         <TextField
@@ -96,6 +97,7 @@ const Signin = props => {
           value={values.password}
           onChange={handleChange('password')}
           margin='normal'
+          variant="outlined"
         />
         <br />
         {values.error && (

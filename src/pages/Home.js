@@ -1,26 +1,27 @@
 import React from 'react'
-import { Card, Typography, makeStyles } from '@material-ui/core'
+import { Box, makeStyles, Paper, Typography } from '@material-ui/core'
 
 const useStyles = makeStyles(theme => ({
-  card: {
-    margin: `${theme.spacing(5)}px 30px`,
+  paper: {
+    margin: theme.spacing(5, 4),
   },
   title: {
-    padding: `${theme.spacing(2)}px`,
+    padding: theme.spacing(2),
     color: theme.palette.text.secondary,
-    fontSize: '1em',
   },
 }))
 
-function Home(props) {
+const Home = props => {
   const classes = useStyles()
-  
+
   return (
-    <Card className={classes.card}>
-      <Typography variant='h2' className={classes.title}>
-        Popular Videos
+    <Paper className={classes.paper}>
+      <Typography className={classes.title} variant='overline' component='div'>
+        <Box letterSpacing={2} fontSize={16}>
+          Popular Videos
+        </Box>
       </Typography>
-    </Card>
+    </Paper>
   )
 }
 

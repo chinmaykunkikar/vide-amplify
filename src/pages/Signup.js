@@ -13,7 +13,7 @@ import {
   Icon,
   makeStyles,
   TextField,
-  Typography,
+  Typography
 } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 
@@ -100,6 +100,7 @@ export default function Signup() {
               value={values.name}
               onChange={handleChange('name')}
               margin='normal'
+              variant='outlined'
             />
             <br />
             <TextField
@@ -110,6 +111,7 @@ export default function Signup() {
               value={values.email}
               onChange={handleChange('email')}
               margin='normal'
+              variant='outlined'
             />
             <br />
             <TextField
@@ -120,6 +122,7 @@ export default function Signup() {
               value={values.password}
               onChange={handleChange('password')}
               margin='normal'
+              variant='outlined'
             />
             <br />
             {values.error && (
@@ -156,6 +159,7 @@ export default function Signup() {
               value={values.code}
               onChange={handleChange('code')}
               margin='normal'
+              variant='outlined'
             />
             <br />
             {values.error && (

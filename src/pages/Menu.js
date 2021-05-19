@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { AppBar, Button, IconButton, Toolbar } from '@material-ui/core'
 import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined'
 import VideoCallOutlinedIcon from '@material-ui/icons/VideoCallOutlined'
@@ -7,8 +7,7 @@ import authHelper from '../utils/authHelper'
 import Signout from '../components/Signout'
 
 const Menu = () => {
-  const [isSignedin] = React.useState(authHelper.isAuthenticated())
-  console.log(isSignedin)
+  const [isSignedin] = useState(authHelper.isAuthenticated())
   return (
     <AppBar position='static'>
       <Toolbar>
@@ -24,13 +23,17 @@ const Menu = () => {
             {!isSignedin && (
               <span>
                 <Link to='/signin'>
-                  <Button color='secondary' variant='outlined'
+                  <Button
+                    color='secondary'
+                    variant='outlined'
                     style={{ margin: '8px' }}>
                     Sign In
                   </Button>
                 </Link>
                 <Link to='/signup'>
-                  <Button color='secondary' variant='outlined'
+                  <Button
+                    color='secondary'
+                    variant='outlined'
                     style={{ margin: '8px' }}>
                     SignUp
                   </Button>
