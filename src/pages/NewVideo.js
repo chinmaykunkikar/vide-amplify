@@ -10,7 +10,11 @@ import {
   Typography,
 } from '@material-ui/core'
 import { BackupOutlined } from '@material-ui/icons'
+import { Amplify, Storage } from 'aws-amplify'
 import { Redirect } from 'react-router'
+import awsconfig from '../aws-exports'
+
+Amplify.configure(awsconfig)
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -31,7 +35,7 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(1),
     width: 300,
   },
-  submit: {
+  button: {
     margin: 'auto',
     marginBottom: theme.spacing(2),
   },
@@ -43,16 +47,36 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
+const initialValues = {
+  title: '',
+  video: '',
+  description: '',
+  redirect: false,
+  error: '',
+  mediaId: '',
+}
+
 const NewVideo = () => {
   const classes = useStyles()
-  const [values, setValues] = useState({
-    title: '',
-    video: '',
-    description: '',
-    redirect: false,
-    error: '',
-    mediaId: '',
-  })
+  const [values, setValues] = useState(initialValues)
+
+  const uploadVideo = async () => {
+
+    const PREFIX = 'input/'
+    const EXT = `.${values.video?.name.split('.').pop()}`
+    const fileName = values.title
+      ? PREFIX + values.title + EXT
+      : PREFIX + values.video.name
+
+    await Storage.put(fileName, values.video, {
+      contentType: 'video/*',
+      progressCallback(progress) {
+        console.log(`Uploaded: ${progress.loaded}/${progress.total}`)
+      },
+    })
+      .then(setValues(initialValues))
+      .catch(error => console.log('Error uploading file: ', error))
+  }
 
   const handleChange = name => event => {
     const value = name === 'video' ? event.target.files[0] : event.target.value
@@ -70,15 +94,18 @@ const NewVideo = () => {
           New Video
         </Typography>
         <input
-          accept='image/*'
+          accept='video/*'
           onChange={handleChange('video')}
           className={classes.input}
           id='contained-button-file'
-          multiple
           type='file'
         />
         <label htmlFor='contained-button-file'>
-          <Button variant='contained' color='secondary' component='span'>
+          <Button
+            variant='contained'
+            color='secondary'
+            component='span'
+            className={classes.button}>
             Select Video
           </Button>
         </label>
@@ -90,6 +117,7 @@ const NewVideo = () => {
             {values.video.name}
           </Typography>
         )}
+        <br />
         <TextField
           id='title'
           label='Title'
@@ -105,7 +133,7 @@ const NewVideo = () => {
           className={classes.textField}
           multiline
           rowsMax={4}
-          value={values.descriptionue}
+          value={values.description}
           onChange={handleChange('description')}
           variant='outlined'
         />
@@ -123,8 +151,8 @@ const NewVideo = () => {
           color='primary'
           size='large'
           variant='contained'
-          onClick={e => e.preventDefault()}
-          className={classes.submit}
+          onClick={uploadVideo}
+          className={classes.button}
           endIcon={<BackupOutlined />}>
           Upload
         </Button>
