@@ -1,6 +1,0 @@
-type Video @model @auth(rules: [{allow: public}]) {
-  id: ID!
-  title: String!
-  description: String
-  resourceURI: String
-}
