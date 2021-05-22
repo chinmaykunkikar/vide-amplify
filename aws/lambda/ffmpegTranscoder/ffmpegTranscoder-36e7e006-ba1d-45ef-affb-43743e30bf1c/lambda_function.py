@@ -37,7 +37,7 @@ def lambda_handler(event, context):
     scriptname = f"{tmp_path}create-vod-hls.sh"
     bucket_down = event["Records"][0]["s3"]["bucket"]["name"]
     # bucket_up = "chinmay-vod-test-output"
-    bucket_up = "vide-bucket100713-staging/output"
+    bucket_up = "vide103713-staging/public/output"
     keyname = urllib.parse.unquote_plus(
         event["Records"][0]["s3"]["object"]["key"], encoding="utf-8"
     )
@@ -52,12 +52,12 @@ def lambda_handler(event, context):
     )
     
     # log everything
-    print(f"Down bucket: {bucket_down}")
-    print(f"Keyname: {keyname}")
-    print(f"Filename: {filename}")
-    print(f"Filename Base: {filename_base}")
-    print(f"s3down_cmd_str: {s3down_cmd_str}")
-    print(f"s3sync_cmd_str: {s3sync_cmd_str}")
+    # print(f"Down bucket: {bucket_down}")
+    # print(f"Keyname: {keyname}")
+    # print(f"Filename: {filename}")
+    # print(f"Filename Base: {filename_base}")
+    # print(f"s3down_cmd_str: {s3down_cmd_str}")
+    # print(f"s3sync_cmd_str: {s3sync_cmd_str}")
 
     # copy file to /tmp and add execute access
     copyfile(f"{home_path}create-vod-hls.sh", scriptname)
@@ -77,4 +77,4 @@ def lambda_handler(event, context):
     run_command(f"ls -al {tmp_path}")
     #run_command(f"ls -al /opt/")
 
-    return "Successfully triggered"
+    return "Successfully transcoded"

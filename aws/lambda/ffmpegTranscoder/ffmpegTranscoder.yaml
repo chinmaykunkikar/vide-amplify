@@ -19,29 +19,15 @@ Resources:
             Bucket:
               Ref: Bucket1
             Events:
-              - 's3:ObjectCreated:Put'
+              - 's3:ObjectCreated:*'
             Filter:
               S3Key:
                 Rules:
                   - Name: prefix
-                    Value: videos/
-        BucketEvent2:
-          Type: S3
-          Properties:
-            Bucket:
-              Ref: Bucket2
-            Events:
-              - 's3:ObjectCreated:Put'
-            Filter:
-              S3Key:
-                Rules:
-                  - Name: prefix
-                    Value: input/
+                    Value: public/input/
       Layers:
         - 'arn:aws:lambda:ap-south-1:715604230268:layer:aws-cli-layer:1'
         - 'arn:aws:lambda:ap-south-1:715604230268:layer:bc:3'
         - 'arn:aws:lambda:ap-south-1:715604230268:layer:ffmpeg:1'
   Bucket1:
-    Type: 'AWS::S3::Bucket'
-  Bucket2:
     Type: 'AWS::S3::Bucket'
