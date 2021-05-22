@@ -1,0 +1,20 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-vide-staging-103713-authRole",
+      "UnauthRoleArn": "arn:aws:iam::715604230268:role/amplify-vide-staging-103713-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::715604230268:role/amplify-vide-staging-103713-authRole",
+      "Region": "ap-south-1",
+      "DeploymentBucketName": "amplify-vide-staging-103713-deployment",
+      "UnauthRoleName": "amplify-vide-staging-103713-unauthRole",
+      "StackName": "amplify-vide-staging-103713",
+      "StackId": "arn:aws:cloudformation:ap-south-1:715604230268:stack/amplify-vide-staging-103713/ac5a2fb0-bae9-11eb-afde-028610bca50e",
+      "AmplifyAppId": "d1hhi2hly08qul"
+    },
+    "categories": {
+      "auth": {
+        "vide": {}
+      }
+    }
+  }
+}
