@@ -4,7 +4,7 @@ import { Button } from '@material-ui/core'
 
 async function signOut() {
   await Auth.signOut()
-    .then(() => true)
+    .then(window.location.reload())
     .catch(error => console.log(error))
 }
 

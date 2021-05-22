@@ -6,7 +6,7 @@ import {
   CardContent,
   Icon,
   TextField,
-  Typography
+  Typography,
 } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import { Amplify, Auth } from 'aws-amplify'
@@ -54,7 +54,10 @@ const Signin = props => {
     const email = values.email
     const password = values.password
     await Auth.signIn(email, password)
-      .then(setValues({ ...values, redirectToReferrer: true }))
+      .then(() => {
+        setValues({ ...values, redirectToReferrer: true })
+        window.location.reload()
+      })
       .catch(error => setValues({ ...values, error: error }))
   }
 
@@ -86,7 +89,7 @@ const Signin = props => {
           value={values.email}
           onChange={handleChange('email')}
           margin='normal'
-          variant="outlined"
+          variant='outlined'
         />
         <br />
         <TextField
@@ -97,7 +100,7 @@ const Signin = props => {
           value={values.password}
           onChange={handleChange('password')}
           margin='normal'
-          variant="outlined"
+          variant='outlined'
         />
         <br />
         {values.error && (
