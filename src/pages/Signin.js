@@ -5,12 +5,14 @@ import {
   CardActions,
   CardContent,
   Icon,
+  Link,
   TextField,
   Typography,
 } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import { Amplify, Auth } from 'aws-amplify'
 import { Redirect } from 'react-router'
+import { Link as RouterLink } from 'react-router-dom'
 import awsconfig from '../aws-exports'
 
 Amplify.configure(awsconfig)
@@ -41,14 +43,16 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
+const initialValues = {
+  email: '',
+  password: '',
+  error: '',
+  redirectToReferrer: false,
+}
+
 const Signin = props => {
   const classes = useStyles()
-  const [values, setValues] = useState({
-    email: '',
-    password: '',
-    error: '',
-    redirectToReferrer: false,
-  })
+  const [values, setValues] = useState(initialValues)
 
   async function signIn() {
     const email = values.email
@@ -102,7 +106,12 @@ const Signin = props => {
           margin='normal'
           variant='outlined'
         />
-        <br />
+        <Typography component='div' variant='caption'>
+          Don't have an account?{' '}
+          <Link component={RouterLink} className={classes.link} to='/signup'>
+            Create your account
+          </Link>
+        </Typography>
         {values.error && (
           <Typography component='p' color='error'>
             <Icon color='error' className={classes.error}>
@@ -117,8 +126,9 @@ const Signin = props => {
           color='primary'
           variant='contained'
           onClick={signIn}
-          className={classes.submit}>
-          Submit
+          className={classes.submit}
+          size='large'>
+          Sign In
         </Button>
       </CardActions>
     </Card>

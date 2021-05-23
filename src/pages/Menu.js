@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import { AppBar, Button, IconButton, Toolbar } from '@material-ui/core'
+import { AppBar, Button, IconButton, Link, Toolbar } from '@material-ui/core'
 import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined'
 import VideoCallOutlinedIcon from '@material-ui/icons/VideoCallOutlined'
-import { Link } from 'react-router-dom'
-import authHelper from '../utils/authHelper'
+import { Link as RouterLink } from 'react-router-dom'
 import Signout from '../components/Signout'
+import authHelper from '../utils/authHelper'
 
 const Menu = () => {
   const [isSignedin] = useState(authHelper.isAuthenticated())
@@ -12,7 +12,7 @@ const Menu = () => {
     <AppBar position='static'>
       <Toolbar>
         <div>
-          <Link to='/'>
+          <Link component={RouterLink} to='/'>
             <IconButton>
               <HomeOutlinedIcon color='secondary' />
             </IconButton>
@@ -22,7 +22,7 @@ const Menu = () => {
           <span style={{ float: 'right' }}>
             {!isSignedin && (
               <span>
-                <Link to='/signin'>
+                <Link component={RouterLink} to='/signin'>
                   <Button
                     color='secondary'
                     variant='outlined'
@@ -30,19 +30,11 @@ const Menu = () => {
                     Sign In
                   </Button>
                 </Link>
-                <Link to='/signup'>
-                  <Button
-                    color='secondary'
-                    variant='outlined'
-                    style={{ margin: '8px' }}>
-                    SignUp
-                  </Button>
-                </Link>
               </span>
             )}
             {isSignedin && (
               <span>
-                <Link to='/videos/new'>
+                <Link component={RouterLink} to='/videos/new'>
                   <Button
                     color='secondary'
                     variant='outlined'

@@ -11,11 +11,12 @@ import {
   DialogContentText,
   DialogTitle,
   Icon,
+  Link,
   makeStyles,
   TextField,
-  Typography
+  Typography,
 } from '@material-ui/core'
-import { Link } from 'react-router-dom'
+import { Link as RouterLink } from 'react-router-dom'
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -43,17 +44,19 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
+const initialValues = {
+  name: '',
+  password: '',
+  email: '',
+  open: false,
+  error: '',
+  code: '',
+  formType: 'signup',
+}
+
 export default function Signup() {
   const classes = useStyles()
-  const [values, setValues] = useState({
-    name: '',
-    password: '',
-    email: '',
-    open: false,
-    error: '',
-    code: '',
-    formType: 'signup',
-  })
+  const [values, setValues] = useState(initialValues)
   const { formType } = values
 
   const handleChange = name => event => {
@@ -124,7 +127,15 @@ export default function Signup() {
               margin='normal'
               variant='outlined'
             />
-            <br />
+            <Typography component='div' variant='caption'>
+              Already have an account?{' '}
+              <Link
+                component={RouterLink}
+                className={classes.link}
+                to='/signin'>
+                Sign in
+              </Link>
+            </Typography>
             {values.error && (
               <Typography component='p' color='error'>
                 <Icon color='error' className={classes.error}>
@@ -139,8 +150,9 @@ export default function Signup() {
               color='primary'
               variant='contained'
               onClick={signUp}
-              className={classes.submit}>
-              Submit
+              className={classes.submit}
+              size='large'>
+              Sign Up
             </Button>
           </CardActions>
         </Card>
@@ -177,7 +189,7 @@ export default function Signup() {
               variant='contained'
               onClick={confirmSignUp}
               className={classes.submit}>
-              Submit
+              Confirm Code
             </Button>
           </CardActions>
         </Card>
@@ -190,7 +202,7 @@ export default function Signup() {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Link to='/signin'>
+          <Link component={RouterLink} to='/signin'>
             <Button color='primary' autoFocus='autoFocus' variant='contained'>
               Sign In
             </Button>
