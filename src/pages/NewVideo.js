@@ -4,6 +4,7 @@ import {
   Card,
   CardActions,
   CardContent,
+  CircularProgress,
   Icon,
   makeStyles,
   TextField,
@@ -39,6 +40,13 @@ const useStyles = makeStyles(theme => ({
     margin: 'auto',
     marginBottom: theme.spacing(2),
   },
+  actions: {
+    flexDirection: 'column',
+  },
+  buttonProgress: {
+    position: 'absolute',
+    marginTop: theme.spacing(1),
+  },
   input: {
     display: 'none',
   },
@@ -59,11 +67,11 @@ const initialValues = {
 const NewVideo = () => {
   const classes = useStyles()
   const [values, setValues] = useState(initialValues)
+  const [uploadProgress, setUploadProgress] = useState(0)
 
   const uploadVideo = async () => {
-
     const PREFIX = 'input/'
-    const EXT = `.${values.video?.name.split('.').pop()}`
+    const EXT = values.video.name && `.${values.video.name.split('.').pop()}`
     const fileName = values.title
       ? PREFIX + values.title + EXT
       : PREFIX + values.video.name
@@ -71,10 +79,13 @@ const NewVideo = () => {
     await Storage.put(fileName, values.video, {
       contentType: 'video/*',
       progressCallback(progress) {
-        console.log(`Uploaded: ${progress.loaded}/${progress.total}`)
+        setUploadProgress((progress.loaded / progress.total) * 100)
       },
     })
-      .then(setValues(initialValues))
+      .then(() => {
+        setValues(initialValues)
+        setUploadProgress(0)
+      })
       .catch(error => console.log('Error uploading file: ', error))
   }
 
@@ -146,16 +157,25 @@ const NewVideo = () => {
           </Typography>
         )}
       </CardContent>
-      <CardActions>
+      <CardActions className={classes.actions}>
         <Button
           color='primary'
           size='large'
           variant='contained'
+          disabled={uploadProgress}
           onClick={uploadVideo}
           className={classes.button}
           endIcon={<BackupOutlined />}>
           Upload
         </Button>
+        {uploadProgress > 0 && (
+          <CircularProgress
+            size={28}
+            className={classes.buttonProgress}
+            variant='determinate'
+            value={uploadProgress}
+          />
+        )}
       </CardActions>
     </Card>
   )
