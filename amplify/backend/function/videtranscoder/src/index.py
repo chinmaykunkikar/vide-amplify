@@ -19,8 +19,7 @@ def run_command(command):
         return False
     return True
 
-
-def lambda_handler(event, context):
+def handler(event, context):
 
     # configurations
     home_path = "/var/task/"

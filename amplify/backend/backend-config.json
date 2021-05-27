@@ -34,5 +34,21 @@
       "service": "S3",
       "providerPlugin": "awscloudformation"
     }
+  },
+  "function": {
+    "videtranscoder": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "storage",
+          "resourceName": "vide",
+          "attributes": [
+            "BucketName"
+          ]
+        }
+      ]
+    }
   }
 }

@@ -14,6 +14,12 @@
     "categories": {
       "auth": {
         "vide": {}
+      },
+      "function": {
+        "videtranscoder": {
+          "deploymentBucketName": "amplify-vide-staging-103713-deployment",
+          "s3Key": "amplify-builds/videtranscoder-51316d53774a6d762b48-build.zip"
+        }
       }
     }
   }
