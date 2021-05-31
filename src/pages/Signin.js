@@ -30,12 +30,13 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     marginTop: theme.spacing(2),
-    color: theme.palette.openTitle,
+    color: theme.palette.grey[800],
+    fontWeight: 300,
   },
   textField: {
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
-    width: 300,
+    width: 320,
   },
   submit: {
     margin: 'auto',
@@ -82,7 +83,7 @@ const Signin = props => {
   return (
     <Card className={classes.card}>
       <CardContent>
-        <Typography variant='h6' className={classes.title}>
+        <Typography variant='h4' className={classes.title}>
           Sign In
         </Typography>
         <TextField

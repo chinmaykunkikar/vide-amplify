@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Auth from '@aws-amplify/auth'
+import { Auth, DataStore } from 'aws-amplify'
 import {
   Button,
   Card,
@@ -17,6 +17,7 @@ import {
   Typography,
 } from '@material-ui/core'
 import { Link as RouterLink } from 'react-router-dom'
+import { User } from '../models'
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -31,12 +32,13 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     marginTop: theme.spacing(2),
-    color: theme.palette.openTitle,
+    color: theme.palette.grey[800],
+    fontWeight: 300,
   },
   textField: {
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
-    width: 300,
+    width: 320,
   },
   submit: {
     margin: 'auto',
@@ -44,14 +46,17 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
+const SIGNUP_FORM = 'signup_form'
+const CONFIRM_FORM = 'confirm_form'
+
 const initialValues = {
   name: '',
-  password: '',
   email: '',
-  open: false,
+  password: '',
+  confirmCode: '',
+  openDialog: false,
   error: '',
-  code: '',
-  formType: 'signup',
+  formType: SIGNUP_FORM,
 }
 
 export default function Signup() {
@@ -64,36 +69,40 @@ export default function Signup() {
   }
 
   async function signUp() {
-    const name = values.name
-    const email = values.email
-    const password = values.password
-
     await Auth.signUp({
-      username: email,
-      password: password,
+      username: values.email,
+      password: values.password,
       attributes: {
-        email: email,
-        name: name,
+        email: values.email,
+        name: values.name,
       },
     })
-      .then(setValues({ ...values, error: '', formType: 'confirm' }))
+      .then(() => setValues({ ...values, error: '', formType: CONFIRM_FORM }))
       .catch(error => setValues({ ...values, error: error }))
   }
 
   async function confirmSignUp() {
-    const code = values.code
-    const email = values.email
-    await Auth.confirmSignUp(email, code)
-      .then(setValues({ ...values, error: '', open: true }))
+    await Auth.confirmSignUp(values.email, values.confirmCode)
+      .then(
+        await DataStore.save(
+          new User({
+            name: values.name,
+            email: values.email,
+            Videos: [],
+          })
+        )
+          .then(() => setValues({ ...values, error: '', openDialog: true }))
+          .catch(error => setValues({ ...values, error: error }))
+      )
       .catch(error => setValues({ ...values, error: error }))
   }
 
   return (
     <div>
-      {formType === 'signup' && (
+      {formType === SIGNUP_FORM && (
         <Card className={classes.card}>
           <CardContent>
-            <Typography variant='h6' className={classes.title}>
+            <Typography variant='h4' className={classes.title}>
               Sign Up
             </Typography>
             <TextField
@@ -129,10 +138,7 @@ export default function Signup() {
             />
             <Typography component='div' variant='caption'>
               Already have an account?{' '}
-              <Link
-                component={RouterLink}
-                className={classes.link}
-                to='/signin'>
+              <Link component={RouterLink} to='/signin'>
                 Sign in
               </Link>
             </Typography>
@@ -152,15 +158,15 @@ export default function Signup() {
               onClick={signUp}
               className={classes.submit}
               size='large'>
-              Sign Up
+              Continue
             </Button>
           </CardActions>
         </Card>
       )}
-      {formType === 'confirm' && (
+      {formType === CONFIRM_FORM && (
         <Card className={classes.card}>
           <CardContent>
-            <Typography variant='h6' className={classes.title}>
+            <Typography variant='h4' className={classes.title}>
               Confirm Sign Up
             </Typography>
             <TextField
@@ -168,11 +174,20 @@ export default function Signup() {
               type='number'
               label='Confirmation code'
               className={classes.textField}
-              value={values.code}
+              value={values.confirmCode}
               onChange={handleChange('code')}
               margin='normal'
               variant='outlined'
             />
+            <Typography component='div' variant='caption'>
+              Didn't receive a confirmation code?{' '}
+              <Link
+                component='button'
+                variant='caption'
+                onClick={() => Auth.resendSignUp(values.email)}>
+                Resend code
+              </Link>
+            </Typography>
             <br />
             {values.error && (
               <Typography component='p' color='error'>
@@ -194,17 +209,15 @@ export default function Signup() {
           </CardActions>
         </Card>
       )}
-      <Dialog open={values.open} disableBackdropClick={true}>
-        <DialogTitle>New Account</DialogTitle>
+      <Dialog open={values.openDialog} disableBackdropClick>
+        <DialogTitle>Sign up successful</DialogTitle>
         <DialogContent>
-          <DialogContentText>
-            New account successfully created.
-          </DialogContentText>
+          <DialogContentText>Welcome aboard {values.name}!</DialogContentText>
         </DialogContent>
         <DialogActions>
           <Link component={RouterLink} to='/signin'>
-            <Button color='primary' autoFocus='autoFocus' variant='contained'>
-              Sign In
+            <Button color='primary' autoFocus>
+              Back to Sign In
             </Button>
           </Link>
         </DialogActions>
