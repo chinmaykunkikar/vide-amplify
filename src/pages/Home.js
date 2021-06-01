@@ -1,9 +1,11 @@
 import React from 'react'
 import { Box, makeStyles, Paper, Typography } from '@material-ui/core'
+import VideoList from './VideoList'
 
 const useStyles = makeStyles(theme => ({
   paper: {
     margin: theme.spacing(5, 4),
+    paddingBottom: theme.spacing(2),
   },
   title: {
     padding: theme.spacing(2),
@@ -21,6 +23,7 @@ const Home = props => {
           Popular Videos
         </Box>
       </Typography>
+      <VideoList />
     </Paper>
   )
 }
