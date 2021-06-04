@@ -11,15 +11,14 @@ import {
   Typography,
 } from '@material-ui/core'
 import { BackupOutlined } from '@material-ui/icons'
-import { Amplify, Storage } from 'aws-amplify'
-import { Redirect } from 'react-router'
+import { Amplify, Auth, Storage } from 'aws-amplify'
 import awsconfig from '../aws-exports'
 
 Amplify.configure(awsconfig)
 
 const useStyles = makeStyles(theme => ({
   card: {
-    maxWidth: 500,
+    maxWidth: 600,
     margin: 'auto',
     textAlign: 'center',
     marginTop: theme.spacing(5),
@@ -27,14 +26,15 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     margin: theme.spacing(2),
-    color: theme.palette.protectedTitle,
+    color: theme.palette.grey[800],
+    fontWeight: 300,
   },
   error: {
     verticalAlign: 'middle',
   },
   textField: {
     margin: theme.spacing(1),
-    width: 300,
+    width: 320,
   },
   button: {
     margin: 'auto',
@@ -59,10 +59,16 @@ const initialValues = {
   title: '',
   video: '',
   description: '',
-  redirect: false,
   error: '',
-  mediaId: '',
+  username: '',
 }
+
+// TODO find a better way to handle the following
+const getCurrentUsername = async () => {
+  const { username } = await Auth.currentUserInfo()
+  initialValues.username = username
+}
+getCurrentUsername()
 
 const NewVideo = () => {
   const classes = useStyles()
@@ -70,7 +76,7 @@ const NewVideo = () => {
   const [uploadProgress, setUploadProgress] = useState(0)
 
   const uploadVideo = async () => {
-    const PREFIX = 'input/'
+    const PREFIX = `input/${values.username}/`
     const EXT = values.video.name && `.${values.video.name.split('.').pop()}`
     const fileName = values.title
       ? PREFIX + values.title + EXT
@@ -94,15 +100,11 @@ const NewVideo = () => {
     setValues({ ...values, [name]: value })
   }
 
-  if (values.redirect) {
-    return <Redirect to={'/media/' + values.mediaId} />
-  }
-
   return (
     <Card className={classes.card}>
       <CardContent>
-        <Typography variant='h6' display='block' className={classes.title}>
-          New Video
+        <Typography variant='h5' display='block' className={classes.title}>
+          Upload a new video
         </Typography>
         <input
           accept='video/*'
@@ -131,7 +133,7 @@ const NewVideo = () => {
         <br />
         <TextField
           id='title'
-          label='Title'
+          label='An interesting title'
           className={classes.textField}
           value={values.title}
           onChange={handleChange('title')}
@@ -162,7 +164,7 @@ const NewVideo = () => {
           color='primary'
           size='large'
           variant='contained'
-          disabled={uploadProgress}
+          disabled={Boolean(uploadProgress)}
           onClick={uploadVideo}
           className={classes.button}
           endIcon={<BackupOutlined />}>
