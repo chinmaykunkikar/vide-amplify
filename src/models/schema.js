@@ -37,6 +37,22 @@ export const schema = {
                         "connectionType": "HAS_MANY",
                         "associatedWith": "author"
                     }
+                },
+                "createdAt": {
+                    "name": "createdAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                },
+                "updatedAt": {
+                    "name": "updatedAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
                 }
             },
             "syncable": true,
@@ -102,12 +118,21 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "uploadedAt": {
-                    "name": "uploadedAt",
+                "createdAt": {
+                    "name": "createdAt",
                     "isArray": false,
                     "type": "AWSDateTime",
                     "isRequired": false,
-                    "attributes": []
+                    "attributes": [],
+                    "isReadOnly": true
+                },
+                "updatedAt": {
+                    "name": "updatedAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
                 }
             },
             "syncable": true,
@@ -147,5 +172,5 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "version": "153d5907d5356c18a91602d5032b6a20"
+    "version": "298e58cfdc6f59c27a7852f830ae8193"
 };

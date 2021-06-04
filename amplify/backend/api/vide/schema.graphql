@@ -11,6 +11,5 @@ type Video @model @auth(rules: [{allow: public}]) @key(name: "byUser", fields: [
   author: ID!
   description: String
   resourceURI: String
-  uploadedAt: AWSDateTime
 }
  
