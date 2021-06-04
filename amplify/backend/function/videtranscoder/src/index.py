@@ -22,38 +22,39 @@ def run_command(command):
 def handler(event, context):
 
     # configurations
-    home_path = "/var/task/"
-    tmp_path = "/tmp/"
-    scriptname = f"{tmp_path}create-vod-hls.sh"
-    bucket_down = event["Records"][0]["s3"]["bucket"]["name"]
-    bucket_up = "vide103713-staging/public/output"
-    keyname = urllib.parse.unquote_plus(
+    HOME_DIR = "/var/task/"
+    TEMP_DIR = "/tmp/"
+    TRANSCODER = "create-vod-hls.sh"
+    DOWNLOAD_BUCKET = event["Records"][0]["s3"]["bucket"]["name"]
+    UPLOAD_BUCKET = "vide103713-staging/public/output"
+    OBJECT_KEY = urllib.parse.unquote_plus(
         event["Records"][0]["s3"]["object"]["key"], encoding="utf-8"
     )
-    filename = Path(keyname).name
-    filename_base = Path(keyname).stem
-    tmp_file_path = f"{tmp_path}{filename}"
-    tmp_output_dir = f"{tmp_path}{filename_base}"
-    script_cmd_str = f"{scriptname} {tmp_file_path} {tmp_output_dir}"
-    s3down_cmd_str = f"/opt/aws s3 cp s3://{bucket_down}/{keyname} {tmp_path}"
-    s3sync_cmd_str = (
-        f"/opt/aws s3 sync {tmp_output_dir}/ s3://{bucket_up}/{filename_base}/"
+    OBJECT_FILENAME = Path(OBJECT_KEY).name
+    OBJECT_FILENAME_BASE = Path(OBJECT_KEY).stem
+    USERNAME = Path(OBJECT_KEY).parts[-2]
+    TEMP_FILE_LOCATION = f"{TEMP_DIR}{OBJECT_FILENAME}"
+    PROCESSED_OUTPUT_LOCATION = f"{TEMP_DIR}{OBJECT_FILENAME_BASE}"
+    RUN_TRANSCODER = f"{TEMP_DIR}{TRANSCODER} {TEMP_FILE_LOCATION} {PROCESSED_OUTPUT_LOCATION}"
+    DOWNLOAD_S3_LAMBDA = f"/opt/aws s3 cp s3://{DOWNLOAD_BUCKET}/{OBJECT_KEY} {TEMP_DIR}"
+    SYNC_LAMBDA_S3 = (
+        f"/opt/aws s3 sync {PROCESSED_OUTPUT_LOCATION}/ s3://{UPLOAD_BUCKET}/{USERNAME}/{OBJECT_FILENAME_BASE}/"
     )
 
-    run_command(f"rm -rf {tmp_path}*")
+    run_command(f"rm -rf {TEMP_DIR}*")
 
     # copy file to /tmp and add execute access (755)
-    copyfile(f"{home_path}create-vod-hls.sh", scriptname)
-    os.chmod(scriptname, 0o755)
+    copyfile(f"{HOME_DIR}{TRANSCODER}", f"{TEMP_DIR}{TRANSCODER}")
+    os.chmod(f"{TEMP_DIR}{TRANSCODER}", 0o755)
 
     # download file to lambda
-    run_command(s3down_cmd_str)
+    run_command(DOWNLOAD_S3_LAMBDA)
 
     # transcode file
-    run_command(script_cmd_str)
+    run_command(RUN_TRANSCODER)
 
     # upload transcoded output
-    run_command(s3sync_cmd_str)
+    run_command(SYNC_LAMBDA_S3)
 
     logger("Successfully transcoded")
 
