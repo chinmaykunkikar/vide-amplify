@@ -11,8 +11,9 @@ import {
   Typography,
 } from '@material-ui/core'
 import { BackupOutlined } from '@material-ui/icons'
-import { Amplify, Auth, Storage } from 'aws-amplify'
+import { Amplify, Auth, DataStore, Storage } from 'aws-amplify'
 import awsconfig from '../aws-exports'
+import { Video } from '../models'
 
 Amplify.configure(awsconfig)
 
@@ -60,12 +61,14 @@ const initialValues = {
   video: '',
   description: '',
   error: '',
-  username: '',
+  username: 'default',
 }
 
 // TODO find a better way to handle the following
 const getCurrentUsername = async () => {
-  const { username } = await Auth.currentUserInfo()
+  const username = await Auth.currentUserInfo()
+    .then(info => info.username)
+    .catch(error => console.error(error))
   initialValues.username = username
 }
 getCurrentUsername()
@@ -75,14 +78,18 @@ const NewVideo = () => {
   const [values, setValues] = useState(initialValues)
   const [uploadProgress, setUploadProgress] = useState(0)
 
+  const { aws_user_files_s3_bucket, aws_user_files_s3_bucket_region } = awsconfig
+
   const uploadVideo = async () => {
     const PREFIX = `input/${values.username}/`
     const EXT = values.video.name && `.${values.video.name.split('.').pop()}`
-    const fileName = values.title
+    const KEY = values.title
       ? PREFIX + values.title + EXT
       : PREFIX + values.video.name
+    const BASENAME = KEY.split('/').pop().split('.').shift()
+    const RESOURCE_URI = `https://${aws_user_files_s3_bucket}.s3.${aws_user_files_s3_bucket_region}.amazonaws.com/public/output/${values.username}/${BASENAME}/playlist.m3u8`
 
-    await Storage.put(fileName, values.video, {
+    await Storage.put(KEY, values.video, {
       contentType: 'video/*',
       progressCallback(progress) {
         setUploadProgress((progress.loaded / progress.total) * 100)
@@ -92,6 +99,16 @@ const NewVideo = () => {
         setValues(initialValues)
         setUploadProgress(0)
       })
+      .then(
+        await DataStore.save(
+          new Video({
+            title: BASENAME,
+            author: values.username,
+            description: values.description,
+            resourceURI: RESOURCE_URI,
+          })
+        )
+      )
       .catch(error => console.log('Error uploading file: ', error))
   }
 
