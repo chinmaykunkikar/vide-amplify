@@ -17,7 +17,7 @@ import {
   Typography,
 } from '@material-ui/core'
 import { Link as RouterLink } from 'react-router-dom'
-import { User } from '../models'
+import { User } from '../../models'
 
 const useStyles = makeStyles(theme => ({
   card: {

@@ -9,7 +9,7 @@ import {
 } from '@material-ui/core'
 import { HomeOutlined, VideoCallOutlined } from '@material-ui/icons'
 import { Link as RouterLink } from 'react-router-dom'
-import Signout from '../components/Signout'
+import Signout from './Signout'
 import authHelper from '../utils/authHelper'
 
 const useStyles = makeStyles(theme => ({

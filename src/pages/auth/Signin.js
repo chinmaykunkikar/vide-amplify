@@ -13,7 +13,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import { Amplify, Auth } from 'aws-amplify'
 import { Redirect } from 'react-router'
 import { Link as RouterLink } from 'react-router-dom'
-import awsconfig from '../aws-exports'
+import awsconfig from '../../aws-exports'
 
 Amplify.configure(awsconfig)
 

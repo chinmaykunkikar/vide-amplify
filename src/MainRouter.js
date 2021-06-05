@@ -1,11 +1,11 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import PrivateRoute from './PrivateRoute'
-import Menu from './pages/Menu'
+import Menu from './components/Menu'
 import Home from './pages/Home'
-import Signin from './pages/Signin'
-import NewVideo from './pages/NewVideo'
-import Signup from './pages/Signup'
+import Signin from './pages/auth/Signin'
+import NewVideo from './pages/video/NewVideo'
+import Signup from './pages/auth/Signup'
 
 const MainRouter = ({ data }) => {
   return (

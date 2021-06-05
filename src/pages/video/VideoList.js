@@ -1,8 +1,8 @@
 import React from 'react'
 import { Amplify, Storage } from 'aws-amplify'
 import { GridList, makeStyles } from '@material-ui/core'
-import awsconfig from '../aws-exports'
-import VideoTileSkeleton from '../components/VideoTileSkeleton'
+import awsconfig from '../../aws-exports'
+import VideoTileSkeleton from '../../components/VideoTileSkeleton'
 Amplify.configure(awsconfig)
 
 const useStyles = makeStyles(theme => ({

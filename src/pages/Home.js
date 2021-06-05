@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, makeStyles, Paper, Typography } from '@material-ui/core'
-import VideoList from './VideoList'
+import VideoList from './video/VideoList'
 
 const useStyles = makeStyles(theme => ({
   paper: {

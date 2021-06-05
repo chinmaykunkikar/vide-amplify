@@ -12,8 +12,8 @@ import {
 } from '@material-ui/core'
 import { BackupOutlined } from '@material-ui/icons'
 import { Amplify, Auth, DataStore, Storage } from 'aws-amplify'
-import awsconfig from '../aws-exports'
-import { Video } from '../models'
+import awsconfig from '../../aws-exports'
+import { Video } from '../../models'
 
 Amplify.configure(awsconfig)
 
