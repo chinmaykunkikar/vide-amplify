@@ -78,7 +78,10 @@ const NewVideo = () => {
   const [values, setValues] = useState(initialValues)
   const [uploadProgress, setUploadProgress] = useState(0)
 
-  const { aws_user_files_s3_bucket, aws_user_files_s3_bucket_region } = awsconfig
+  const {
+    aws_user_files_s3_bucket: BUCKET,
+    aws_user_files_s3_bucket_region: REGION,
+  } = awsconfig
 
   const uploadVideo = async () => {
     const PREFIX = `input/${values.username}/`
@@ -87,7 +90,7 @@ const NewVideo = () => {
       ? PREFIX + values.title + EXT
       : PREFIX + values.video.name
     const BASENAME = KEY.split('/').pop().split('.').shift()
-    const RESOURCE_URI = `https://${aws_user_files_s3_bucket}.s3.${aws_user_files_s3_bucket_region}.amazonaws.com/public/output/${values.username}/${BASENAME}/playlist.m3u8`
+    const RESOURCE_URI = `https://${BUCKET}.s3.${REGION}.amazonaws.com/public/output/${values.username}/${BASENAME}/playlist.m3u8`
 
     await Storage.put(KEY, values.video, {
       contentType: 'video/*',
