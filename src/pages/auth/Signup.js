@@ -175,7 +175,7 @@ export default function Signup() {
               label='Confirmation code'
               className={classes.textField}
               value={values.confirmCode}
-              onChange={handleChange('code')}
+              onChange={handleChange('confirmCode')}
               margin='normal'
               variant='outlined'
             />
