@@ -87,9 +87,9 @@ const NewVideo = () => {
     const PREFIX = `input/${values.username}/`
     const EXT = values.video.name && `.${values.video.name.split('.').pop()}`
     const KEY = values.title
-      ? PREFIX + values.title + EXT
-      : PREFIX + values.video.name
-    const BASENAME = KEY.split('/').pop().split('.').shift()
+      ? PREFIX + values.title.replaceAll(/\s+/g, '_') + EXT
+      : PREFIX + values.video.name.replaceAll(/\s+/g, '_')
+    const BASENAME = KEY.split('/').pop().split('.').shift().replaceAll(/\s+/g, '_')
     const RESOURCE_URI = `https://${BUCKET}.s3.${REGION}.amazonaws.com/public/output/${values.username}/${BASENAME}/playlist.m3u8`
 
     await Storage.put(KEY, values.video, {
@@ -105,7 +105,7 @@ const NewVideo = () => {
       .then(
         await DataStore.save(
           new Video({
-            title: BASENAME,
+            title: values.title,
             author: values.username,
             description: values.description,
             resourceURI: RESOURCE_URI,
