@@ -5,7 +5,6 @@ import {
   CardActions,
   CardContent,
   CircularProgress,
-  Icon,
   makeStyles,
   TextField,
   Typography,
@@ -170,14 +169,6 @@ const NewVideo = () => {
           onChange={handleChange('description')}
           variant='outlined'
         />
-        {values.error && (
-          <Typography component='p' variant='caption' color='error'>
-            <Icon color='error' className={classes.error}>
-              error
-            </Icon>
-            {values.error}
-          </Typography>
-        )}
       </CardContent>
       <CardActions className={classes.actions}>
         <Button

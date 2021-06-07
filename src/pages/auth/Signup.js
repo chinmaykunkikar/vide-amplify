@@ -10,7 +10,6 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
-  Icon,
   Link,
   makeStyles,
   TextField,
@@ -142,14 +141,6 @@ export default function Signup() {
                 Sign in
               </Link>
             </Typography>
-            {values.error && (
-              <Typography component='p' color='error'>
-                <Icon color='error' className={classes.error}>
-                  error
-                </Icon>
-                {values.error}
-              </Typography>
-            )}
           </CardContent>
           <CardActions>
             <Button
@@ -189,14 +180,6 @@ export default function Signup() {
               </Link>
             </Typography>
             <br />
-            {values.error && (
-              <Typography component='p' color='error'>
-                <Icon color='error' className={classes.error}>
-                  error
-                </Icon>
-                {values.error}
-              </Typography>
-            )}
           </CardContent>
           <CardActions>
             <Button

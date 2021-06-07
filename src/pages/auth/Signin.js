@@ -4,7 +4,6 @@ import {
   Card,
   CardActions,
   CardContent,
-  Icon,
   Link,
   TextField,
   Typography,
@@ -113,14 +112,6 @@ const Signin = props => {
             Create your account
           </Link>
         </Typography>
-        {values.error && (
-          <Typography component='p' color='error'>
-            <Icon color='error' className={classes.error}>
-              error
-            </Icon>
-            {values.error}
-          </Typography>
-        )}
       </CardContent>
       <CardActions>
         <Button
