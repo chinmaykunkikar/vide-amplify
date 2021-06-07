@@ -18,7 +18,7 @@
       "function": {
         "videtranscoder": {
           "deploymentBucketName": "amplify-vide-staging-103713-deployment",
-          "s3Key": "amplify-builds/videtranscoder-692b465378614e353951-build.zip"
+          "s3Key": "amplify-builds/videtranscoder-684e4d765975534c314f-build.zip"
         }
       }
     }
