@@ -4,16 +4,16 @@ import VideoList from './video/VideoList'
 
 const useStyles = makeStyles(theme => ({
   paper: {
-    margin: theme.spacing(5, 4),
-    paddingBottom: theme.spacing(2),
+    margin: theme.spacing(2),
+    padding: theme.spacing(2, 0),
   },
   title: {
-    padding: theme.spacing(2),
+    padding: theme.spacing(0, 2),
     color: theme.palette.text.secondary,
   },
 }))
 
-const Home = props => {
+const Home = () => {
   const classes = useStyles()
 
   return (
