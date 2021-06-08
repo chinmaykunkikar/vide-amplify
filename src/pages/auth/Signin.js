@@ -62,7 +62,7 @@ const Signin = props => {
         setValues({ ...values, redirectToReferrer: true })
         window.location.reload()
       })
-      .catch(error => setValues({ ...values, error: error }))
+      .catch(error => alert(error.message))
   }
 
   const handleChange = name => event => {
@@ -108,7 +108,7 @@ const Signin = props => {
         />
         <Typography component='div' variant='caption'>
           Don't have an account?{' '}
-          <Link component={RouterLink} className={classes.link} to='/signup'>
+          <Link component={RouterLink} to='/signup'>
             Create your account
           </Link>
         </Typography>
