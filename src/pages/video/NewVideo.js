@@ -76,7 +76,6 @@ const NewVideo = () => {
   const classes = useStyles()
   const [values, setValues] = useState(initialValues)
   const [uploadProgress, setUploadProgress] = useState(0)
-
   const {
     aws_user_files_s3_bucket: BUCKET,
     aws_user_files_s3_bucket_region: REGION,
@@ -104,7 +103,7 @@ const NewVideo = () => {
       .then(
         await DataStore.save(
           new Video({
-            title: values.title,
+            title: BASENAME,
             author: values.username,
             description: values.description,
             resourceURI: RESOURCE_URI,
