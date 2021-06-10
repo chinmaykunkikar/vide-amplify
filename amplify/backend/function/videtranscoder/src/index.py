@@ -24,7 +24,7 @@ def handler(event, context):
     # configurations
     HOME_DIR = "/var/task/"
     TEMP_DIR = "/tmp/"
-    TRANSCODER = "create-vod-hls.sh"
+    TRANSCODER = "hls-encoder.sh"
     DOWNLOAD_BUCKET = event["Records"][0]["s3"]["bucket"]["name"]
     UPLOAD_BUCKET = "vide103713-staging/public/output"
     OBJECT_KEY = urllib.parse.unquote_plus(
@@ -35,7 +35,7 @@ def handler(event, context):
     USERNAME = Path(OBJECT_KEY).parts[-2]
     TEMP_FILE_LOCATION = f"{TEMP_DIR}{OBJECT_FILENAME}"
     PROCESSED_OUTPUT_LOCATION = f"{TEMP_DIR}{OBJECT_FILENAME_BASE}"
-    RUN_TRANSCODER = f"{TEMP_DIR}{TRANSCODER} {TEMP_FILE_LOCATION} {PROCESSED_OUTPUT_LOCATION}"
+    RUN_TRANSCODER = f"{TEMP_DIR}{TRANSCODER} {TEMP_FILE_LOCATION} {PROCESSED_OUTPUT_LOCATION} {USERNAME} {OBJECT_FILENAME_BASE}"
     DOWNLOAD_S3_LAMBDA = f"/opt/aws s3 cp s3://{DOWNLOAD_BUCKET}/{OBJECT_KEY} {TEMP_DIR}"
     SYNC_LAMBDA_S3 = (
         f"/opt/aws s3 sync {PROCESSED_OUTPUT_LOCATION}/ s3://{UPLOAD_BUCKET}/{USERNAME}/{OBJECT_FILENAME_BASE}/ --acl public-read"
