@@ -118,6 +118,13 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
+                "thumbnailURI": {
+                    "name": "thumbnailURI",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -172,5 +179,5 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "version": "298e58cfdc6f59c27a7852f830ae8193"
+    "version": "3e9b5d0f8b04e01f5ca0166527adb015"
 };
