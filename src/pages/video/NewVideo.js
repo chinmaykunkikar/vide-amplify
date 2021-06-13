@@ -91,6 +91,7 @@ const NewVideo = () => {
       : PREFIX + values.video.name.replaceAll(/\s+/g, '_')
     const BASENAME = KEY.split('/').pop().split('.').shift().replaceAll(/\s+/g, '_')
     const RESOURCE_URI = `https://${BUCKET}.s3.${REGION}.amazonaws.com/public/output/${values.username}/${BASENAME}/playlist.m3u8`
+    const THUMBNAIL_URI = `https://${BUCKET}.s3.${REGION}.amazonaws.com/public/output/${values.username}/${BASENAME}/thumbnail.png`
 
     await Storage.put(KEY, values.video, {
       contentType: 'video/*',
@@ -109,6 +110,7 @@ const NewVideo = () => {
             author: values.author,
             description: values.description,
             resourceURI: RESOURCE_URI,
+            thumbnailURI: THUMBNAIL_URI,
           })
         )
       )
