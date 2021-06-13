@@ -57,7 +57,7 @@ const Menu = () => {
             )}
             {isSignedin && (
               <span>
-                <Link component={RouterLink} to='/videos/new'>
+                <Link component={RouterLink} to='/new'>
                   <Button
                     color='secondary'
                     variant='outlined'

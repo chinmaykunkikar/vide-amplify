@@ -15,7 +15,7 @@ const MainRouter = ({ data }) => {
         <Route exact path='/' component={Home} />
         <Route exact path='/signin' component={Signin} />
         <Route exact path='/signup' component={Signup} />
-        <PrivateRoute path='/videos/new' component={NewVideo} />
+        <PrivateRoute path='/new' component={NewVideo} />
       </Switch>
     </div>
   )
