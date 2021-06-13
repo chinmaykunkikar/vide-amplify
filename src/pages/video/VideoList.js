@@ -4,7 +4,7 @@ import {
   GridListTile,
   GridListTileBar,
   Link,
-  makeStyles
+  makeStyles,
 } from '@material-ui/core'
 import { Amplify, DataStore } from 'aws-amplify'
 import { Link as RouterLink } from 'react-router-dom'
@@ -75,35 +75,37 @@ const VideoList = props => {
   return (
     <div className={classes.root}>
       <GridList cols={props.cols || getCols()} spacing={8}>
-        {videoList.map(tile => (
-          <GridListTile
-            component='div'
-            key={tile.id}
-            style={{ height: 'auto' }}>
-            <Link component={RouterLink} to={`/${tile.id}`} underline='none'>
-              <img
-                src={tile.thumbnailURI}
-                alt={tile.title}
-                width='100%'
-                height='auto'
-                decoding='async'
-                loading='eager'
+        {videoList
+          .filter(currentVideo => currentVideo.id !== props.currentVideo)
+          .map(tile => (
+            <GridListTile
+              component='div'
+              key={tile.id}
+              style={{ height: 'auto' }}>
+              <Link component={RouterLink} to={`/${tile.id}`} underline='none'>
+                <img
+                  src={tile.thumbnailURI}
+                  alt={tile.title}
+                  width='100%'
+                  height='auto'
+                  decoding='async'
+                  loading='eager'
+                />
+              </Link>
+              <GridListTileBar
+                className={classes.tileBar}
+                title={
+                  <Link
+                    className={classes.tileTitle}
+                    component={RouterLink}
+                    to={`/${tile.id}`}
+                    underline='none'>
+                    {tile.title}
+                  </Link>
+                }
               />
-            </Link>
-            <GridListTileBar
-              className={classes.tileBar}
-              title={
-                <Link
-                  className={classes.tileTitle}
-                  component={RouterLink}
-                  to={`/${tile.id}`}
-                  underline='none'>
-                  {tile.title}
-                </Link>
-              }
-            />
-          </GridListTile>
-        ))}
+            </GridListTile>
+          ))}
       </GridList>
     </div>
   )

@@ -130,7 +130,7 @@ const VideoContent = props => {
           </div>
         </Grid>
         <Grid item xs={12} md={4}>
-          <VideoList cols={1} />
+          <VideoList cols={1} currentVideo={videoId} />
         </Grid>
       </Grid>
     </Paper>
