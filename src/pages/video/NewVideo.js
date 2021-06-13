@@ -56,21 +56,23 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const initialValues = {
-  title: '',
-  video: '',
+  author: 'default',
   description: '',
   error: '',
+  title: '',
   username: 'default',
+  video: '',
 }
 
 // TODO find a better way to handle the following
-const getCurrentUsername = async () => {
-  const username = await Auth.currentUserInfo()
-    .then(info => info.username)
+const getCurrentUserInfo = async () => {
+  const userInfo = await Auth.currentUserInfo()
+    .then(info => ({username: info.username, name: info.attributes.name}))
     .catch(error => console.error(error))
-  initialValues.username = username
+  initialValues.username = userInfo.username
+  initialValues.author = userInfo.name
 }
-getCurrentUsername()
+getCurrentUserInfo()
 
 const NewVideo = () => {
   const classes = useStyles()
@@ -103,8 +105,8 @@ const NewVideo = () => {
       .then(
         await DataStore.save(
           new Video({
-            title: BASENAME,
-            author: values.username,
+            title: values.title,
+            author: values.author,
             description: values.description,
             resourceURI: RESOURCE_URI,
           })
