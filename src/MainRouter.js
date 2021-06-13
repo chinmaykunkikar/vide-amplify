@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import Signin from './pages/auth/Signin'
 import NewVideo from './pages/video/NewVideo'
 import Signup from './pages/auth/Signup'
+import VideoPlayer from './pages/video/VideoPlayer'
 
 const MainRouter = ({ data }) => {
   return (
@@ -16,6 +17,9 @@ const MainRouter = ({ data }) => {
         <Route exact path='/signin' component={Signin} />
         <Route exact path='/signup' component={Signup} />
         <PrivateRoute path='/new' component={NewVideo} />
+        <Route path='/:videoId'>
+          <VideoPlayer />
+        </Route>
       </Switch>
     </div>
   )
