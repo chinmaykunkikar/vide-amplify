@@ -4,10 +4,9 @@ import {
   GridListTile,
   GridListTileBar,
   Link,
-  makeStyles,
+  makeStyles
 } from '@material-ui/core'
 import { Amplify, DataStore } from 'aws-amplify'
-import ReactPlayer from 'react-player'
 import { Link as RouterLink } from 'react-router-dom'
 import awsconfig from '../../aws-exports'
 import { Video } from '../../models'
@@ -22,10 +21,6 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'space-around',
     overflow: 'hidden',
     padding: theme.spacing(1, 2),
-  },
-  gridList: {
-    width: '100%',
-    height: 'auto',
   },
   tileBar: {
     background:
@@ -45,6 +40,12 @@ const VideoList = props => {
   const [videoList, updateVideoList] = useState([])
   const width = useWidth()
 
+  DataStore.start().catch(() => {
+    DataStore.clear().then(() => {
+      DataStore.start()
+    })
+  })
+
   const setVideoList = async () => {
     const list = await DataStore.query(Video)
     updateVideoList(list)
@@ -55,13 +56,13 @@ const VideoList = props => {
       case 'xs':
         return 1
       case 'sm':
-        return 2
+        return videoList.length < 2 ? videoList.length : 2
       case 'md':
-        return 3
+        return videoList.length < 3 ? videoList.length : 3
       case 'lg':
-        return 4
+        return videoList.length < 4 ? videoList.length : 4
       case 'xl':
-        return 5
+        return videoList.length < 5 ? videoList.length : 5
       default:
         return 4
     }
@@ -73,11 +74,21 @@ const VideoList = props => {
 
   return (
     <div className={classes.root}>
-      <GridList cols={getCols()} spacing={8}>
+      <GridList cols={props.cols || getCols()} spacing={8}>
         {videoList.map(tile => (
-          <GridListTile className={classes.gridList} key={tile.id}>
-            <Link component={RouterLink} to={`/video/${tile.id}`}>
-              <ReactPlayer url={tile.resourceURI} width='auto' height='auto' />
+          <GridListTile
+            component='div'
+            key={tile.id}
+            style={{ height: 'auto' }}>
+            <Link component={RouterLink} to={`/${tile.id}`} underline='none'>
+              <img
+                src={tile.thumbnailURI}
+                alt={tile.title}
+                width='100%'
+                height='auto'
+                decoding='async'
+                loading='eager'
+              />
             </Link>
             <GridListTileBar
               className={classes.tileBar}
@@ -85,7 +96,7 @@ const VideoList = props => {
                 <Link
                   className={classes.tileTitle}
                   component={RouterLink}
-                  to={`/video/${tile.id}`}
+                  to={`/${tile.id}`}
                   underline='none'>
                   {tile.title}
                 </Link>
