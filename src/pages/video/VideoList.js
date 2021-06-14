@@ -7,6 +7,8 @@ import {
   makeStyles,
 } from '@material-ui/core'
 import { Amplify, DataStore } from 'aws-amplify'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
+import 'react-lazy-load-image-component/src/effects/blur.css'
 import { Link as RouterLink } from 'react-router-dom'
 import awsconfig from '../../aws-exports'
 import { Video } from '../../models'
@@ -40,12 +42,6 @@ const VideoList = props => {
   const [videoList, updateVideoList] = useState([])
   const width = useWidth()
 
-  DataStore.start().catch(() => {
-    DataStore.clear().then(() => {
-      DataStore.start()
-    })
-  })
-
   const setVideoList = async () => {
     const list = await DataStore.query(Video)
     updateVideoList(list)
@@ -69,6 +65,9 @@ const VideoList = props => {
   }
 
   useEffect(() => {
+    DataStore.start().catch(() =>
+      DataStore.clear().then(() => DataStore.start())
+    )
     setVideoList()
   }, [])
 
@@ -83,13 +82,12 @@ const VideoList = props => {
               key={tile.id}
               style={{ height: 'auto' }}>
               <Link component={RouterLink} to={`/${tile.id}`} underline='none'>
-                <img
+                <LazyLoadImage
                   src={tile.thumbnailURI}
                   alt={tile.title}
+                  effect='blur'
                   width='100%'
                   height='auto'
-                  decoding='async'
-                  loading='eager'
                 />
               </Link>
               <GridListTileBar
