@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   Button,
   Card,
@@ -29,9 +29,6 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.grey[800],
     fontWeight: 300,
   },
-  error: {
-    verticalAlign: 'middle',
-  },
   textField: {
     margin: theme.spacing(1),
     width: 320,
@@ -56,32 +53,31 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const initialValues = {
-  author: 'default',
   description: '',
   error: '',
   title: '',
-  username: 'default',
   video: '',
 }
-
-// TODO find a better way to handle the following
-const getCurrentUserInfo = async () => {
-  const userInfo = await Auth.currentUserInfo()
-    .then(info => ({username: info.username, name: info.attributes.name}))
-    .catch(error => console.error(error))
-  initialValues.username = userInfo.username
-  initialValues.author = userInfo.name
-}
-getCurrentUserInfo()
 
 const NewVideo = () => {
   const classes = useStyles()
   const [values, setValues] = useState(initialValues)
+  const [username, setUsername] = useState('default')
+  const [author, setAuthor] = useState('default')
   const [uploadProgress, setUploadProgress] = useState(0)
   const {
     aws_user_files_s3_bucket: BUCKET,
     aws_user_files_s3_bucket_region: REGION,
   } = awsconfig
+
+  const getCurrentUserInfo = async () => await Auth.currentUserInfo()
+
+  useEffect(() => {
+    getCurrentUserInfo().then(info => {
+      setUsername(info.username)
+      setAuthor(info.attributes.name)
+    })
+  }, [])
 
   const uploadVideo = async () => {
     const PREFIX = `input/${values.username}/`
@@ -89,9 +85,13 @@ const NewVideo = () => {
     const KEY = values.title
       ? PREFIX + values.title.replaceAll(/\s+/g, '_') + EXT
       : PREFIX + values.video.name.replaceAll(/\s+/g, '_')
-    const BASENAME = KEY.split('/').pop().split('.').shift().replaceAll(/\s+/g, '_')
-    const RESOURCE_URI = `https://${BUCKET}.s3.${REGION}.amazonaws.com/public/output/${values.username}/${BASENAME}/playlist.m3u8`
-    const THUMBNAIL_URI = `https://${BUCKET}.s3.${REGION}.amazonaws.com/public/output/${values.username}/${BASENAME}/thumbnail.png`
+    const BASENAME = KEY.split('/')
+      .pop()
+      .split('.')
+      .shift()
+      .replaceAll(/\s+/g, '_')
+    const RESOURCE_URI = `https://${BUCKET}.s3.${REGION}.amazonaws.com/public/output/${username}/${BASENAME}/playlist.m3u8`
+    const THUMBNAIL_URI = `https://${BUCKET}.s3.${REGION}.amazonaws.com/public/output/${username}/${BASENAME}/thumbnail.png`
 
     await Storage.put(KEY, values.video, {
       contentType: 'video/*',
@@ -99,21 +99,21 @@ const NewVideo = () => {
         setUploadProgress((progress.loaded / progress.total) * 100)
       },
     })
-      .then(() => {
-        setValues(initialValues)
-        setUploadProgress(0)
-      })
       .then(
         await DataStore.save(
           new Video({
             title: values.title,
-            author: values.author,
+            author: author,
             description: values.description,
             resourceURI: RESOURCE_URI,
             thumbnailURI: THUMBNAIL_URI,
           })
         )
       )
+      .then(() => {
+        setValues(initialValues)
+        setUploadProgress(0)
+      })
       .catch(error => console.log('Error uploading file: ', error))
   }
 
