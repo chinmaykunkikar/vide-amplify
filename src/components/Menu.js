@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import {
   AppBar,
+  Box,
   Button,
   IconButton,
   Link,
@@ -34,13 +35,13 @@ const Menu = () => {
   return (
     <AppBar position='static'>
       <Toolbar>
-        <div>
+        <Box>
           <Link component={RouterLink} to='/'>
             <IconButton>
               <HomeOutlined color='secondary' />
             </IconButton>
           </Link>
-        </div>
+        </Box>
         <div className={classes.actionsDiv}>
           <span className={classes.actions}>
             {!isSignedin && (

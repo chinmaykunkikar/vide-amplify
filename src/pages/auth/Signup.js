@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Auth, DataStore } from 'aws-amplify'
 import {
+  Box,
   Button,
   Card,
   CardActions,
@@ -97,7 +98,7 @@ export default function Signup() {
   }
 
   return (
-    <div>
+    <Box>
       {formType === SIGNUP_FORM && (
         <Card className={classes.card}>
           <CardContent>
@@ -205,6 +206,6 @@ export default function Signup() {
           </Link>
         </DialogActions>
       </Dialog>
-    </div>
+    </Box>
   )
 }
