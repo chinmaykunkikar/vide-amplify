@@ -80,7 +80,7 @@ const NewVideo = () => {
   }, [])
 
   const uploadVideo = async () => {
-    const PREFIX = `input/${values.username}/`
+    const PREFIX = `input/${username}/`
     const EXT = values.video.name && `.${values.video.name.split('.').pop()}`
     const KEY = values.title
       ? PREFIX + values.title.replaceAll(/\s+/g, '_') + EXT
