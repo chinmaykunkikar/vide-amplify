@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import {
+  Box,
   Button,
   Card,
   CardActions,
@@ -17,6 +18,9 @@ import awsconfig from '../../aws-exports'
 Amplify.configure(awsconfig)
 
 const useStyles = makeStyles(theme => ({
+  root: {
+    minHeight: '100vh',
+  },
   card: {
     maxWidth: 600,
     margin: 'auto',
@@ -80,50 +84,52 @@ const Signin = props => {
   }
 
   return (
-    <Card className={classes.card}>
-      <CardContent>
-        <Typography variant='h4' className={classes.title}>
-          Sign In
-        </Typography>
-        <TextField
-          id='email'
-          type='email'
-          label='Email'
-          className={classes.textField}
-          value={values.email}
-          onChange={handleChange('email')}
-          margin='normal'
-          variant='outlined'
-        />
-        <br />
-        <TextField
-          id='password'
-          type='password'
-          label='Password'
-          className={classes.textField}
-          value={values.password}
-          onChange={handleChange('password')}
-          margin='normal'
-          variant='outlined'
-        />
-        <Typography component='div' variant='caption'>
-          Don't have an account?{' '}
-          <Link component={RouterLink} to='/signup'>
-            Create your account
-          </Link>
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button
-          color='primary'
-          variant='contained'
-          onClick={signIn}
-          className={classes.submit}
-          size='large'>
-          Sign In
-        </Button>
-      </CardActions>
-    </Card>
+    <Box className={classes.root}>
+      <Card className={classes.card}>
+        <CardContent>
+          <Typography variant='h4' className={classes.title}>
+            Sign In
+          </Typography>
+          <TextField
+            id='email'
+            type='email'
+            label='Email'
+            className={classes.textField}
+            value={values.email}
+            onChange={handleChange('email')}
+            margin='normal'
+            variant='outlined'
+          />
+          <br />
+          <TextField
+            id='password'
+            type='password'
+            label='Password'
+            className={classes.textField}
+            value={values.password}
+            onChange={handleChange('password')}
+            margin='normal'
+            variant='outlined'
+          />
+          <Typography component='div' variant='caption'>
+            Don't have an account?{' '}
+            <Link component={RouterLink} to='/signup'>
+              Create your account
+            </Link>
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <Button
+            color='primary'
+            variant='contained'
+            onClick={signIn}
+            className={classes.submit}
+            size='large'>
+            Sign In
+          </Button>
+        </CardActions>
+      </Card>
+    </Box>
   )
 }
 

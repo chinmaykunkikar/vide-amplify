@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { DataStore } from '@aws-amplify/datastore'
 import {
+  Box,
   Divider,
   Grid,
   ListItem,
@@ -21,7 +22,7 @@ import VideoList from './VideoList'
 const useStyles = makeStyles(theme => ({
   root: {
     padding: theme.spacing(2, 5),
-    minHeight: '100vh'
+    minHeight: '100vh',
   },
   player: {
     '& .replay': {
@@ -39,7 +40,7 @@ const useStyles = makeStyles(theme => ({
       minWidth: theme.spacing(6),
     },
   },
-  description: { padding: theme.spacing(0, 6) },
+  description: { padding: theme.spacing(0, 6, 2) },
 }))
 
 const VideoContent = props => {
@@ -92,7 +93,7 @@ const VideoContent = props => {
             }}>
             <HlsjsVideoStreamer />
           </Replay>
-          <div className={classes.meta}>
+          <Box className={classes.meta}>
             <Typography
               className={classes.videoTitle}
               variant='h6'
@@ -128,7 +129,8 @@ const VideoContent = props => {
             <Typography className={classes.description} variant='body2'>
               {videoDescription}
             </Typography>
-          </div>
+            <Divider />
+          </Box>
         </Grid>
         <Grid item xs={12} md={4}>
           <VideoList cols={1} currentVideo={videoId} />

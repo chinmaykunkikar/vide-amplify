@@ -20,6 +20,9 @@ import { Link as RouterLink } from 'react-router-dom'
 import { User } from '../../models'
 
 const useStyles = makeStyles(theme => ({
+  root: {
+    minHeight: '100vh',
+  },
   card: {
     maxWidth: 600,
     margin: 'auto',
@@ -98,7 +101,7 @@ export default function Signup() {
   }
 
   return (
-    <Box>
+    <Box className={classes.root}>
       {formType === SIGNUP_FORM && (
         <Card className={classes.card}>
           <CardContent>

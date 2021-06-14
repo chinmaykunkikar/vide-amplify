@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {
+  Box,
   Button,
   Card,
   CardActions,
@@ -17,6 +18,9 @@ import { Video } from '../../models'
 Amplify.configure(awsconfig)
 
 const useStyles = makeStyles(theme => ({
+  root: {
+    minHeight: '100vh',
+  },
   card: {
     maxWidth: 600,
     margin: 'auto',
@@ -123,77 +127,79 @@ const NewVideo = () => {
   }
 
   return (
-    <Card className={classes.card}>
-      <CardContent>
-        <Typography variant='h5' display='block' className={classes.title}>
-          Upload a new video
-        </Typography>
-        <input
-          accept='video/*'
-          onChange={handleChange('video')}
-          className={classes.input}
-          id='contained-button-file'
-          type='file'
-        />
-        <label htmlFor='contained-button-file'>
-          <Button
-            variant='contained'
-            color='secondary'
-            component='span'
-            className={classes.button}>
-            Select Video
-          </Button>
-        </label>
-        {values.video && (
-          <Typography
-            variant='caption'
-            display='block'
-            className={classes.filename}>
-            {values.video.name}
+    <Box className={classes.root}>
+      <Card className={classes.card}>
+        <CardContent>
+          <Typography variant='h5' display='block' className={classes.title}>
+            Upload a new video
           </Typography>
-        )}
-        <br />
-        <TextField
-          id='title'
-          label='An interesting title'
-          className={classes.textField}
-          value={values.title}
-          onChange={handleChange('title')}
-          margin='normal'
-          variant='outlined'
-        />
-        <TextField
-          id='standard-multiline-flexible'
-          label='Description'
-          className={classes.textField}
-          multiline
-          rowsMax={4}
-          value={values.description}
-          onChange={handleChange('description')}
-          variant='outlined'
-        />
-      </CardContent>
-      <CardActions className={classes.actions}>
-        <Button
-          color='primary'
-          size='large'
-          variant='contained'
-          disabled={Boolean(uploadProgress)}
-          onClick={uploadVideo}
-          className={classes.button}
-          endIcon={<BackupOutlined />}>
-          Upload
-        </Button>
-        {uploadProgress > 0 && (
-          <CircularProgress
-            size={28}
-            className={classes.buttonProgress}
-            variant='determinate'
-            value={uploadProgress}
+          <input
+            accept='video/*'
+            onChange={handleChange('video')}
+            className={classes.input}
+            id='contained-button-file'
+            type='file'
           />
-        )}
-      </CardActions>
-    </Card>
+          <label htmlFor='contained-button-file'>
+            <Button
+              variant='contained'
+              color='secondary'
+              component='span'
+              className={classes.button}>
+              Select Video
+            </Button>
+          </label>
+          {values.video && (
+            <Typography
+              variant='caption'
+              display='block'
+              className={classes.filename}>
+              {values.video.name}
+            </Typography>
+          )}
+          <br />
+          <TextField
+            id='title'
+            label='An interesting title'
+            className={classes.textField}
+            value={values.title}
+            onChange={handleChange('title')}
+            margin='normal'
+            variant='outlined'
+          />
+          <TextField
+            id='standard-multiline-flexible'
+            label='Description'
+            className={classes.textField}
+            multiline
+            rowsMax={4}
+            value={values.description}
+            onChange={handleChange('description')}
+            variant='outlined'
+          />
+        </CardContent>
+        <CardActions className={classes.actions}>
+          <Button
+            color='primary'
+            size='large'
+            variant='contained'
+            disabled={Boolean(uploadProgress)}
+            onClick={uploadVideo}
+            className={classes.button}
+            endIcon={<BackupOutlined />}>
+            Upload
+          </Button>
+          {uploadProgress > 0 && (
+            <CircularProgress
+              size={28}
+              className={classes.buttonProgress}
+              variant='determinate'
+              value={uploadProgress}
+            />
+          )}
+        </CardActions>
+      </Card>
+    </Box>
   )
 }
 

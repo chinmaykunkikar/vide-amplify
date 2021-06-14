@@ -5,7 +5,7 @@ import VideoList from './video/VideoList'
 const useStyles = makeStyles(theme => ({
   paper: {
     padding: theme.spacing(2, 1),
-    minHeight: '100vh'
+    minHeight: '100vh',
   },
   title: {
     padding: theme.spacing(0, 2),
