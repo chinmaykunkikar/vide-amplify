@@ -5,6 +5,7 @@ import VideoList from './video/VideoList'
 const useStyles = makeStyles(theme => ({
   paper: {
     padding: theme.spacing(2, 1),
+    minHeight: '100vh'
   },
   title: {
     padding: theme.spacing(0, 2),
@@ -16,7 +17,7 @@ const Home = () => {
   const classes = useStyles()
 
   return (
-    <Paper className={classes.paper} elevation={0}>
+    <Paper component='main' className={classes.paper} elevation={0}>
       <Typography className={classes.title} variant='overline' component='div'>
         <Box letterSpacing={2} fontSize={16}>
           Popular Videos

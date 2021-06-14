@@ -1,16 +1,18 @@
 import React from 'react'
+import { Box } from '@material-ui/core'
 import { Route, Switch } from 'react-router-dom'
-import PrivateRoute from './PrivateRoute'
+import Footer from './components/Footer'
 import Menu from './components/Menu'
-import Home from './pages/Home'
 import Signin from './pages/auth/Signin'
-import NewVideo from './pages/video/NewVideo'
 import Signup from './pages/auth/Signup'
+import Home from './pages/Home'
+import NewVideo from './pages/video/NewVideo'
 import VideoPlayer from './pages/video/VideoPlayer'
+import PrivateRoute from './PrivateRoute'
 
 const MainRouter = ({ data }) => {
   return (
-    <div>
+    <Box>
       <Menu />
       <Switch>
         <Route exact path='/' component={Home} />
@@ -21,7 +23,8 @@ const MainRouter = ({ data }) => {
           <VideoPlayer />
         </Route>
       </Switch>
-    </div>
+      <Footer />
+    </Box>
   )
 }
 

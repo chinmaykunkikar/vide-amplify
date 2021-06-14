@@ -21,6 +21,7 @@ import VideoList from './VideoList'
 const useStyles = makeStyles(theme => ({
   root: {
     padding: theme.spacing(2, 5),
+    minHeight: '100vh'
   },
   player: {
     '& .replay': {
@@ -28,7 +29,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   meta: {
-    marginBottom: theme.spacing(10),
+    marginBottom: theme.spacing(2),
   },
   videoTitle: {
     marginTop: theme.spacing(2),
