@@ -57,7 +57,7 @@ static_params+=" -hls_playlist_type vod -hls_flags independent_segments"
 misc_params="-hide_banner -y"
 
 # thumbnail params
-thumb_params="-vf thumbnail,scale=640:365 -frames:v 1 ${target}/thumbnail.png"
+thumb_params="-vf thumbnail,scale=640:374 -frames:v 1 ${target}/thumbnail.png"
 
 master_playlist="#EXTM3U
 #EXT-X-VERSION:3
