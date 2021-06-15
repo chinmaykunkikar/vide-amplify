@@ -11,7 +11,7 @@ import {
 import { HomeOutlined, VideoCallOutlined } from '@material-ui/icons'
 import { Link as RouterLink } from 'react-router-dom'
 import { UserContext } from '../utils/UserContext'
-import Signout from './Signout'
+import Logout from './Logout'
 
 const useStyles = makeStyles(theme => ({
   actionsDiv: {
@@ -47,19 +47,19 @@ const Menu = () => {
           <span className={classes.actions}>
             {!loggedIn && (
               <span>
-                <Link component={RouterLink} to='/signin'>
+                <Link component={RouterLink} to='/user/login'>
                   <Button
                     color='secondary'
                     variant='outlined'
                     className={classes.button}>
-                    Sign In
+                    Login
                   </Button>
                 </Link>
               </span>
             )}
             {loggedIn && (
               <span>
-                <Link component={RouterLink} to='/new'>
+                <Link component={RouterLink} to='/video/new'>
                   <Button
                     color='secondary'
                     variant='outlined'
@@ -68,7 +68,7 @@ const Menu = () => {
                     New Video
                   </Button>
                 </Link>
-                <Signout color='secondary' variant='outlined' />
+                <Logout color='secondary' variant='outlined' />
               </span>
             )}
           </span>

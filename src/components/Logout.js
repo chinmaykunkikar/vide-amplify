@@ -2,20 +2,20 @@ import React from 'react'
 import { Auth } from 'aws-amplify'
 import { Button } from '@material-ui/core'
 
-async function signOut() {
+async function logOut() {
   await Auth.signOut()
     .then(window.location.reload())
     .catch(error => console.log(error))
 }
 
-const Signout = ({ ...rest }) => {
+const Logout = ({ ...rest }) => {
   return (
     <>
-      <Button onClick={signOut} {...rest}>
-        Sign Out
+      <Button onClick={logOut} {...rest}>
+        Logout
       </Button>
     </>
   )
 }
 
-export default Signout
+export default Logout

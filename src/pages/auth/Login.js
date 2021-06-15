@@ -54,11 +54,11 @@ const initialValues = {
   redirectToReferrer: false,
 }
 
-const Signin = props => {
+const Login = props => {
   const classes = useStyles()
   const [values, setValues] = useState(initialValues)
 
-  async function signIn() {
+  async function logIn() {
     const email = values.email
     const password = values.password
     await Auth.signIn(email, password)
@@ -88,7 +88,7 @@ const Signin = props => {
       <Card className={classes.card}>
         <CardContent>
           <Typography variant='h4' className={classes.title}>
-            Sign In
+            Login
           </Typography>
           <TextField
             id='email'
@@ -113,7 +113,7 @@ const Signin = props => {
           />
           <Typography component='div' variant='caption'>
             Don't have an account?{' '}
-            <Link component={RouterLink} to='/signup'>
+            <Link component={RouterLink} to='/user/create' color='secondary'>
               Create your account
             </Link>
           </Typography>
@@ -122,10 +122,10 @@ const Signin = props => {
           <Button
             color='primary'
             variant='contained'
-            onClick={signIn}
+            onClick={logIn}
             className={classes.submit}
             size='large'>
-            Sign In
+            Login
           </Button>
         </CardActions>
       </Card>
@@ -133,4 +133,4 @@ const Signin = props => {
   )
 }
 
-export default Signin
+export default Login

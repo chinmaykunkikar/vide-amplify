@@ -3,7 +3,7 @@ import { Box } from '@material-ui/core'
 import { Route, Switch } from 'react-router-dom'
 import Footer from './components/Footer'
 import Menu from './components/Menu'
-import Signin from './pages/auth/Signin'
+import Login from './pages/auth/Login'
 import Signup from './pages/auth/Signup'
 import Home from './pages/Home'
 import NewVideo from './pages/video/NewVideo'
@@ -18,9 +18,9 @@ const MainRouter = ({ data }) => {
         <Menu />
         <Switch>
           <Route exact path='/' component={Home} />
-          <Route exact path='/signin' component={Signin} />
-          <Route exact path='/signup' component={Signup} />
-          <PrivateRoute path='/new' component={NewVideo} />
+          <Route exact path='/user/login' component={Login} />
+          <Route exact path='/user/create' component={Signup} />
+          <PrivateRoute path='/video/new' component={NewVideo} />
           <Route path='/:videoId'>
             <VideoPlayer />
           </Route>

@@ -106,7 +106,7 @@ export default function Signup() {
         <Card className={classes.card}>
           <CardContent>
             <Typography variant='h4' className={classes.title}>
-              Sign Up
+              Create new account
             </Typography>
             <TextField
               id='name'
@@ -141,8 +141,8 @@ export default function Signup() {
             />
             <Typography component='div' variant='caption'>
               Already have an account?{' '}
-              <Link component={RouterLink} to='/signin'>
-                Sign in
+              <Link component={RouterLink} to='/user/login' color='secondary'>
+                Login here
               </Link>
             </Typography>
           </CardContent>
@@ -162,7 +162,7 @@ export default function Signup() {
         <Card className={classes.card}>
           <CardContent>
             <Typography variant='h4' className={classes.title}>
-              Confirm Sign Up
+              Confirm your account
             </Typography>
             <TextField
               id='confirm'
@@ -179,6 +179,7 @@ export default function Signup() {
               <Link
                 component='button'
                 variant='caption'
+                color='secondary'
                 onClick={() => Auth.resendSignUp(values.email)}>
                 Resend code
               </Link>
@@ -197,14 +198,14 @@ export default function Signup() {
         </Card>
       )}
       <Dialog open={values.openDialog} disableBackdropClick>
-        <DialogTitle>Sign up successful</DialogTitle>
+        <DialogTitle>Account created successfully</DialogTitle>
         <DialogContent>
           <DialogContentText>Welcome aboard {values.name}!</DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Link component={RouterLink} to='/signin'>
+          <Link component={RouterLink} to='/user/login'>
             <Button color='primary' autoFocus>
-              Back to Sign In
+              Back to Login
             </Button>
           </Link>
         </DialogActions>
