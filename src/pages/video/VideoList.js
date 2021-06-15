@@ -12,7 +12,7 @@ import 'react-lazy-load-image-component/src/effects/blur.css'
 import { Link as RouterLink } from 'react-router-dom'
 import awsconfig from '../../aws-exports'
 import { Video } from '../../models'
-import { useWidth } from '../../utils/theme'
+import { useWidth } from '../../utils/useWidth'
 
 Amplify.configure(awsconfig)
 
