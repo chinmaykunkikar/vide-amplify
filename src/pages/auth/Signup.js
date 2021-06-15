@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { Auth, DataStore } from 'aws-amplify'
 import {
   Box,
   Button,
@@ -16,8 +15,9 @@ import {
   TextField,
   Typography,
 } from '@material-ui/core'
+import { Auth, DataStore } from 'aws-amplify'
+import { User } from 'models'
 import { Link as RouterLink } from 'react-router-dom'
-import { User } from '../../models'
 
 const useStyles = makeStyles(theme => ({
   root: {

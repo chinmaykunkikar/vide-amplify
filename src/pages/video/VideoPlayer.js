@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { DataStore } from '@aws-amplify/datastore'
 import {
   Box,
   Divider,
@@ -11,12 +10,13 @@ import {
   Paper,
   Typography,
 } from '@material-ui/core'
+import { DataStore } from 'aws-amplify'
 import Avatar from 'boring-avatars'
+import { Video } from 'models'
 import { useParams } from 'react-router'
 import { Replay } from 'vimond-replay'
 import 'vimond-replay/index.css'
 import HlsjsVideoStreamer from 'vimond-replay/video-streamer/hlsjs'
-import { Video } from '../../models'
 import VideoList from './VideoList'
 
 const useStyles = makeStyles(theme => ({

@@ -8,13 +8,13 @@ import {
   CircularProgress,
   makeStyles,
   TextField,
-  Typography
+  Typography,
 } from '@material-ui/core'
 import { BackupOutlined } from '@material-ui/icons'
 import { Amplify, DataStore, Storage } from 'aws-amplify'
-import awsconfig from '../../aws-exports'
-import { Video } from '../../models'
-import { UserContext } from '../../utils/UserContext'
+import awsconfig from 'aws-exports'
+import { Video } from 'models'
+import { UserContext } from 'utils/UserContext'
 
 Amplify.configure(awsconfig)
 
@@ -72,7 +72,7 @@ const NewVideo = () => {
     aws_user_files_s3_bucket: BUCKET,
     aws_user_files_s3_bucket_region: REGION,
   } = awsconfig
-  const {username, name} = React.useContext(UserContext)
+  const { username, name } = React.useContext(UserContext)
 
   const uploadVideo = async () => {
     const PREFIX = `input/${username}/`

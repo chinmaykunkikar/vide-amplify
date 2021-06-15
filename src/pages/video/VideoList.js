@@ -7,12 +7,12 @@ import {
   makeStyles,
 } from '@material-ui/core'
 import { Amplify, DataStore } from 'aws-amplify'
+import awsconfig from 'aws-exports'
+import { Video } from 'models'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import 'react-lazy-load-image-component/src/effects/blur.css'
 import { Link as RouterLink } from 'react-router-dom'
-import awsconfig from '../../aws-exports'
-import { Video } from '../../models'
-import { useWidth } from '../../utils/useWidth'
+import { useWidth } from 'utils/useWidth'
 
 Amplify.configure(awsconfig)
 

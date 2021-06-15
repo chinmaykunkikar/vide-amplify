@@ -10,7 +10,7 @@ import {
 } from '@material-ui/core'
 import { HomeOutlined, VideoCallOutlined } from '@material-ui/icons'
 import { Link as RouterLink } from 'react-router-dom'
-import { UserContext } from '../utils/UserContext'
+import { UserContext } from 'utils/UserContext'
 import Logout from './Logout'
 
 const useStyles = makeStyles(theme => ({

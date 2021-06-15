@@ -1,6 +1,6 @@
 import Amplify, { Auth } from 'aws-amplify'
 import { createContext, useEffect, useState } from 'react'
-import awsconfig from '../aws-exports'
+import awsconfig from 'aws-exports'
 Amplify.configure(awsconfig)
 
 export const UserContext = createContext()
