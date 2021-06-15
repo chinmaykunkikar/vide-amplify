@@ -8,8 +8,7 @@ async function signOut() {
     .catch(error => console.log(error))
 }
 
-const Signout = props => {
-  const { ...rest } = props
+const Signout = ({ ...rest }) => {
   return (
     <>
       <Button onClick={signOut} {...rest}>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
 import {
   AppBar,
   Box,
@@ -6,12 +6,12 @@ import {
   IconButton,
   Link,
   makeStyles,
-  Toolbar
+  Toolbar,
 } from '@material-ui/core'
 import { HomeOutlined, VideoCallOutlined } from '@material-ui/icons'
 import { Link as RouterLink } from 'react-router-dom'
+import { UserContext } from '../utils/UserContext'
 import Signout from './Signout'
-import authHelper from '../utils/authHelper'
 
 const useStyles = makeStyles(theme => ({
   actionsDiv: {
@@ -31,7 +31,8 @@ const useStyles = makeStyles(theme => ({
 
 const Menu = () => {
   const classes = useStyles()
-  const [isSignedin] = useState(authHelper.isAuthenticated())
+  const { loggedIn } = useContext(UserContext)
+
   return (
     <AppBar position='static'>
       <Toolbar>
@@ -44,7 +45,7 @@ const Menu = () => {
         </Box>
         <div className={classes.actionsDiv}>
           <span className={classes.actions}>
-            {!isSignedin && (
+            {!loggedIn && (
               <span>
                 <Link component={RouterLink} to='/signin'>
                   <Button
@@ -56,16 +57,14 @@ const Menu = () => {
                 </Link>
               </span>
             )}
-            {isSignedin && (
+            {loggedIn && (
               <span>
                 <Link component={RouterLink} to='/new'>
                   <Button
                     color='secondary'
                     variant='outlined'
                     className={classes.button}
-                    startIcon={
-                      <VideoCallOutlined className={classes.icon} />
-                    }>
+                    startIcon={<VideoCallOutlined className={classes.icon} />}>
                     New Video
                   </Button>
                 </Link>

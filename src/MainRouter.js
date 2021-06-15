@@ -9,22 +9,25 @@ import Home from './pages/Home'
 import NewVideo from './pages/video/NewVideo'
 import VideoPlayer from './pages/video/VideoPlayer'
 import PrivateRoute from './PrivateRoute'
+import UserContextProvider from './utils/UserContext'
 
 const MainRouter = ({ data }) => {
   return (
-    <Box>
-      <Menu />
-      <Switch>
-        <Route exact path='/' component={Home} />
-        <Route exact path='/signin' component={Signin} />
-        <Route exact path='/signup' component={Signup} />
-        <PrivateRoute path='/new' component={NewVideo} />
-        <Route path='/:videoId'>
-          <VideoPlayer />
-        </Route>
-      </Switch>
-      <Footer />
-    </Box>
+    <UserContextProvider>
+      <Box>
+        <Menu />
+        <Switch>
+          <Route exact path='/' component={Home} />
+          <Route exact path='/signin' component={Signin} />
+          <Route exact path='/signup' component={Signup} />
+          <PrivateRoute path='/new' component={NewVideo} />
+          <Route path='/:videoId'>
+            <VideoPlayer />
+          </Route>
+        </Switch>
+        <Footer />
+      </Box>
+    </UserContextProvider>
   )
 }
 

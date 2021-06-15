@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import {
   Box,
   Button,
@@ -8,12 +8,13 @@ import {
   CircularProgress,
   makeStyles,
   TextField,
-  Typography,
+  Typography
 } from '@material-ui/core'
 import { BackupOutlined } from '@material-ui/icons'
-import { Amplify, Auth, DataStore, Storage } from 'aws-amplify'
+import { Amplify, DataStore, Storage } from 'aws-amplify'
 import awsconfig from '../../aws-exports'
 import { Video } from '../../models'
+import { UserContext } from '../../utils/UserContext'
 
 Amplify.configure(awsconfig)
 
@@ -66,22 +67,12 @@ const initialValues = {
 const NewVideo = () => {
   const classes = useStyles()
   const [values, setValues] = useState(initialValues)
-  const [username, setUsername] = useState('default')
-  const [author, setAuthor] = useState('default')
   const [uploadProgress, setUploadProgress] = useState(0)
   const {
     aws_user_files_s3_bucket: BUCKET,
     aws_user_files_s3_bucket_region: REGION,
   } = awsconfig
-
-  const getCurrentUserInfo = async () => await Auth.currentUserInfo()
-
-  useEffect(() => {
-    getCurrentUserInfo().then(info => {
-      setUsername(info.username)
-      setAuthor(info.attributes.name)
-    })
-  }, [])
+  const {username, name} = React.useContext(UserContext)
 
   const uploadVideo = async () => {
     const PREFIX = `input/${username}/`
@@ -107,7 +98,7 @@ const NewVideo = () => {
         await DataStore.save(
           new Video({
             title: values.title,
-            author: author,
+            author: name,
             description: values.description,
             resourceURI: RESOURCE_URI,
             thumbnailURI: THUMBNAIL_URI,
