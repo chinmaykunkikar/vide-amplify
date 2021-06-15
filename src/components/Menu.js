@@ -2,30 +2,24 @@ import React, { useContext } from 'react'
 import {
   AppBar,
   Box,
-  Button,
   IconButton,
   Link,
   makeStyles,
   Toolbar,
+  Tooltip,
 } from '@material-ui/core'
-import { HomeOutlined, VideoCallOutlined } from '@material-ui/icons'
+import {
+  AccountCircle,
+  HomeOutlined,
+  VideoCallOutlined,
+} from '@material-ui/icons'
 import { Link as RouterLink } from 'react-router-dom'
 import { UserContext } from 'utils/UserContext'
-import Logout from './Logout'
+import AccountMenu from './AccountMenu'
 
 const useStyles = makeStyles(theme => ({
-  actionsDiv: {
-    position: 'absolute',
-    right: '12px',
-  },
-  actions: {
-    float: 'right',
-  },
-  button: {
-    margin: theme.spacing(1),
-  },
-  icon: {
-    marginRight: theme.spacing(1),
+  home: {
+    flexGrow: 1,
   },
 }))
 
@@ -36,43 +30,38 @@ const Menu = () => {
   return (
     <AppBar position='static'>
       <Toolbar>
-        <Box>
+        <Box className={classes.home}>
           <Link component={RouterLink} to='/'>
-            <IconButton>
-              <HomeOutlined color='secondary' />
-            </IconButton>
+            <Tooltip title='Home'>
+              <IconButton edge='start'>
+                <HomeOutlined color='secondary' />
+              </IconButton>
+            </Tooltip>
           </Link>
         </Box>
-        <div className={classes.actionsDiv}>
-          <span className={classes.actions}>
-            {!loggedIn && (
-              <span>
-                <Link component={RouterLink} to='/user/login'>
-                  <Button
-                    color='secondary'
-                    variant='outlined'
-                    className={classes.button}>
-                    Login
-                  </Button>
-                </Link>
-              </span>
-            )}
-            {loggedIn && (
-              <span>
-                <Link component={RouterLink} to='/video/new'>
-                  <Button
-                    color='secondary'
-                    variant='outlined'
-                    className={classes.button}
-                    startIcon={<VideoCallOutlined className={classes.icon} />}>
-                    New Video
-                  </Button>
-                </Link>
-                <Logout color='secondary' variant='outlined' />
-              </span>
-            )}
+        {!loggedIn && (
+          <span>
+            <Link component={RouterLink} to='/user/login'>
+              <Tooltip title='Account'>
+                <IconButton>
+                  <AccountCircle color='secondary' />
+                </IconButton>
+              </Tooltip>
+            </Link>
           </span>
-        </div>
+        )}
+        {loggedIn && (
+          <Box>
+            <Link component={RouterLink} to='/video/new'>
+              <Tooltip title='New Video'>
+                <IconButton>
+                  <VideoCallOutlined color='secondary' />
+                </IconButton>
+              </Tooltip>
+            </Link>
+            <AccountMenu />
+          </Box>
+        )}
       </Toolbar>
     </AppBar>
   )
