@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import {
   Box,
   Divider,
@@ -18,6 +18,8 @@ import { Replay } from 'vimond-replay'
 import 'vimond-replay/index.css'
 import HlsjsVideoStreamer from 'vimond-replay/video-streamer/hlsjs'
 import VideoList from './VideoList'
+import VideoActionsMenu from 'components/VideoActionsMenu'
+import { UserContext } from 'utils/UserContext'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -32,8 +34,14 @@ const useStyles = makeStyles(theme => ({
   meta: {
     marginBottom: theme.spacing(2),
   },
+  title: {
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
   videoTitle: {
+    display: 'inline-block',
     marginTop: theme.spacing(2),
+    flexGrow: 1,
   },
   avatarStyles: {
     '& .MuiListItemAvatar-root': {
@@ -46,6 +54,7 @@ const useStyles = makeStyles(theme => ({
 const VideoContent = props => {
   const classes = useStyles()
   const { videoId } = useParams()
+  const { name } = useContext(UserContext)
 
   const [videoURL, setVideoURL] = useState('')
   const [videoTitle, setVideoTitle] = useState('')
@@ -94,12 +103,15 @@ const VideoContent = props => {
             <HlsjsVideoStreamer />
           </Replay>
           <Box className={classes.meta}>
-            <Typography
-              className={classes.videoTitle}
-              variant='h6'
-              color='textPrimary'>
-              {videoTitle}
-            </Typography>
+            <Box className={classes.title}>
+              <Typography
+                className={classes.videoTitle}
+                variant='h6'
+                color='textPrimary'>
+                {videoTitle}
+              </Typography>
+              {videoAuthor === name && <VideoActionsMenu />}
+            </Box>
             <Divider />
             <ListItem
               component='div'
