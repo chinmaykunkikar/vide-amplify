@@ -138,7 +138,10 @@ const VideoContent = props => {
                 secondaryTypographyProps={{ variant: 'caption' }}
               />
             </ListItem>
-            <Typography className={classes.description} variant='body2'>
+            <Typography
+              className={classes.description}
+              variant='body2'
+              style={{ whiteSpace: 'pre-wrap' }}>
               {videoDescription}
             </Typography>
             <Divider />

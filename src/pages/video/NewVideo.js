@@ -85,8 +85,9 @@ const NewVideo = () => {
       .split('.')
       .shift()
       .replaceAll(/\s+/g, '_')
-    const RESOURCE_URI = `https://${BUCKET}.s3.${REGION}.amazonaws.com/public/output/${username}/${BASENAME}/playlist.m3u8`
-    const THUMBNAIL_URI = `https://${BUCKET}.s3.${REGION}.amazonaws.com/public/output/${username}/${BASENAME}/thumbnail.png`
+    const COMMON_URI = `https://${BUCKET}.s3.${REGION}.amazonaws.com/public/output/${username}/${BASENAME}`
+    const RESOURCE_URI = `${COMMON_URI}/playlist.m3u8`
+    const THUMBNAIL_URI = `${COMMON_URI}/thumbnail.png`
 
     await Storage.put(KEY, values.video, {
       contentType: 'video/*',
@@ -99,7 +100,7 @@ const NewVideo = () => {
           new Video({
             title: values.title,
             author: name,
-            description: values.description,
+            description: values.description.replaceAll(/(?:\r|\n|\r\n)/g, '\n'),
             resourceURI: RESOURCE_URI,
             thumbnailURI: THUMBNAIL_URI,
           })
@@ -163,7 +164,7 @@ const NewVideo = () => {
             label='Description'
             className={classes.textField}
             multiline
-            rowsMax={4}
+            rowsMax={12}
             value={values.description}
             onChange={handleChange('description')}
             variant='outlined'
