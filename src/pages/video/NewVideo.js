@@ -100,6 +100,7 @@ const NewVideo = () => {
           new Video({
             title: values.title,
             author: name,
+            username: username,
             description: values.description.replaceAll(/(?:\r|\n|\r\n)/g, '\n'),
             resourceURI: RESOURCE_URI,
             thumbnailURI: THUMBNAIL_URI,

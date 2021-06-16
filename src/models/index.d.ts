@@ -22,6 +22,7 @@ export declare class Video {
   readonly description?: string;
   readonly resourceURI?: string;
   readonly thumbnailURI?: string;
+  readonly username?: string;
   readonly createdAt?: string;
   readonly updatedAt?: string;
   constructor(init: ModelInit<Video>);
