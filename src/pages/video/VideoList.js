@@ -30,6 +30,7 @@ const useStyles = makeStyles(theme => ({
     '& .MuiGridListTileBar-titleWrap': {
       margin: theme.spacing(0, 1.2),
     },
+    transform: 'translateY(-0.4em)'
   },
   tileTitle: {
     fontSize: theme.typography.fontSize,
@@ -101,6 +102,7 @@ const VideoList = props => {
                     {tile.title}
                   </Link>
                 }
+                subtitle={tile.author}
               />
             </GridListTile>
           ))}
