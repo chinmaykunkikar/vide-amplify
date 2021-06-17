@@ -15,15 +15,16 @@ import {
 import { InfoOutlined } from '@material-ui/icons'
 import { DataStore } from 'aws-amplify'
 import Avatar from 'boring-avatars'
+import InfoDialog from 'components/InfoDialog'
 import VideoActionsMenu from 'components/VideoActionsMenu'
 import { Video } from 'models'
 import { useParams } from 'react-router'
+import { colors } from 'utils/avatar-colors'
 import { UserContext } from 'utils/UserContext'
 import { Replay } from 'vimond-replay'
 import 'vimond-replay/index.css'
 import HlsjsVideoStreamer from 'vimond-replay/video-streamer/hlsjs'
 import VideoList from './VideoList'
-import InfoDialog from 'components/InfoDialog'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -61,7 +62,6 @@ const VideoContent = props => {
   const classes = useStyles()
   const { videoId } = useParams()
   const { username } = useContext(UserContext)
-  const colors = ['#A840A0', '#FFCA1B', '#93D951', '#28598F', '#FF5723']
   const playerOptions = {
     controls: {
       includeControls: [
@@ -111,9 +111,7 @@ const VideoContent = props => {
     <Paper className={classes.root} elevation={0} square>
       <Grid container alignItems='flex-start'>
         <Grid item xs={12} md={8}>
-          <Replay
-            source={videoURL}
-            options={playerOptions}>
+          <Replay source={videoURL} options={playerOptions}>
             <HlsjsVideoStreamer />
           </Replay>
           <Box className={classes.meta}>
