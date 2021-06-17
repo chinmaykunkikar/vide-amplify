@@ -1,3 +1,4 @@
+import React, { useState } from 'react'
 import {
   IconButton,
   ListItemIcon,
@@ -11,24 +12,45 @@ import {
   EditOutlined,
   MoreVertOutlined,
 } from '@material-ui/icons'
-import React, { useState } from 'react'
+import { useParams } from 'react-router-dom'
+import EditVideoDialog from './EditVideoDialog'
+import DeleteVideoDialog from './DeleteVideoDialog'
 
 const VideoActionsMenu = () => {
-  const [anchorEl, setAnchorEl] = useState(null)
+  const { videoId } = useParams()
 
-  const handleMenu = event => {
+  const [anchorEl, setAnchorEl] = useState(null)
+  const [openDialog, setDialog] = useState(null)
+
+  const openMenu = event => {
     setAnchorEl(event.currentTarget)
   }
-  const handleClose = () => {
+
+  const closeMenu = () => {
     setAnchorEl(null)
   }
+
+  const openEditDialog = () => {
+    setDialog('EDIT')
+    closeMenu()
+  }
+
+  const openDeleteDialog = () => {
+    setDialog('DELETE')
+    closeMenu()
+  }
+
+  const closeDialog = () => {
+    setDialog(null)
+  }
+
   return (
     <>
       <Tooltip title='Video options'>
         <IconButton
           aria-controls='menu-appbar'
           aria-haspopup='true'
-          onClick={handleMenu}
+          onClick={openMenu}
           color='disabled'>
           <MoreVertOutlined />
         </IconButton>
@@ -47,19 +69,29 @@ const VideoActionsMenu = () => {
           vertical: 'top',
           horizontal: 'left',
         }}
-        onClose={handleClose}>
-        <MenuItem onClick={handleClose}>
+        onClose={closeMenu}>
+        <MenuItem onClick={openEditDialog}>
           <ListItemIcon>
-            <EditOutlined color='secondary'/>
+            <EditOutlined color='secondary' />
           </ListItemIcon>
           <ListItemText primary='Edit details' />
         </MenuItem>
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={openDeleteDialog}>
           <ListItemIcon>
             <DeleteForeverOutlined color='secondary' />
           </ListItemIcon>
           <ListItemText primary='Delete video' />
         </MenuItem>
+        <EditVideoDialog
+          open={openDialog === 'EDIT'}
+          onClose={closeDialog}
+          videoId={videoId}
+        />
+        <DeleteVideoDialog
+          open={openDialog === 'DELETE'}
+          onClose={closeDialog}
+          videoId={videoId}
+        />
       </Menu>
     </>
   )
