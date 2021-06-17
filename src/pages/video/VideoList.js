@@ -77,6 +77,11 @@ const VideoList = props => {
       <GridList cols={props.cols || getCols()} spacing={8}>
         {videoList
           .filter(currentVideo => currentVideo.id !== props.currentVideo)
+          .filter(currentUser =>
+            props.username
+              ? currentUser.username === props.username
+              : currentUser
+          )
           .map(tile => (
             <GridListTile
               component='div'

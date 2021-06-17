@@ -10,6 +10,7 @@ import NewVideo from './pages/video/NewVideo'
 import VideoPlayer from './pages/video/VideoPlayer'
 import PrivateRoute from './PrivateRoute'
 import UserContextProvider from './utils/UserContext'
+import UserProfile from 'pages/user/UserProfile'
 
 const MainRouter = ({ data }) => {
   return (
@@ -21,9 +22,10 @@ const MainRouter = ({ data }) => {
           <Route exact path='/user/login' component={Login} />
           <Route exact path='/user/create' component={Signup} />
           <PrivateRoute path='/video/new' component={NewVideo} />
-          <Route path='/:videoId'>
+          <Route exact path='/:videoId'>
             <VideoPlayer />
           </Route>
+          <PrivateRoute path='/user/:userId' component={UserProfile} />
         </Switch>
         <Footer />
       </Box>

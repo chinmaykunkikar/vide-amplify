@@ -1,7 +1,15 @@
 import React, { useContext, useState } from 'react'
-import { IconButton, Menu, MenuItem, Tooltip } from '@material-ui/core'
+import {
+  IconButton,
+  Menu,
+  MenuItem,
+  Tooltip,
+  Typography,
+} from '@material-ui/core'
 import { Auth } from 'aws-amplify'
 import Avatar from 'boring-avatars'
+import { Link as RouterLink } from 'react-router-dom'
+import { colors } from 'utils/avatar-colors'
 import { UserContext } from 'utils/UserContext'
 
 const AccountMenu = () => {
@@ -27,35 +35,35 @@ const AccountMenu = () => {
           aria-haspopup='true'
           onClick={handleMenu}
           color='inherit'>
-          <Avatar
-            size={32}
-            name={username}
-            variant='pixel'
-            colors={['#A840A0', '#FFCA1B', '#93D951', '#28598F', '#FF5723']}
-          />
+          <Avatar size={32} name={username} variant='pixel' colors={colors} />
         </IconButton>
       </Tooltip>
-        <Menu
-          id='menu-appbar'
-          anchorEl={anchorEl}
-          keepMounted
-          open={Boolean(anchorEl)}
-          getContentAnchorEl={null}
-          anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'center',
-          }}
-          transformOrigin={{
-            vertical: 'top',
-            horizontal: 'center',
-          }}
-          onClose={handleClose}>
-          <MenuItem divider disabled>
-            Hey, {name}!
-          </MenuItem>
-          <MenuItem onClick={handleClose}>My account</MenuItem>
-          <MenuItem onClick={logOut}>Logout</MenuItem>
-        </Menu>
+      <Menu
+        id='menu-appbar'
+        anchorEl={anchorEl}
+        keepMounted
+        open={Boolean(anchorEl)}
+        getContentAnchorEl={null}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'center',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'center',
+        }}
+        onClose={handleClose}>
+        <MenuItem component={Typography} align='center' disabled divider>
+          Hey, {name}!
+        </MenuItem>
+        <MenuItem
+          component={RouterLink}
+          to={`/user/${username}`}
+          onClick={handleClose}>
+          My account
+        </MenuItem>
+        <MenuItem onClick={logOut}>Logout</MenuItem>
+      </Menu>
     </>
   )
 }
