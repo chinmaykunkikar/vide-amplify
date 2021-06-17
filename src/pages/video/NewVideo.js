@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import {
   Box,
   Button,
@@ -72,7 +72,7 @@ const NewVideo = () => {
     aws_user_files_s3_bucket: BUCKET,
     aws_user_files_s3_bucket_region: REGION,
   } = awsconfig
-  const { username, name } = React.useContext(UserContext)
+  const { username, name } = useContext(UserContext)
 
   const uploadVideo = async () => {
     const PREFIX = `input/${username}/`

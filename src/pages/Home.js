@@ -17,7 +17,7 @@ const Home = () => {
   const classes = useStyles()
 
   return (
-    <Paper component='main' className={classes.paper} elevation={0}>
+    <Paper component='main' className={classes.paper} elevation={0} square>
       <Typography className={classes.title} variant='overline' component='div'>
         <Box letterSpacing={2} fontSize={16}>
           Popular Videos
