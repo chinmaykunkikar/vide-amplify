@@ -3,23 +3,27 @@ import {
   Box,
   Divider,
   Grid,
+  IconButton,
   ListItem,
   ListItemAvatar,
   ListItemText,
   makeStyles,
   Paper,
+  Tooltip,
   Typography,
 } from '@material-ui/core'
+import { InfoOutlined } from '@material-ui/icons'
 import { DataStore } from 'aws-amplify'
 import Avatar from 'boring-avatars'
+import VideoActionsMenu from 'components/VideoActionsMenu'
 import { Video } from 'models'
 import { useParams } from 'react-router'
+import { UserContext } from 'utils/UserContext'
 import { Replay } from 'vimond-replay'
 import 'vimond-replay/index.css'
 import HlsjsVideoStreamer from 'vimond-replay/video-streamer/hlsjs'
 import VideoList from './VideoList'
-import VideoActionsMenu from 'components/VideoActionsMenu'
-import { UserContext } from 'utils/UserContext'
+import InfoDialog from 'components/InfoDialog'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -62,6 +66,11 @@ const VideoContent = props => {
   const [videoDescription, setVideoDescription] = useState('')
   const [videoAuthor, setVideoAuthor] = useState('')
   const [videoDateTime, setvideoDateTime] = useState('')
+  const [infoDialog, setInfoDialog] = useState(false)
+
+  const openInfoDialog = () => setInfoDialog(true)
+
+  const closeDialog = () => setInfoDialog(false)
 
   useEffect(() => {
     const getVideo = async () => {
@@ -95,6 +104,7 @@ const VideoContent = props => {
                   'fullscreenButton',
                   'bufferingIndicator',
                   'playbackMonitor',
+                  'volume',
                 ],
               },
               keyboardShortcuts: {
@@ -113,6 +123,12 @@ const VideoContent = props => {
                 color='textPrimary'>
                 {videoTitle}
               </Typography>
+              <Tooltip title='What is happening here?' placement='left'>
+                <IconButton onClick={openInfoDialog}>
+                  <InfoOutlined color='inherit' />
+                </IconButton>
+              </Tooltip>
+              <InfoDialog open={infoDialog} onClose={closeDialog} />
               {videoUsername === username && <VideoActionsMenu />}
             </Box>
             <Divider />
