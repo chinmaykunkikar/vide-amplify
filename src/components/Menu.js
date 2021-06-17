@@ -11,7 +11,7 @@ import {
 import {
   AccountCircle,
   HomeOutlined,
-  VideoCallOutlined,
+  VideoCallOutlined as VideoAddOutlined,
 } from '@material-ui/icons'
 import { Link as RouterLink } from 'react-router-dom'
 import { UserContext } from 'utils/UserContext'
@@ -53,9 +53,9 @@ const Menu = () => {
         {loggedIn && (
           <Box>
             <Link component={RouterLink} to='/video/new'>
-              <Tooltip title='New Video'>
+              <Tooltip title='New video'>
                 <IconButton>
-                  <VideoCallOutlined color='secondary' />
+                  <VideoAddOutlined color='secondary' />
                 </IconButton>
               </Tooltip>
             </Link>
