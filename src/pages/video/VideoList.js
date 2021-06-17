@@ -30,7 +30,7 @@ const useStyles = makeStyles(theme => ({
     '& .MuiGridListTileBar-titleWrap': {
       margin: theme.spacing(0, 1.2),
     },
-    transform: 'translateY(-0.4em)'
+    transform: 'translateY(-0.4em)',
   },
   tileTitle: {
     fontSize: theme.typography.fontSize,

@@ -53,7 +53,7 @@ const useStyles = makeStyles(theme => ({
     display: 'none',
   },
   filename: {
-    margin: theme.spacing(1, 0, 0, 0),
+    marginTop: theme.spacing(1),
   },
 }))
 
