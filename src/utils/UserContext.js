@@ -11,6 +11,7 @@ const currentAuthenticatedUser = async () =>
 const UserContextProvider = props => {
   const [username, setUsername] = useState()
   const [name, setName] = useState()
+  const [email, setEmail] = useState()
   const [loggedIn, setLoggedIn] = useState(false)
 
   useEffect(() => {
@@ -18,10 +19,12 @@ const UserContextProvider = props => {
       .then(user => {
         setUsername(user.username)
         setName(user.attributes.name)
+        setEmail(user.attributes.email)
         setLoggedIn(true)
       })
       .catch(error => {
         setLoggedIn(false)
+        setEmail('')
         setUsername('')
         setName('')
         console.warn(error)
@@ -29,7 +32,7 @@ const UserContextProvider = props => {
   }, [])
 
   return (
-    <UserContext.Provider value={{ username, name, loggedIn }}>
+    <UserContext.Provider value={{ username, name, email, loggedIn }}>
       {props.children}
     </UserContext.Provider>
   )
