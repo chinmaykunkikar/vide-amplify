@@ -27,16 +27,18 @@ import InfoDialog from 'components/InfoDialog'
 
 const useStyles = makeStyles(theme => ({
   root: {
-    padding: theme.spacing(2, 5),
+    [theme.breakpoints.up('sm')]: {
+      margin: theme.spacing(1),
+    },
+    [theme.breakpoints.up('md')]: {
+      margin: theme.spacing(2, 4),
+    },
     minHeight: '100vh',
   },
-  player: {
-    '& .replay': {
-      marginTop: theme.spacing(2),
-    },
-  },
   meta: {
-    marginBottom: theme.spacing(2),
+    [theme.breakpoints.down('sm')]: {
+      margin: theme.spacing(1, 2),
+    },
   },
   title: {
     display: 'flex',
@@ -59,6 +61,26 @@ const VideoContent = props => {
   const classes = useStyles()
   const { videoId } = useParams()
   const { username } = useContext(UserContext)
+  const colors = ['#A840A0', '#FFCA1B', '#93D951', '#28598F', '#FF5723']
+  const playerOptions = {
+    controls: {
+      includeControls: [
+        'playPauseButton',
+        'timeline',
+        'timeDisplay',
+        'qualitySelector',
+        'fullscreenButton',
+        'bufferingIndicator',
+        'playbackMonitor',
+        'volume',
+      ],
+    },
+    keyboardShortcuts: {
+      keyMap: {
+        togglePause: [' '],
+      },
+    },
+  }
 
   const [videoURL, setVideoURL] = useState('')
   const [videoTitle, setVideoTitle] = useState('')
@@ -90,29 +112,8 @@ const VideoContent = props => {
       <Grid container alignItems='flex-start'>
         <Grid item xs={12} md={8}>
           <Replay
-            style={{
-              marginTop: '16px',
-            }}
             source={videoURL}
-            options={{
-              controls: {
-                includeControls: [
-                  'playPauseButton',
-                  'timeline',
-                  'timeDisplay',
-                  'qualitySelector',
-                  'fullscreenButton',
-                  'bufferingIndicator',
-                  'playbackMonitor',
-                  'volume',
-                ],
-              },
-              keyboardShortcuts: {
-                keyMap: {
-                  togglePause: [' '],
-                },
-              },
-            }}>
+            options={playerOptions}>
             <HlsjsVideoStreamer />
           </Replay>
           <Box className={classes.meta}>
@@ -141,13 +142,7 @@ const VideoContent = props => {
                   size={40}
                   name={videoUsername}
                   variant='pixel'
-                  colors={[
-                    '#A840A0',
-                    '#FFCA1B',
-                    '#93D951',
-                    '#28598F',
-                    '#FF5723',
-                  ]}
+                  colors={colors}
                 />
               </ListItemAvatar>
               <ListItemText
