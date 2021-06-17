@@ -54,10 +54,11 @@ const useStyles = makeStyles(theme => ({
 const VideoContent = props => {
   const classes = useStyles()
   const { videoId } = useParams()
-  const { name } = useContext(UserContext)
+  const { username } = useContext(UserContext)
 
   const [videoURL, setVideoURL] = useState('')
   const [videoTitle, setVideoTitle] = useState('')
+  const [videoUsername, setVideoUsername] = useState('')
   const [videoDescription, setVideoDescription] = useState('')
   const [videoAuthor, setVideoAuthor] = useState('')
   const [videoDateTime, setvideoDateTime] = useState('')
@@ -68,11 +69,13 @@ const VideoContent = props => {
       setVideoURL(video.resourceURI)
       setVideoTitle(video.title)
       setVideoAuthor(video.author)
+      setVideoUsername(video.username)
       setVideoDescription(video.description)
       setvideoDateTime(new Date(Date.parse(video.createdAt)).toDateString())
     }
     getVideo()
   }, [videoId])
+
   return (
     <Paper className={classes.root} elevation={0} square>
       <Grid container alignItems='flex-start'>
@@ -110,7 +113,7 @@ const VideoContent = props => {
                 color='textPrimary'>
                 {videoTitle}
               </Typography>
-              {videoAuthor === name && <VideoActionsMenu />}
+              {videoUsername === username && <VideoActionsMenu />}
             </Box>
             <Divider />
             <ListItem
@@ -120,7 +123,7 @@ const VideoContent = props => {
               <ListItemAvatar>
                 <Avatar
                   size={40}
-                  name={videoAuthor}
+                  name={videoUsername}
                   variant='pixel'
                   colors={[
                     '#A840A0',
