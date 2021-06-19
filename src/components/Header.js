@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const Menu = () => {
+const Header = () => {
   const classes = useStyles()
   const { loggedIn } = useContext(UserContext)
 
@@ -67,4 +67,4 @@ const Menu = () => {
   )
 }
 
-export default Menu
+export default Header
