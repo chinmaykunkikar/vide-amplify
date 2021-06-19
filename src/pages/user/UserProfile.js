@@ -1,9 +1,9 @@
+import React, { useContext } from 'react'
 import { Box, Divider, makeStyles, Paper, Typography } from '@material-ui/core'
 import Avatar from 'boring-avatars'
+import { UserContext } from 'contexts/UserContext'
 import VideoList from 'pages/video/VideoList'
-import React, { useContext } from 'react'
 import { colors } from 'utils/avatar-colors'
-import { UserContext } from 'utils/UserContext'
 const useStyles = makeStyles(theme => ({
   paper: {
     padding: theme.spacing(2, 1),

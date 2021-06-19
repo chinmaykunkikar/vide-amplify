@@ -10,7 +10,7 @@ import Home from './pages/Home'
 import NewVideo from './pages/video/NewVideo'
 import VideoPlayer from './pages/video/VideoPlayer'
 import PrivateRoute from './PrivateRoute'
-import UserContextProvider from './utils/UserContext'
+import UserContextProvider from './contexts/UserContext'
 
 const MainRouter = ({ data }) => {
   return (

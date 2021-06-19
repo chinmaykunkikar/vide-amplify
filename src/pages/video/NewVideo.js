@@ -13,8 +13,8 @@ import {
 import { BackupOutlined } from '@material-ui/icons'
 import { Amplify, DataStore, Storage } from 'aws-amplify'
 import awsconfig from 'aws-exports'
+import { UserContext } from 'contexts/UserContext'
 import { Video } from 'models'
-import { UserContext } from 'utils/UserContext'
 
 Amplify.configure(awsconfig)
 

@@ -8,9 +8,9 @@ import {
 } from '@material-ui/core'
 import { Auth } from 'aws-amplify'
 import Avatar from 'boring-avatars'
+import { UserContext } from 'contexts/UserContext'
 import { Link as RouterLink } from 'react-router-dom'
 import { colors } from 'utils/avatar-colors'
-import { UserContext } from 'utils/UserContext'
 
 const AccountMenu = () => {
   const { username, name } = useContext(UserContext)

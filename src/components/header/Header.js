@@ -13,8 +13,8 @@ import {
   HomeOutlined,
   VideoCallOutlined as VideoAddOutlined,
 } from '@material-ui/icons'
+import { UserContext } from 'contexts/UserContext'
 import { Link as RouterLink } from 'react-router-dom'
-import { UserContext } from 'utils/UserContext'
 import AccountMenu from './AccountMenu'
 
 const useStyles = makeStyles(theme => ({
