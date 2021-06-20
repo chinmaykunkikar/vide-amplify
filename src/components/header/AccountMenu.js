@@ -56,7 +56,7 @@ const AccountMenu = () => {
         <MenuItem
           component={RouterLink}
           to={`/user/${username}`}
-          onClick={handleClose}>
+          onClick={handleClose} divider>
           <Box fontWeight={300} fontSize={20}>
             {name}
           </Box>
