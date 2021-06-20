@@ -1,10 +1,10 @@
 import React, { useContext, useState } from 'react'
 import {
+  Box,
   IconButton,
   Menu,
   MenuItem,
   Tooltip,
-  Typography,
 } from '@material-ui/core'
 import { Auth } from 'aws-amplify'
 import Avatar from 'boring-avatars'
@@ -53,14 +53,13 @@ const AccountMenu = () => {
           horizontal: 'center',
         }}
         onClose={handleClose}>
-        <MenuItem component={Typography} align='center' disabled divider>
-          Hey, {name}!
-        </MenuItem>
         <MenuItem
           component={RouterLink}
           to={`/user/${username}`}
           onClick={handleClose}>
-          My account
+          <Box fontWeight={300} fontSize={20}>
+            {name}
+          </Box>
         </MenuItem>
         <MenuItem onClick={logOut}>Logout</MenuItem>
       </Menu>

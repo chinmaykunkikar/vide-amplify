@@ -19,15 +19,10 @@ import { Video } from 'models'
 Amplify.configure(awsconfig)
 
 const useStyles = makeStyles(theme => ({
-  root: {
-    minHeight: '100vh',
-  },
   card: {
-    maxWidth: 600,
+    minHeight: '100vh',
     margin: 'auto',
     textAlign: 'center',
-    marginTop: theme.spacing(5),
-    paddingBottom: theme.spacing(2),
   },
   title: {
     margin: theme.spacing(2),
@@ -35,12 +30,36 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 300,
   },
   textField: {
-    margin: theme.spacing(1),
-    width: 320,
+    [theme.breakpoints.up('xs')]: {
+      width: '75%',
+    },
+    [theme.breakpoints.up('sm')]: {
+      width: '50%',
+    },
+    [theme.breakpoints.up('md')]: {
+      width: '40%',
+    },
+    [theme.breakpoints.up('lg')]: {
+      width: '30%',
+    },
+    width: '70%',
+    marginTop: theme.spacing(2),
   },
   button: {
+    [theme.breakpoints.up('xs')]: {
+      width: '55%',
+    },
+    [theme.breakpoints.up('sm')]: {
+      width: '40%',
+    },
+    [theme.breakpoints.up('md')]: {
+      width: '30%',
+    },
+    [theme.breakpoints.up('lg')]: {
+      width: '20%',
+    },
     margin: 'auto',
-    marginBottom: theme.spacing(2),
+    marginBottom: theme.spacing(2)
   },
   actions: {
     flexDirection: 'column',
@@ -120,7 +139,7 @@ const NewVideo = () => {
   }
 
   return (
-    <Box className={classes.root}>
+    <Box>
       <Card className={classes.card}>
         <CardContent>
           <Typography variant='h5' display='block' className={classes.title}>
@@ -153,13 +172,14 @@ const NewVideo = () => {
           <br />
           <TextField
             id='title'
-            label='An interesting title'
+            label='Title'
             className={classes.textField}
             value={values.title}
             onChange={handleChange('title')}
             margin='normal'
             variant='outlined'
           />
+          <br />
           <TextField
             id='standard-multiline-flexible'
             label='Description'

@@ -18,9 +18,7 @@ import { Link as RouterLink } from 'react-router-dom'
 import AccountMenu from './AccountMenu'
 
 const useStyles = makeStyles(theme => ({
-  home: {
-    flexGrow: 1,
-  },
+  toolbar: { justifyContent: 'space-between' },
 }))
 
 const Header = () => {
@@ -29,16 +27,25 @@ const Header = () => {
 
   return (
     <AppBar position='static'>
-      <Toolbar>
-        <Box className={classes.home}>
-          <Link component={RouterLink} to='/'>
-            <Tooltip title='Home'>
-              <IconButton edge='start'>
-                <HomeOutlined color='secondary' />
-              </IconButton>
-            </Tooltip>
-          </Link>
-        </Box>
+      <Toolbar className={classes.toolbar}>
+        <Link component={RouterLink} to='/'>
+          <Tooltip title='Home'>
+            <IconButton edge='start'>
+              <HomeOutlined color='secondary' />
+            </IconButton>
+          </Tooltip>
+        </Link>
+        <Link
+          component={RouterLink}
+          to='/'
+          variant='overline'
+          color='secondary'
+          underline='none'
+          style={{ userSelect: 'none' }}>
+          <Box fontSize={18} letterSpacing={3} fontWeight={500}>
+            Vide
+          </Box>
+        </Link>
         {!loggedIn && (
           <span>
             <Link component={RouterLink} to='/user/login'>

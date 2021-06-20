@@ -2,34 +2,25 @@ import React, { useState } from 'react'
 import {
   Box,
   Button,
-  Card,
   CardActions,
   CardContent,
   Link,
+  Paper,
   TextField,
   Typography,
 } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import { Amplify, Auth } from 'aws-amplify'
 import awsconfig from 'aws-exports'
-import { Redirect } from 'react-router'
 import { Link as RouterLink } from 'react-router-dom'
 
 Amplify.configure(awsconfig)
 
 const useStyles = makeStyles(theme => ({
-  root: {
+  paper: {
     minHeight: '100vh',
-  },
-  card: {
-    maxWidth: 600,
     margin: 'auto',
     textAlign: 'center',
-    marginTop: theme.spacing(5),
-    paddingBottom: theme.spacing(2),
-  },
-  error: {
-    verticalAlign: 'middle',
   },
   title: {
     marginTop: theme.spacing(2),
@@ -37,13 +28,34 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 300,
   },
   textField: {
-    marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(1),
-    width: 320,
+    [theme.breakpoints.up('xs')]: {
+      width: '75%',
+    },
+    [theme.breakpoints.up('sm')]: {
+      width: '50%',
+    },
+    [theme.breakpoints.up('md')]: {
+      width: '40%',
+    },
+    [theme.breakpoints.up('lg')]: {
+      width: '30%',
+    },
+    width: '70%',
   },
   submit: {
+    [theme.breakpoints.up('xs')]: {
+      width: '55%',
+    },
+    [theme.breakpoints.up('sm')]: {
+      width: '40%',
+    },
+    [theme.breakpoints.up('md')]: {
+      width: '30%',
+    },
+    [theme.breakpoints.up('lg')]: {
+      width: '20%',
+    },
     margin: 'auto',
-    marginBottom: theme.spacing(2),
   },
 }))
 
@@ -51,7 +63,6 @@ const initialValues = {
   email: '',
   password: '',
   error: '',
-  redirectToReferrer: false,
 }
 
 const Login = props => {
@@ -62,10 +73,7 @@ const Login = props => {
     const email = values.email
     const password = values.password
     await Auth.signIn(email, password)
-      .then(() => {
-        setValues({ ...values, redirectToReferrer: true })
-        window.location.reload()
-      })
+      .then(() => window.location.reload())
       .catch(error => alert(error.message))
   }
 
@@ -73,19 +81,9 @@ const Login = props => {
     setValues({ ...values, [name]: event.target.value })
   }
 
-  const { from } = props.location.state || {
-    from: {
-      pathname: '/',
-    },
-  }
-  const { redirectToReferrer } = values
-  if (redirectToReferrer) {
-    return <Redirect to={from} />
-  }
-
   return (
-    <Box className={classes.root}>
-      <Card className={classes.card}>
+    <Box>
+      <Paper className={classes.paper}>
         <CardContent>
           <Typography variant='h4' className={classes.title}>
             Login
@@ -128,7 +126,7 @@ const Login = props => {
             Login
           </Button>
         </CardActions>
-      </Card>
+      </Paper>
     </Box>
   )
 }

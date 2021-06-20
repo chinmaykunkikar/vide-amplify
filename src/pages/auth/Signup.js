@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import {
   Box,
   Button,
-  Card,
   CardActions,
   CardContent,
   Dialog,
@@ -12,6 +11,7 @@ import {
   DialogTitle,
   Link,
   makeStyles,
+  Paper,
   TextField,
   Typography,
 } from '@material-ui/core'
@@ -20,18 +20,10 @@ import { User } from 'models'
 import { Link as RouterLink } from 'react-router-dom'
 
 const useStyles = makeStyles(theme => ({
-  root: {
+  paper: {
     minHeight: '100vh',
-  },
-  card: {
-    maxWidth: 600,
     margin: 'auto',
     textAlign: 'center',
-    marginTop: theme.spacing(5),
-    paddingBottom: theme.spacing(2),
-  },
-  error: {
-    verticalAlign: 'middle',
   },
   title: {
     marginTop: theme.spacing(2),
@@ -39,13 +31,34 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 300,
   },
   textField: {
-    marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(1),
-    width: 320,
+    [theme.breakpoints.up('xs')]: {
+      width: '75%',
+    },
+    [theme.breakpoints.up('sm')]: {
+      width: '50%',
+    },
+    [theme.breakpoints.up('md')]: {
+      width: '40%',
+    },
+    [theme.breakpoints.up('lg')]: {
+      width: '30%',
+    },
+    width: '70%',
   },
   submit: {
+    [theme.breakpoints.up('xs')]: {
+      width: '55%',
+    },
+    [theme.breakpoints.up('sm')]: {
+      width: '40%',
+    },
+    [theme.breakpoints.up('md')]: {
+      width: '30%',
+    },
+    [theme.breakpoints.up('lg')]: {
+      width: '20%',
+    },
     margin: 'auto',
-    marginBottom: theme.spacing(2),
   },
 }))
 
@@ -101,9 +114,9 @@ export default function Signup() {
   }
 
   return (
-    <Box className={classes.root}>
+    <Box>
       {formType === SIGNUP_FORM && (
-        <Card className={classes.card}>
+        <Paper className={classes.paper}>
           <CardContent>
             <Typography variant='h4' className={classes.title}>
               Create new account
@@ -156,10 +169,10 @@ export default function Signup() {
               Continue
             </Button>
           </CardActions>
-        </Card>
+        </Paper>
       )}
       {formType === CONFIRM_FORM && (
-        <Card className={classes.card}>
+        <Paper className={classes.card}>
           <CardContent>
             <Typography variant='h4' className={classes.title}>
               Confirm your account
@@ -195,7 +208,7 @@ export default function Signup() {
               Confirm Code
             </Button>
           </CardActions>
-        </Card>
+        </Paper>
       )}
       <Dialog open={values.openDialog} disableBackdropClick>
         <DialogTitle>Account created successfully</DialogTitle>
