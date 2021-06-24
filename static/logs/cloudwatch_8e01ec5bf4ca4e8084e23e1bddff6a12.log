@@ -1,0 +1,361 @@
+START RequestId: e3a4fa53-a8bf-4492-8c77-bdf4792ca964 Version: $LATEST
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from '/tmp/Hiking_through_the_Rocky_Mountains.mp4':
+Metadata:
+major_brand     : isom
+minor_version   : 512
+compatible_brands: isomiso2avc1mp41
+encoder         : Lavf58.22.100
+Duration: 00:00:17.36, start: 0.000000, bitrate: 3727 kb/s
+Stream #0:0(und): Video: h264 (High) (avc1 / 0x31637661), yuv420p, 1920x1080, 3545 kb/s, 25.05 fps, 25 tbr, 90k tbn, 1411200000.00 tbc (default)
+Metadata:
+handler_name    : VideoHandler
+vendor_id       : [0][0][0][0]
+Stream #0:1(und): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 192 kb/s (default)
+Metadata:
+handler_name    : SoundHandler
+vendor_id       : [0][0][0][0]
+Stream mapping:
+Stream #0:0 -> #0:0 (h264 (native) -> h264 (libx264))
+Stream #0:1 -> #0:1 (aac (native) -> aac (native))
+Stream #0:0 -> #1:0 (h264 (native) -> h264 (libx264))
+Stream #0:1 -> #1:1 (aac (native) -> aac (native))
+Stream #0:0 -> #2:0 (h264 (native) -> h264 (libx264))
+Stream #0:1 -> #2:1 (aac (native) -> aac (native))
+Stream #0:0 -> #3:0 (h264 (native) -> h264 (libx264))
+Stream #0:1 -> #3:1 (aac (native) -> aac (native))
+Stream #0:0 -> #4:0 (h264 (native) -> h264 (libx264))
+Stream #0:1 -> #4:1 (aac (native) -> aac (native))
+Stream #0:0 -> #5:0 (h264 (native) -> png (native))
+Press [q] to stop, [?] for help
+[libx264 @ 0x6c2b140] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 0x6c2b140] profile Main, level 2.1, 4:2:0, 8-bit
+[libx264 @ 0x6c2b140] 264 - core 161 r3048 b86ae3c - H.264/MPEG-4 AVC codec - Copyleft 2003-2021 - http://www.videolan.org/x264.html - options:
+cabac=1 ref=3 deblock=1:0:0 analyse=0x1:0x111 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=0 cqm=0
+deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=4 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0
+constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=50 keyint_min=26 scenecut=0
+intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=19.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 vbv_maxrate=428 vbv_bufsize=600 crf_max=0.0
+nal_hrd=none filler=0 ip_ratio=1.40 aq=1:1.00
+Output #0, hls, to '/tmp/Hiking_through_the_Rocky_Mountains/240p.m3u8':
+Metadata:
+major_brand     : isom
+minor_version   : 512
+compatible_brands: isomiso2avc1mp41
+encoder         : Lavf58.77.100
+Stream #0:0(und): Video: h264, yuv420p(tv, progressive), 426x240, q=2-31, 400 kb/s, 25 fps, 90k tbn (default)
+Metadata:
+handler_name    : VideoHandler
+vendor_id       : [0][0][0][0]
+encoder         : Lavc58.135.100 libx264
+Side data:
+cpb: bitrate max/min/avg: 428000/0/400000 buffer size: 600000 vbv_delay: N/A
+Stream #0:1(und): Audio: aac (LC), 48000 Hz, stereo, fltp, 128 kb/s (default)
+Metadata:
+handler_name    : SoundHandler
+vendor_id       : [0][0][0][0]
+encoder         : Lavc58.135.100 aac
+[libx264 @ 0x6c5bac0] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 0x6c5bac0] profile Main, level 3.0, 4:2:0, 8-bit
+[libx264 @ 0x6c5bac0] 264 - core 161 r3048 b86ae3c - H.264/MPEG-4 AVC codec - Copyleft 2003-2021 - http://www.videolan.org/x264.html - options:
+cabac=1 ref=3 deblock=1:0:0 analyse=0x1:0x111 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=0 cqm=0
+deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=4 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0
+constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=50 keyint_min=26 scenecut=0
+intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=19.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 vbv_maxrate=856 vbv_bufsize=1200 crf_max=0.0
+nal_hrd=none filler=0 ip_ratio=1.40 aq=1:1.00
+Output #1, hls, to '/tmp/Hiking_through_the_Rocky_Mountains/360p.m3u8':
+Metadata:
+major_brand     : isom
+minor_version   : 512
+compatible_brands: isomiso2avc1mp41
+encoder         : Lavf58.77.100
+Stream #1:0(und): Video: h264, yuv420p(tv, progressive), 640x360, q=2-31, 800 kb/s, 25 fps, 90k tbn (default)
+Metadata:
+handler_name    : VideoHandler
+vendor_id       : [0][0][0][0]
+encoder         : Lavc58.135.100 libx264
+Side data:
+cpb: bitrate max/min/avg: 856000/0/800000 buffer size: 1200000 vbv_delay: N/A
+Stream #1:1(und): Audio: aac (LC), 48000 Hz, stereo, fltp, 128 kb/s (default)
+Metadata:
+handler_name    : SoundHandler
+vendor_id       : [0][0][0][0]
+encoder         : Lavc58.135.100 aac
+[libx264 @ 0x6c66340] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 0x6c66340] profile Main, level 3.0, 4:2:0, 8-bit
+[libx264 @ 0x6c66340] 264 - core 161 r3048 b86ae3c - H.264/MPEG-4 AVC codec - Copyleft 2003-2021 - http://www.videolan.org/x264.html - options:
+cabac=1 ref=3 deblock=1:0:0 analyse=0x1:0x111 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=0 cqm=0
+deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=4 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0
+constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=50 keyint_min=26 scenecut=0
+intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=19.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 vbv_maxrate=1498 vbv_bufsize=2100 crf_max=0.0
+nal_hrd=none filler=0 ip_ratio=1.40 aq=1:1.00
+Output #2, hls, to '/tmp/Hiking_through_the_Rocky_Mountains/480p.m3u8':
+Metadata:
+major_brand     : isom
+minor_version   : 512
+compatible_brands: isomiso2avc1mp41
+encoder         : Lavf58.77.100
+Stream #2:0(und): Video: h264, yuv420p(tv, progressive), 842x474, q=2-31, 1400 kb/s, 25 fps, 90k tbn (default)
+Metadata:
+handler_name    : VideoHandler
+vendor_id       : [0][0][0][0]
+encoder         : Lavc58.135.100 libx264
+Side data:
+cpb: bitrate max/min/avg: 1498000/0/1400000 buffer size: 2100000 vbv_delay: N/A
+Stream #2:1(und): Audio: aac (LC), 48000 Hz, stereo, fltp, 192 kb/s (default)
+Metadata:
+handler_name    : SoundHandler
+vendor_id       : [0][0][0][0]
+encoder         : Lavc58.135.100 aac
+[libx264 @ 0x6c6dc00] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 0x6c6dc00] profile Main, level 3.1, 4:2:0, 8-bit
+[libx264 @ 0x6c6dc00] 264 - core 161 r3048 b86ae3c - H.264/MPEG-4 AVC codec - Copyleft 2003-2021 - http://www.videolan.org/x264.html - options:
+cabac=1 ref=3 deblock=1:0:0 analyse=0x1:0x111 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=0 cqm=0
+deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=4 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0
+constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=50 keyint_min=26 scenecut=0
+intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=19.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 vbv_maxrate=2996 vbv_bufsize=4200 crf_max=0.0
+nal_hrd=none filler=0 ip_ratio=1.40 aq=1:1.00
+Output #3, hls, to '/tmp/Hiking_through_the_Rocky_Mountains/720p.m3u8':
+Metadata:
+major_brand     : isom
+minor_version   : 512
+compatible_brands: isomiso2avc1mp41
+encoder         : Lavf58.77.100
+Stream #3:0(und): Video: h264, yuv420p(tv, progressive), 1280x720, q=2-31, 2800 kb/s, 25 fps, 90k tbn (default)
+Metadata:
+handler_name    : VideoHandler
+vendor_id       : [0][0][0][0]
+encoder         : Lavc58.135.100 libx264
+Side data:
+cpb: bitrate max/min/avg: 2996000/0/2800000 buffer size: 4200000 vbv_delay: N/A
+Stream #3:1(und): Audio: aac (LC), 48000 Hz, stereo, fltp, 192 kb/s (default)
+Metadata:
+handler_name    : SoundHandler
+vendor_id       : [0][0][0][0]
+encoder         : Lavc58.135.100 aac
+[libx264 @ 0x6c54340] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 0x6c54340] profile Main, level 4.0, 4:2:0, 8-bit
+[libx264 @ 0x6c54340] 264 - core 161 r3048 b86ae3c - H.264/MPEG-4 AVC codec - Copyleft 2003-2021 - http://www.videolan.org/x264.html - options:
+cabac=1 ref=3 deblock=1:0:0 analyse=0x1:0x111 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=0 cqm=0
+deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=4 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0
+constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=50 keyint_min=26 scenecut=0
+intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=19.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 vbv_maxrate=5350 vbv_bufsize=7500 crf_max=0.0
+nal_hrd=none filler=0 ip_ratio=1.40 aq=1:1.00
+Output #4, hls, to '/tmp/Hiking_through_the_Rocky_Mountains/1080p.m3u8':
+Metadata:
+major_brand     : isom
+minor_version   : 512
+compatible_brands: isomiso2avc1mp41
+encoder         : Lavf58.77.100
+Stream #4:0(und): Video: h264, yuv420p(progressive), 1920x1080, q=2-31, 5000 kb/s, 25 fps, 90k tbn (default)
+Metadata:
+handler_name    : VideoHandler
+vendor_id       : [0][0][0][0]
+encoder         : Lavc58.135.100 libx264
+Side data:
+cpb: bitrate max/min/avg: 5350000/0/5000000 buffer size: 7500000 vbv_delay: N/A
+Stream #4:1(und): Audio: aac (LC), 48000 Hz, stereo, fltp, 192 kb/s (default)
+Metadata:
+handler_name    : SoundHandler
+vendor_id       : [0][0][0][0]
+encoder         : Lavc58.135.100 aac
+[Parsed_thumbnail_0 @ 0xaa37b80] frame id #42 (pts_time=1.716000) selected from a set of 100 images
+Output #5, image2, to '/tmp/Hiking_through_the_Rocky_Mountains/thumbnail.png':
+Metadata:
+major_brand     : isom
+minor_version   : 512
+compatible_brands: isomiso2avc1mp41
+encoder         : Lavf58.77.100
+Stream #5:0(und): Video: png, rgb24(pc, progressive), 640x374, q=2-31, 200 kb/s, 25 fps, 25 tbn (default)
+Metadata:
+handler_name    : VideoHandler
+vendor_id       : [0][0][0][0]
+encoder         : Lavc58.135.100 png
+frame=  101 fps= 11 q=24.0 q=25.0 q=24.0 q=24.0 q=24.0 q=0.0 size=N/A time=00:00:04.05 bitrate=N/A dup=6 drop=0 speed=0.443x    
+frame=  104 fps= 11 q=24.0 q=24.0 q=24.0 q=24.0 q=25.0 q=0.0 size=N/A time=00:00:04.20 bitrate=N/A dup=6 drop=0 speed=0.431x    
+frame=  108 fps= 11 q=24.0 q=25.0 q=24.0 q=24.0 q=25.0 q=0.0 size=N/A time=00:00:04.37 bitrate=N/A dup=6 drop=0 speed=0.426x    
+frame=  113 fps= 10 q=24.0 q=25.0 q=24.0 q=24.0 q=25.0 q=0.0 size=N/A time=00:00:04.56 bitrate=N/A dup=6 drop=0 speed=0.422x    
+frame=  117 fps= 10 q=24.0 q=25.0 q=24.0 q=24.0 q=26.0 q=0.0 size=N/A time=00:00:04.71 bitrate=N/A dup=6 drop=0 speed=0.415x    
+frame=  122 fps= 10 q=24.0 q=24.0 q=24.0 q=24.0 q=26.0 q=0.0 size=N/A time=00:00:04.92 bitrate=N/A dup=6 drop=0 speed=0.415x    
+frame=  127 fps= 10 q=24.0 q=25.0 q=24.0 q=24.0 q=26.0 q=0.0 size=N/A time=00:00:05.11 bitrate=N/A dup=6 drop=0 speed=0.412x    
+frame=  131 fps= 10 q=24.0 q=25.0 q=24.0 q=24.0 q=26.0 q=0.0 size=N/A time=00:00:05.30 bitrate=N/A dup=6 drop=0 speed=0.41x    
+frame=  135 fps= 10 q=24.0 q=25.0 q=24.0 q=24.0 q=26.0 q=0.0 size=N/A time=00:00:05.43 bitrate=N/A dup=6 drop=0 speed=0.404x    
+frame=  140 fps= 10 q=24.0 q=25.0 q=24.0 q=24.0 q=25.0 q=0.0 size=N/A time=00:00:05.64 bitrate=N/A dup=6 drop=0 speed=0.404x    
+frame=  145 fps=9.9 q=24.0 q=25.0 q=24.0 q=24.0 q=26.0 q=0.0 size=N/A time=00:00:05.83 bitrate=N/A dup=6 drop=0 speed= 0.4x    
+frame=  151 fps= 10 q=24.0 q=24.0 q=24.0 q=24.0 q=26.0 q=0.0 size=N/A time=00:00:06.07 bitrate=N/A dup=6 drop=0 speed= 0.4x    
+frame=  156 fps=9.9 q=24.0 q=24.0 q=24.0 q=24.0 q=26.0 q=0.0 size=N/A time=00:00:06.28 bitrate=N/A dup=6 drop=0 speed= 0.4x    
+frame=  159 fps=9.8 q=24.0 q=24.0 q=24.0 q=24.0 q=26.0 q=0.0 size=N/A time=00:00:06.39 bitrate=N/A dup=6 drop=0 speed=0.394x    
+frame=  164 fps=9.8 q=24.0 q=24.0 q=24.0 q=24.0 q=25.0 q=0.0 size=N/A time=00:00:06.60 bitrate=N/A dup=6 drop=0 speed=0.395x    
+frame=  167 fps=9.7 q=24.0 q=24.0 q=24.0 q=24.0 q=25.0 q=0.0 size=N/A time=00:00:06.71 bitrate=N/A dup=6 drop=0 speed=0.389x    
+frame=  173 fps=9.7 q=24.0 q=24.0 q=24.0 q=24.0 q=25.0 q=0.0 size=N/A time=00:00:06.97 bitrate=N/A dup=6 drop=0 speed=0.39x    
+frame=  178 fps=9.6 q=24.0 q=24.0 q=24.0 q=24.0 q=27.0 q=0.0 size=N/A time=00:00:07.16 bitrate=N/A dup=6 drop=0 speed=0.388x    
+frame=  183 fps=9.6 q=24.0 q=24.0 q=24.0 q=24.0 q=25.0 q=0.0 size=N/A time=00:00:07.35 bitrate=N/A dup=6 drop=0 speed=0.388x    
+frame=  189 fps=9.6 q=24.0 q=24.0 q=24.0 q=24.0 q=25.0 q=0.0 size=N/A time=00:00:07.61 bitrate=N/A dup=6 drop=0 speed=0.388x    
+frame=  193 fps=9.6 q=24.0 q=24.0 q=24.0 q=24.0 q=25.0 q=0.0 size=N/A time=00:00:07.75 bitrate=N/A dup=6 drop=0 speed=0.384x    
+frame=  198 fps=9.5 q=24.0 q=24.0 q=24.0 q=24.0 q=26.0 q=0.0 size=N/A time=00:00:07.97 bitrate=N/A dup=6 drop=0 speed=0.384x    
+[hls @ 0x6c1edc0] Opening '/tmp/Hiking_through_the_Rocky_Mountains/240p_000.ts' for writing
+[hls @ 0x6c5f940] Opening '/tmp/Hiking_through_the_Rocky_Mountains/360p_000.ts' for writing
+[hls @ 0x6c59b80] Opening '/tmp/Hiking_through_the_Rocky_Mountains/480p_000.ts' for writing
+[hls @ 0x6c6a100] Opening '/tmp/Hiking_through_the_Rocky_Mountains/720p_000.ts' for writing
+[hls @ 0x6c50600] Opening '/tmp/Hiking_through_the_Rocky_Mountains/1080p_000.ts' for writing
+[Parsed_thumbnail_0 @ 0xaa37b80] frame id #62 (pts_time=6.516000) selected from a set of 100 images
+frame=  205 fps=9.6 q=24.0 q=24.0 q=24.0 q=24.0 q=25.0 q=0.0 size=N/A time=00:00:08.25 bitrate=N/A dup=6 drop=1 speed=0.385x    
+frame=  209 fps=9.5 q=24.0 q=24.0 q=24.0 q=24.0 q=26.0 q=0.0 size=N/A time=00:00:08.39 bitrate=N/A dup=6 drop=1 speed=0.382x    
+frame=  215 fps=9.5 q=24.0 q=24.0 q=24.0 q=24.0 q=25.0 q=0.0 size=N/A time=00:00:08.63 bitrate=N/A dup=6 drop=1 speed=0.383x    
+frame=  218 fps=9.4 q=24.0 q=24.0 q=24.0 q=24.0 q=26.0 q=0.0 size=N/A time=00:00:08.76 bitrate=N/A dup=6 drop=1 speed=0.379x    
+frame=  223 fps=9.4 q=24.0 q=24.0 q=24.0 q=24.0 q=26.0 q=0.0 size=N/A time=00:00:08.95 bitrate=N/A dup=6 drop=1 speed=0.378x    
+frame=  228 fps=9.4 q=24.0 q=24.0 q=24.0 q=24.0 q=25.0 q=0.0 size=N/A time=00:00:09.16 bitrate=N/A dup=6 drop=1 speed=0.379x    
+frame=  233 fps=9.4 q=24.0 q=24.0 q=24.0 q=24.0 q=25.0 q=0.0 size=N/A time=00:00:09.35 bitrate=N/A dup=6 drop=1 speed=0.377x    
+frame=  238 fps=9.4 q=24.0 q=24.0 q=24.0 q=24.0 q=26.0 q=0.0 size=N/A time=00:00:09.57 bitrate=N/A dup=6 drop=1 speed=0.377x    
+frame=  242 fps=9.3 q=24.0 q=24.0 q=24.0 q=24.0 q=25.0 q=0.0 size=N/A time=00:00:09.72 bitrate=N/A dup=6 drop=1 speed=0.374x    
+frame=  247 fps=9.3 q=24.0 q=24.0 q=24.0 q=24.0 q=26.0 q=0.0 size=N/A time=00:00:09.91 bitrate=N/A dup=6 drop=1 speed=0.372x    
+frame=  252 fps=9.3 q=24.0 q=24.0 q=24.0 q=24.0 q=26.0 q=0.0 size=N/A time=00:00:10.14 bitrate=N/A dup=6 drop=1 speed=0.374x    
+frame=  257 fps=9.3 q=24.0 q=24.0 q=24.0 q=24.0 q=25.0 q=0.0 size=N/A time=00:00:10.31 bitrate=N/A dup=6 drop=1 speed=0.372x    
+frame=  261 fps=9.2 q=24.0 q=24.0 q=24.0 q=24.0 q=26.0 q=0.0 size=N/A time=00:00:10.49 bitrate=N/A dup=6 drop=1 speed=0.37x    
+frame=  266 fps=9.2 q=24.0 q=24.0 q=24.0 q=24.0 q=25.0 q=0.0 size=N/A time=00:00:10.68 bitrate=N/A dup=6 drop=1 speed=0.369x    
+frame=  271 fps=9.2 q=24.0 q=24.0 q=24.0 q=24.0 q=26.0 q=0.0 size=N/A time=00:00:10.87 bitrate=N/A dup=6 drop=1 speed=0.368x    
+frame=  275 fps=9.1 q=24.0 q=24.0 q=24.0 q=24.0 q=26.0 q=0.0 size=N/A time=00:00:11.04 bitrate=N/A dup=6 drop=1 speed=0.367x    
+frame=  281 fps=9.1 q=24.0 q=24.0 q=24.0 q=24.0 q=25.0 q=0.0 size=N/A time=00:00:11.27 bitrate=N/A dup=6 drop=1 speed=0.365x    
+frame=  285 fps=9.1 q=24.0 q=24.0 q=24.0 q=24.0 q=25.0 q=0.0 size=N/A time=00:00:11.45 bitrate=N/A dup=6 drop=1 speed=0.365x    
+frame=  289 fps=9.0 q=24.0 q=24.0 q=24.0 q=24.0 q=25.0 q=0.0 size=N/A time=00:00:11.59 bitrate=N/A dup=6 drop=1 speed=0.363x    
+frame=  293 fps=9.0 q=24.0 q=24.0 q=24.0 q=24.0 q=25.0 q=0.0 size=N/A time=00:00:11.77 bitrate=N/A dup=6 drop=1 speed=0.362x    
+frame=  297 fps=9.0 q=24.0 q=24.0 q=24.0 q=24.0 q=25.0 q=0.0 size=N/A time=00:00:11.91 bitrate=N/A dup=6 drop=1 speed=0.36x    
+[hls @ 0x6c1edc0] Opening '/tmp/Hiking_through_the_Rocky_Mountains/240p_001.ts' for writing
+[hls @ 0x6c5f940] Opening '/tmp/Hiking_through_the_Rocky_Mountains/360p_001.ts' for writing
+[hls @ 0x6c59b80] Opening '/tmp/Hiking_through_the_Rocky_Mountains/480p_001.ts' for writing
+[hls @ 0x6c6a100] Opening '/tmp/Hiking_through_the_Rocky_Mountains/720p_001.ts' for writing
+[hls @ 0x6c50600] Opening '/tmp/Hiking_through_the_Rocky_Mountains/1080p_001.ts' for writing
+[Parsed_thumbnail_0 @ 0xaa37b80] frame id #41 (pts_time=9.676000) selected from a set of 100 images
+frame=  304 fps=9.0 q=24.0 q=24.0 q=24.0 q=24.0 q=24.0 q=0.0 size=N/A time=00:00:12.19 bitrate=N/A dup=6 drop=2 speed=0.361x    
+frame=  310 fps=9.0 q=24.0 q=24.0 q=24.0 q=24.0 q=24.0 q=0.0 size=N/A time=00:00:12.45 bitrate=N/A dup=6 drop=2 speed=0.361x    
+frame=  315 fps=9.0 q=24.0 q=24.0 q=24.0 q=24.0 q=24.0 q=0.0 size=N/A time=00:00:12.64 bitrate=N/A dup=6 drop=2 speed=0.359x    
+frame=  320 fps=8.9 q=24.0 q=24.0 q=24.0 q=24.0 q=24.0 q=0.0 size=N/A time=00:00:12.83 bitrate=N/A dup=6 drop=2 speed=0.359x    
+frame=  326 fps=8.9 q=24.0 q=24.0 q=24.0 q=24.0 q=25.0 q=0.0 size=N/A time=00:00:13.09 bitrate=N/A dup=6 drop=2 speed=0.358x    
+frame=  330 fps=8.9 q=24.0 q=24.0 q=24.0 q=24.0 q=25.0 q=0.0 size=N/A time=00:00:13.24 bitrate=N/A dup=6 drop=2 speed=0.357x    
+frame=  335 fps=8.9 q=24.0 q=24.0 q=24.0 q=24.0 q=26.0 q=0.0 size=N/A time=00:00:13.43 bitrate=N/A dup=6 drop=2 speed=0.357x    
+frame=  339 fps=8.9 q=24.0 q=24.0 q=24.0 q=25.0 q=26.0 q=0.0 size=N/A time=00:00:13.60 bitrate=N/A dup=6 drop=2 speed=0.356x    
+frame=  344 fps=8.9 q=24.0 q=24.0 q=24.0 q=25.0 q=26.0 q=0.0 size=N/A time=00:00:13.79 bitrate=N/A dup=6 drop=2 speed=0.356x    
+frame=  349 fps=8.9 q=24.0 q=24.0 q=24.0 q=24.0 q=24.0 q=0.0 size=N/A time=00:00:14.01 bitrate=N/A dup=6 drop=2 speed=0.356x    
+frame=  354 fps=8.9 q=24.0 q=24.0 q=24.0 q=24.0 q=25.0 q=0.0 size=N/A time=00:00:14.20 bitrate=N/A dup=6 drop=2 speed=0.356x    
+frame=  358 fps=8.8 q=24.0 q=24.0 q=24.0 q=24.0 q=25.0 q=0.0 size=N/A time=00:00:14.37 bitrate=N/A dup=6 drop=2 speed=0.355x    
+frame=  362 fps=8.8 q=24.0 q=24.0 q=24.0 q=25.0 q=27.0 q=0.0 size=N/A time=00:00:14.52 bitrate=N/A dup=6 drop=2 speed=0.354x    
+frame=  367 fps=8.8 q=24.0 q=24.0 q=24.0 q=25.0 q=27.0 q=0.0 size=N/A time=00:00:14.71 bitrate=N/A dup=6 drop=2 speed=0.353x    
+frame=  371 fps=8.8 q=24.0 q=25.0 q=24.0 q=25.0 q=27.0 q=0.0 size=N/A time=00:00:14.88 bitrate=N/A dup=6 drop=2 speed=0.352x    
+frame=  375 fps=8.8 q=24.0 q=24.0 q=24.0 q=25.0 q=27.0 q=0.0 size=N/A time=00:00:15.03 bitrate=N/A dup=6 drop=2 speed=0.351x    
+frame=  379 fps=8.7 q=24.0 q=25.0 q=24.0 q=25.0 q=27.0 q=0.0 size=N/A time=00:00:15.20 bitrate=N/A dup=6 drop=2 speed=0.351x    
+frame=  384 fps=8.7 q=24.0 q=25.0 q=24.0 q=25.0 q=27.0 q=0.0 size=N/A time=00:00:15.39 bitrate=N/A dup=6 drop=2 speed=0.35x    
+frame=  390 fps=8.7 q=24.0 q=25.0 q=24.0 q=25.0 q=27.0 q=0.0 size=N/A time=00:00:15.65 bitrate=N/A dup=6 drop=2 speed=0.35x    
+frame=  394 fps=8.7 q=24.0 q=25.0 q=24.0 q=25.0 q=27.0 q=0.0 size=N/A time=00:00:15.80 bitrate=N/A dup=6 drop=2 speed=0.348x    
+frame=  400 fps=8.7 q=24.0 q=26.0 q=25.0 q=26.0 q=26.0 q=0.0 size=N/A time=00:00:16.03 bitrate=N/A dup=6 drop=2 speed=0.349x    
+[Parsed_thumbnail_0 @ 0xaa37b80] frame id #63 (pts_time=14.556000) selected from a set of 100 images
+frame=  404 fps=8.7 q=24.0 q=25.0 q=25.0 q=25.0 q=26.0 q=0.0 size=N/A time=00:00:16.20 bitrate=N/A dup=6 drop=3 speed=0.348x    
+frame=  409 fps=8.7 q=24.0 q=26.0 q=25.0 q=26.0 q=26.0 q=0.0 size=N/A time=00:00:16.39 bitrate=N/A dup=6 drop=3 speed=0.349x    
+frame=  414 fps=8.6 q=24.0 q=25.0 q=25.0 q=26.0 q=27.0 q=0.0 size=N/A time=00:00:16.61 bitrate=N/A dup=6 drop=3 speed=0.347x    
+frame=  419 fps=8.6 q=24.0 q=25.0 q=25.0 q=26.0 q=27.0 q=0.0 size=N/A time=00:00:16.80 bitrate=N/A dup=6 drop=3 speed=0.347x    
+frame=  422 fps=8.6 q=24.0 q=26.0 q=25.0 q=25.0 q=27.0 q=0.0 size=N/A time=00:00:16.93 bitrate=N/A dup=6 drop=3 speed=0.346x    
+frame=  426 fps=8.6 q=24.0 q=25.0 q=25.0 q=26.0 q=28.0 q=0.0 size=N/A time=00:00:17.08 bitrate=N/A dup=6 drop=3 speed=0.345x    
+frame=  432 fps=8.6 q=24.0 q=25.0 q=25.0 q=26.0 q=27.0 q=0.0 size=N/A time=00:00:17.29 bitrate=N/A dup=6 drop=3 speed=0.345x    
+[Parsed_thumbnail_0 @ 0xaa37b80] frame id #15 (pts_time=16.636000) selected from a set of 33 images
+[hls @ 0x6c1edc0] Opening '/tmp/Hiking_through_the_Rocky_Mountains/240p_002.ts' for writing
+[hls @ 0x6c5f940] Opening '/tmp/Hiking_through_the_Rocky_Mountains/360p_002.ts' for writing
+[hls @ 0x6c59b80] Opening '/tmp/Hiking_through_the_Rocky_Mountains/480p_002.ts' for writing
+[hls @ 0x6c6a100] Opening '/tmp/Hiking_through_the_Rocky_Mountains/720p_002.ts' for writing
+[hls @ 0x6c50600] Opening '/tmp/Hiking_through_the_Rocky_Mountains/1080p_002.ts' for writing
+[hls @ 0x6c1edc0] Opening '/tmp/Hiking_through_the_Rocky_Mountains/240p_003.ts' for writing
+[hls @ 0x6c5f940] Opening '/tmp/Hiking_through_the_Rocky_Mountains/360p_003.ts' for writing
+[hls @ 0x6c59b80] Opening '/tmp/Hiking_through_the_Rocky_Mountains/480p_003.ts' for writing
+[hls @ 0x6c6a100] Opening '/tmp/Hiking_through_the_Rocky_Mountains/720p_003.ts' for writing
+[hls @ 0x6c50600] Opening '/tmp/Hiking_through_the_Rocky_Mountains/1080p_003.ts' for writing
+frame=  434 fps=7.9 q=-1.0 Lq=-1.0 q=-1.0 q=-1.0 q=-1.0 q=-0.0 size=N/A time=00:00:17.33 bitrate=N/A dup=6 drop=5 speed=0.315x    
+video:24407kB audio:24kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: unknown
+[libx264 @ 0x6c2b140] frame I:9     Avg QP:14.29  size: 27841
+[libx264 @ 0x6c2b140] frame P:140   Avg QP:17.08  size:  3895
+[libx264 @ 0x6c2b140] frame B:285   Avg QP:22.25  size:   343
+[libx264 @ 0x6c2b140] consecutive B-frames:  2.5% 28.1%  4.8% 64.5%
+[libx264 @ 0x6c2b140] mb I  I16..4:  3.9%  0.0% 96.1%
+[libx264 @ 0x6c2b140] mb P  I16..4:  0.0%  0.0%  0.1%  P16..4: 34.0% 23.7% 21.2%  0.0%  0.0%    skip:21.0%
+[libx264 @ 0x6c2b140] mb B  I16..4:  0.0%  0.0%  0.0%  B16..8: 33.8%  3.1%  1.3%  direct: 1.5%  skip:60.4%  L0:32.7% L1:57.8% BI: 9.5%
+[libx264 @ 0x6c2b140] coded y,uvDC,uvAC intra: 99.6% 98.8% 95.9% inter: 13.5% 11.2% 2.2%
+[libx264 @ 0x6c2b140] i16 v,h,dc,p:  8% 53% 20% 20%
+[libx264 @ 0x6c2b140] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 16% 13% 13% 12%  7%  8%  6% 12% 13%
+[libx264 @ 0x6c2b140] i8c dc,h,v,p: 52% 21% 17% 11%
+[libx264 @ 0x6c2b140] Weighted P-Frames: Y:0.0% UV:0.0%
+[libx264 @ 0x6c2b140] ref P L0: 69.8% 12.6% 10.2%  7.4%
+[libx264 @ 0x6c2b140] ref B L0: 93.9%  4.6%  1.5%
+[libx264 @ 0x6c2b140] ref B L1: 96.6%  3.4%
+[libx264 @ 0x6c2b140] kb/s:411.84
+[aac @ 0x6c5f500] Qavg: 65536.000
+[libx264 @ 0x6c5bac0] frame I:9     Avg QP:14.69  size: 54507
+[libx264 @ 0x6c5bac0] frame P:130   Avg QP:17.27  size:  8865
+[libx264 @ 0x6c5bac0] frame B:295   Avg QP:21.91  size:   879
+[libx264 @ 0x6c5bac0] consecutive B-frames:  2.3% 19.4%  5.5% 72.8%
+[libx264 @ 0x6c5bac0] mb I  I16..4:  7.5%  0.0% 92.5%
+[libx264 @ 0x6c5bac0] mb P  I16..4:  0.0%  0.0%  0.6%  P16..4: 36.0% 25.5% 21.1%  0.0%  0.0%    skip:16.8%
+[libx264 @ 0x6c5bac0] mb B  I16..4:  0.0%  0.0%  0.0%  B16..8: 37.8%  3.8%  1.5%  direct: 1.6%  skip:55.3%  L0:34.1% L1:55.8% BI:10.1%
+[libx264 @ 0x6c5bac0] coded y,uvDC,uvAC intra: 98.3% 98.6% 92.9% inter: 14.0% 12.9% 1.4%
+[libx264 @ 0x6c5bac0] i16 v,h,dc,p:  6% 27% 35% 32%
+[libx264 @ 0x6c5bac0] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 20% 12% 13% 11%  7%  7%  6% 11% 12%
+[libx264 @ 0x6c5bac0] i8c dc,h,v,p: 50% 20% 19% 10%
+[libx264 @ 0x6c5bac0] Weighted P-Frames: Y:0.0% UV:0.0%
+[libx264 @ 0x6c5bac0] ref P L0: 69.9% 12.7% 10.2%  7.3%
+[libx264 @ 0x6c5bac0] ref B L0: 92.7%  5.2%  2.1%
+[libx264 @ 0x6c5bac0] ref B L1: 95.8%  4.2%
+[libx264 @ 0x6c5bac0] kb/s:876.70
+[aac @ 0x6c20cc0] Qavg: 65536.000
+[libx264 @ 0x6c66340] frame I:9     Avg QP:14.50  size: 88334
+[libx264 @ 0x6c66340] frame P:119   Avg QP:17.18  size: 16248
+[libx264 @ 0x6c66340] frame B:306   Avg QP:21.56  size:  1803
+[libx264 @ 0x6c66340] consecutive B-frames:  2.3%  9.2%  5.5% 82.9%
+[libx264 @ 0x6c66340] mb I  I16..4:  8.7%  0.0% 91.3%
+[libx264 @ 0x6c66340] mb P  I16..4:  0.0%  0.0%  0.6%  P16..4: 36.6% 27.7% 22.0%  0.0%  0.0%    skip:12.9%
+[libx264 @ 0x6c66340] mb B  I16..4:  0.0%  0.0%  0.0%  B16..8: 39.5%  4.2%  1.6%  direct: 1.8%  skip:53.0%  L0:34.3% L1:55.7% BI:10.0%
+[libx264 @ 0x6c66340] coded y,uvDC,uvAC intra: 98.4% 97.7% 90.7% inter: 15.1% 14.2% 0.9%
+[libx264 @ 0x6c66340] i16 v,h,dc,p:  5% 18% 35% 42%
+[libx264 @ 0x6c66340] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 18% 14% 13% 11%  7%  7%  7% 10% 12%
+[libx264 @ 0x6c66340] i8c dc,h,v,p: 49% 21% 20%  9%
+[libx264 @ 0x6c66340] Weighted P-Frames: Y:0.0% UV:0.0%
+[libx264 @ 0x6c66340] ref P L0: 69.2% 12.7% 11.1%  7.1%
+[libx264 @ 0x6c66340] ref B L0: 93.1%  4.5%  2.4%
+[libx264 @ 0x6c66340] ref B L1: 95.5%  4.5%
+[libx264 @ 0x6c66340] kb/s:1511.65
+[aac @ 0x6c67600] Qavg: 65536.000
+[libx264 @ 0x6c6dc00] frame I:9     Avg QP:14.54  size:168484
+[libx264 @ 0x6c6dc00] frame P:115   Avg QP:17.33  size: 33295
+[libx264 @ 0x6c6dc00] frame B:310   Avg QP:21.39  size:  4224
+[libx264 @ 0x6c6dc00] consecutive B-frames:  2.3%  5.5%  5.5% 86.6%
+[libx264 @ 0x6c6dc00] mb I  I16..4:  9.5%  0.0% 90.5%
+[libx264 @ 0x6c6dc00] mb P  I16..4:  0.2%  0.0%  1.0%  P16..4: 37.5% 29.1% 20.4%  0.0%  0.0%    skip:11.9%
+[libx264 @ 0x6c6dc00] mb B  I16..4:  0.0%  0.0%  0.0%  B16..8: 41.2%  4.4%  1.3%  direct: 1.6%  skip:51.5%  L0:36.7% L1:54.3% BI: 9.1%
+[libx264 @ 0x6c6dc00] coded y,uvDC,uvAC intra: 95.1% 94.5% 79.8% inter: 15.5% 15.7% 0.4%
+[libx264 @ 0x6c6dc00] i16 v,h,dc,p:  9% 18% 26% 47%
+[libx264 @ 0x6c6dc00] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 18% 16% 14% 10%  8%  7%  7%  9% 11%
+[libx264 @ 0x6c6dc00] i8c dc,h,v,p: 48% 22% 21%  9%
+[libx264 @ 0x6c6dc00] Weighted P-Frames: Y:0.0% UV:0.0%
+[libx264 @ 0x6c6dc00] ref P L0: 68.2% 13.8% 12.5%  5.5%
+[libx264 @ 0x6c6dc00] ref B L0: 92.1%  5.8%  2.2%
+[libx264 @ 0x6c6dc00] ref B L1: 96.1%  3.9%
+[libx264 @ 0x6c6dc00] kb/s:3066.62
+[aac @ 0x6c6ea80] Qavg: 65536.000
+[libx264 @ 0x6c54340] frame I:9     Avg QP:15.65  size:263227
+[libx264 @ 0x6c54340] frame P:140   Avg QP:18.40  size: 50713
+[libx264 @ 0x6c54340] frame B:285   Avg QP:22.21  size:  8571
+[libx264 @ 0x6c54340] consecutive B-frames:  2.3% 28.1%  6.9% 62.7%
+[libx264 @ 0x6c54340] mb I  I16..4: 11.4%  0.0% 88.6%
+[libx264 @ 0x6c54340] mb P  I16..4:  1.4%  0.0%  2.3%  P16..4: 42.3% 22.8% 13.3%  0.0%  0.0%    skip:17.9%
+[libx264 @ 0x6c54340] mb B  I16..4:  0.2%  0.0%  0.1%  B16..8: 40.4%  3.1%  0.5%  direct: 2.0%  skip:53.7%  L0:38.9% L1:55.0% BI: 6.1%
+[libx264 @ 0x6c54340] coded y,uvDC,uvAC intra: 79.9% 76.2% 32.3% inter: 13.8% 14.0% 0.0%
+[libx264 @ 0x6c54340] i16 v,h,dc,p: 20% 25% 28% 28%
+[libx264 @ 0x6c54340] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 23% 18% 15%  8%  7%  6%  7%  7%  9%
+[libx264 @ 0x6c54340] i8c dc,h,v,p: 50% 22% 22%  6%
+[libx264 @ 0x6c54340] Weighted P-Frames: Y:0.0% UV:0.0%
+[libx264 @ 0x6c54340] ref P L0: 66.0% 15.3% 14.6%  4.1%
+[libx264 @ 0x6c54340] ref B L0: 86.7% 11.4%  2.0%
+[libx264 @ 0x6c54340] ref B L1: 97.9%  2.1%
+[libx264 @ 0x6c54340] kb/s:5489.18
+[aac @ 0x6c55000] Qavg: 65536.000
+[INFO]	2021-06-24T19:23:18.492Z	e3a4fa53-a8bf-4492-8c77-bdf4792ca964	Successfully transcoded
+END RequestId: e3a4fa53-a8bf-4492-8c77-bdf4792ca964
+REPORT RequestId: e3a4fa53-a8bf-4492-8c77-bdf4792ca964
+Duration: 58370.74 ms
+Billed Duration: 58371 ms
+Memory Size: 4096 MB
+Max Memory Used:1391 MB
+Init Duration: 131.58 ms
