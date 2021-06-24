@@ -1,20 +1,15 @@
 import React, { useContext, useState } from 'react'
-import {
-  Box,
-  IconButton,
-  Menu,
-  MenuItem,
-  Tooltip,
-} from '@material-ui/core'
+import { Box, IconButton, Menu, MenuItem, Tooltip } from '@material-ui/core'
 import { Auth } from 'aws-amplify'
 import Avatar from 'boring-avatars'
 import { UserContext } from 'contexts/UserContext'
-import { Link as RouterLink } from 'react-router-dom'
+import { Link as RouterLink, useHistory } from 'react-router-dom'
 import { colors } from 'utils/avatar-colors'
 
 const AccountMenu = () => {
   const { username, name } = useContext(UserContext)
   const [anchorEl, setAnchorEl] = useState(null)
+  const history = useHistory()
 
   const handleMenu = event => {
     setAnchorEl(event.currentTarget)
@@ -24,7 +19,10 @@ const AccountMenu = () => {
   }
   async function logOut() {
     await Auth.signOut()
-      .then(window.location.reload())
+      .then(() => {
+        history.push('/')
+        history.go(0)
+      })
       .catch(error => console.log(error))
   }
   return (
@@ -56,7 +54,8 @@ const AccountMenu = () => {
         <MenuItem
           component={RouterLink}
           to={`/user/${username}`}
-          onClick={handleClose} divider>
+          onClick={handleClose}
+          divider>
           <Box fontWeight={300} fontSize={20}>
             {name}
           </Box>

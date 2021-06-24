@@ -12,7 +12,7 @@ import {
 import { makeStyles } from '@material-ui/core/styles'
 import { Amplify, Auth } from 'aws-amplify'
 import awsconfig from 'aws-exports'
-import { Link as RouterLink } from 'react-router-dom'
+import { Link as RouterLink, useHistory } from 'react-router-dom'
 
 Amplify.configure(awsconfig)
 
@@ -68,12 +68,16 @@ const initialValues = {
 const Login = props => {
   const classes = useStyles()
   const [values, setValues] = useState(initialValues)
+  const history = useHistory()
 
   async function logIn() {
     const email = values.email
     const password = values.password
     await Auth.signIn(email, password)
-      .then(() => window.location.reload())
+      .then(() => {
+        history.push('/')
+        history.go(0)
+      })
       .catch(error => alert(error.message))
   }
 
