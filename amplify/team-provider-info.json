@@ -10,17 +10,6 @@
       "StackName": "amplify-vide-staging-103713",
       "StackId": "arn:aws:cloudformation:ap-south-1:715604230268:stack/amplify-vide-staging-103713/ac5a2fb0-bae9-11eb-afde-028610bca50e",
       "AmplifyAppId": "d1hhi2hly08qul"
-    },
-    "categories": {
-      "auth": {
-        "vide": {}
-      },
-      "function": {
-        "videtranscoder": {
-          "deploymentBucketName": "amplify-vide-staging-103713-deployment",
-          "s3Key": "amplify-builds/videtranscoder-2f385a5937374252795a-build.zip"
-        }
-      }
     }
   }
 }
