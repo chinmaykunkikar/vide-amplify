@@ -35,7 +35,9 @@ export const schema = {
                     "isArrayNullable": true,
                     "association": {
                         "connectionType": "HAS_MANY",
-                        "associatedWith": "author"
+                        "associatedWith": [
+                            "username"
+                        ]
                     }
                 },
                 "createdAt": {
@@ -128,8 +130,8 @@ export const schema = {
                 "username": {
                     "name": "username",
                     "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
+                    "type": "ID",
+                    "isRequired": true,
                     "attributes": []
                 },
                 "createdAt": {
@@ -161,7 +163,7 @@ export const schema = {
                     "properties": {
                         "name": "byUser",
                         "fields": [
-                            "author"
+                            "username"
                         ]
                     }
                 },
@@ -186,5 +188,6 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "version": "8a5c9209fb95a5343623a2f366cca163"
+    "codegenVersion": "3.3.2",
+    "version": "29e47975070607f47420ab15b0bfad6d"
 };
