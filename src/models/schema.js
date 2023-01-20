@@ -36,7 +36,7 @@ export const schema = {
                     "association": {
                         "connectionType": "HAS_MANY",
                         "associatedWith": [
-                            "username"
+                            "author"
                         ]
                     }
                 },
@@ -106,13 +106,6 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
-                "description": {
-                    "name": "description",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
                 "resourceURI": {
                     "name": "resourceURI",
                     "isArray": false,
@@ -130,8 +123,15 @@ export const schema = {
                 "username": {
                     "name": "username",
                     "isArray": false,
-                    "type": "ID",
-                    "isRequired": true,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "description": {
+                    "name": "description",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
                     "attributes": []
                 },
                 "createdAt": {
@@ -163,7 +163,7 @@ export const schema = {
                     "properties": {
                         "name": "byUser",
                         "fields": [
-                            "username"
+                            "author"
                         ]
                     }
                 },
@@ -188,6 +188,6 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "codegenVersion": "3.3.2",
-    "version": "29e47975070607f47420ab15b0bfad6d"
+    "codegenVersion": "3.3.5",
+    "version": "c285b8b7412cd03a1700c389602d8890"
 };

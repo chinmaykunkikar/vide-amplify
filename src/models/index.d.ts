@@ -46,10 +46,10 @@ type EagerVideo = {
   readonly id: string;
   readonly title: string;
   readonly author: string;
-  readonly description?: string | null;
   readonly resourceURI?: string | null;
   readonly thumbnailURI?: string | null;
-  readonly username: string;
+  readonly username?: string | null;
+  readonly description?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -62,10 +62,10 @@ type LazyVideo = {
   readonly id: string;
   readonly title: string;
   readonly author: string;
-  readonly description?: string | null;
   readonly resourceURI?: string | null;
   readonly thumbnailURI?: string | null;
-  readonly username: string;
+  readonly username?: string | null;
+  readonly description?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }

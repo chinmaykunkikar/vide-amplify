@@ -1,0 +1,14 @@
+{
+  "resourceName": "s3videamplifystoragef4154975",
+  "bucketName": "vide-amplify-storage-f4154975",
+  "policyUUID": "4282a2ff",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "READ"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ]
+}

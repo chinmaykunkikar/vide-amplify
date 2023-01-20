@@ -1,0 +1,16 @@
+type User @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String!
+  email: String!
+  Videos: [Video] @hasMany(indexName: "byUser", fields: ["id"])
+}
+
+type Video @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  title: String!
+  author: ID! @index(name: "byUser")
+  resourceURI: String
+  thumbnailURI: String
+  username: String
+  description: String
+}

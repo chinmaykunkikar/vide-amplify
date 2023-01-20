@@ -9,6 +9,7 @@ from shutil import copyfile
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
+
 def run_command(command):
     command_list = command.split(" ")
 
@@ -27,7 +28,7 @@ def lambda_handler(event, context):
     tmp_path = "/tmp/"
     scriptname = f"{tmp_path}create-vod-hls.sh"
     bucket_down = event["Records"][0]["s3"]["bucket"]["name"]
-    bucket_up = "vide103713-staging/public/output"
+    bucket_up = "vide-amplify-storage-f4154975173650-staging/public/output"
     keyname = urllib.parse.unquote_plus(
         event["Records"][0]["s3"]["object"]["key"], encoding="utf-8"
     )
