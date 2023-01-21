@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext } from "react";
 import {
   AppBar,
   Box,
@@ -7,51 +7,52 @@ import {
   makeStyles,
   Toolbar,
   Tooltip,
-} from '@material-ui/core'
+} from "@material-ui/core";
 import {
   AccountCircle,
   HomeOutlined,
   VideoCallOutlined as VideoAddOutlined,
-} from '@material-ui/icons'
-import { UserContext } from 'contexts/UserContext'
-import { Link as RouterLink } from 'react-router-dom'
-import AccountMenu from './AccountMenu'
+} from "@material-ui/icons";
+import { UserContext } from "contexts/UserContext";
+import { Link as RouterLink } from "react-router-dom";
+import AccountMenu from "./AccountMenu";
 
-const useStyles = makeStyles(theme => ({
-  toolbar: { justifyContent: 'space-between' },
-}))
+const useStyles = makeStyles((theme) => ({
+  toolbar: { justifyContent: "space-between" },
+}));
 
 const Header = () => {
-  const classes = useStyles()
-  const { loggedIn } = useContext(UserContext)
+  const classes = useStyles();
+  const { loggedIn } = useContext(UserContext);
 
   return (
-    <AppBar position='static'>
+    <AppBar position="static">
       <Toolbar className={classes.toolbar}>
-        <Link component={RouterLink} to='/'>
-          <Tooltip title='Home'>
-            <IconButton edge='start'>
-              <HomeOutlined color='secondary' />
+        <Link component={RouterLink} to="/">
+          <Tooltip title="Home">
+            <IconButton edge="start">
+              <HomeOutlined color="secondary" />
             </IconButton>
           </Tooltip>
         </Link>
         <Link
           component={RouterLink}
-          to='/'
-          variant='overline'
-          color='secondary'
-          underline='none'
-          style={{ userSelect: 'none' }}>
+          to="/"
+          variant="overline"
+          color="secondary"
+          underline="none"
+          style={{ userSelect: "none" }}
+        >
           <Box fontSize={18} letterSpacing={3} fontWeight={500}>
             Vide
           </Box>
         </Link>
         {!loggedIn && (
           <span>
-            <Link component={RouterLink} to='/user/login'>
-              <Tooltip title='Account'>
+            <Link component={RouterLink} to="/user/login">
+              <Tooltip title="Account">
                 <IconButton>
-                  <AccountCircle color='secondary' />
+                  <AccountCircle color="secondary" />
                 </IconButton>
               </Tooltip>
             </Link>
@@ -59,10 +60,10 @@ const Header = () => {
         )}
         {loggedIn && (
           <Box>
-            <Link component={RouterLink} to='/video/new'>
-              <Tooltip title='New video'>
+            <Link component={RouterLink} to="/video/new">
+              <Tooltip title="New video">
                 <IconButton>
-                  <VideoAddOutlined color='secondary' />
+                  <VideoAddOutlined color="secondary" />
                 </IconButton>
               </Tooltip>
             </Link>
@@ -71,7 +72,7 @@ const Header = () => {
         )}
       </Toolbar>
     </AppBar>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

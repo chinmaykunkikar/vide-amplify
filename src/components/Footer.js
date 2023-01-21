@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import {
   AppBar,
   IconButton,
@@ -6,31 +6,33 @@ import {
   Toolbar,
   Tooltip,
   Typography,
-} from '@material-ui/core'
-import { GitHub } from '@material-ui/icons'
+} from "@material-ui/core";
+import { GitHub } from "@material-ui/icons";
 
 const Footer = () => {
   return (
-    <AppBar component='footer' position='relative' color='secondary'>
+    <AppBar component="footer" position="relative" color="secondary">
       <Toolbar>
         <Typography
-          variant='overline'
-          color='inherit'
-          style={{ userSelect: 'none' }}>
+          variant="overline"
+          color="inherit"
+          style={{ userSelect: "none" }}
+        >
           Chinmay Kunkikar
         </Typography>
-        <Tooltip title='Check out the source code'>
+        <Tooltip title="Check out the source code">
           <Link
-            target='blank'
-            href='https://github.com/chinmaykunkikar/vide-amplify'>
+            target="blank"
+            href="https://github.com/chinmaykunkikar/vide-amplify"
+          >
             <IconButton>
-              <GitHub color='primary' />
+              <GitHub color="primary" />
             </IconButton>
           </Link>
         </Tooltip>
       </Toolbar>
     </AppBar>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

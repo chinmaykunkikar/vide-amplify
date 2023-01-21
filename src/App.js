@@ -1,9 +1,9 @@
-import React from 'react'
-import { CssBaseline } from '@material-ui/core'
-import { ThemeProvider } from '@material-ui/styles'
-import { BrowserRouter as Router } from 'react-router-dom'
-import MainRouter from './MainRouter'
-import theme from './utils/theme'
+import React from "react";
+import { CssBaseline } from "@material-ui/core";
+import { ThemeProvider } from "@material-ui/styles";
+import { BrowserRouter as Router } from "react-router-dom";
+import MainRouter from "./MainRouter";
+import theme from "./utils/theme";
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
         </ThemeProvider>
       </Router>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

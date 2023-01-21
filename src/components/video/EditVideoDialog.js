@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
 import {
   Button,
   Dialog,
@@ -8,61 +8,61 @@ import {
   DialogTitle,
   makeStyles,
   TextField,
-} from '@material-ui/core'
-import { DataStore } from 'aws-amplify'
-import { Video } from 'models'
+} from "@material-ui/core";
+import { DataStore } from "aws-amplify";
+import { Video } from "models";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   textField: {
     margin: theme.spacing(1, 0),
   },
-}))
+}));
 
 const initialValues = {
-  title: '',
-  description: '',
-}
+  title: "",
+  description: "",
+};
 
-const EditVideoDialog = props => {
-  const { onClose, open, videoId, ...other } = props
-  const classes = useStyles()
+const EditVideoDialog = (props) => {
+  const { onClose, open, videoId, ...other } = props;
+  const classes = useStyles();
 
-  const [values, setValues] = useState(initialValues)
-  const [video, setVideo] = useState(null)
+  const [values, setValues] = useState(initialValues);
+  const [video, setVideo] = useState(null);
 
-  const handleChange = name => event => {
-    const value = event.target.value
-    setValues({ ...values, [name]: value })
-  }
+  const handleChange = (name) => (event) => {
+    const value = event.target.value;
+    setValues({ ...values, [name]: value });
+  };
 
-  const reload = () => window.location.reload()
+  const reload = () => window.location.reload();
 
   const updateVideoDetails = async () => {
     await DataStore.save(
-      Video.copyOf(video, updated => {
-        updated.title = values.title
+      Video.copyOf(video, (updated) => {
+        updated.title = values.title;
         updated.description = values.description.replaceAll(
           /(?:\r|\n|\r\n)/g,
-          '\n'
-        )
+          "\n"
+        );
       })
-    )
-    reload()
-  }
+    );
+    reload();
+  };
 
   useEffect(() => {
     const getVideo = async () => {
-      const videoQuery = await DataStore.query(Video, videoId)
-      setVideo(videoQuery)
+      const videoQuery = await DataStore.query(Video, videoId);
+      setVideo(videoQuery);
       setValues({
         ...values,
         title: videoQuery.title,
         description: videoQuery.description,
-      })
-    }
-    getVideo()
+      });
+    };
+    getVideo();
     // eslint-disable-next-line
-  }, [])
+  }, []);
 
   return (
     <>
@@ -70,52 +70,54 @@ const EditVideoDialog = props => {
         open={open}
         onClose={onClose}
         fullWidth
-        maxWidth='xs'
+        maxWidth="xs"
         {...other}
-        aria-labelledby='form-dialog-title'>
-        <DialogTitle id='form-dialog-title'>Edit video details</DialogTitle>
+        aria-labelledby="form-dialog-title"
+      >
+        <DialogTitle id="form-dialog-title">Edit video details</DialogTitle>
         <DialogContent dividers>
           <DialogContentText>
             You can edit the title and the description of this video
           </DialogContentText>
           <TextField
-            id='title'
-            label='Title'
+            id="title"
+            label="Title"
             className={classes.textField}
             value={values.title}
-            onChange={handleChange('title')}
-            margin='normal'
-            variant='outlined'
+            onChange={handleChange("title")}
+            margin="normal"
+            variant="outlined"
             fullWidth
           />
           <br />
           <TextField
-            id='standard-multiline-flexible'
-            label='Description'
+            id="standard-multiline-flexible"
+            label="Description"
             multiline
             rowsMax={12}
             className={classes.textField}
             value={values.description}
-            onChange={handleChange('description')}
-            variant='outlined'
+            onChange={handleChange("description")}
+            variant="outlined"
             fullWidth
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={onClose} color='secondary' size='small'>
+          <Button onClick={onClose} color="secondary" size="small">
             Cancel
           </Button>
           <Button
             onClick={updateVideoDetails}
-            color='secondary'
-            variant='outlined'
-            size='small'>
+            color="secondary"
+            variant="outlined"
+            size="small"
+          >
             Save Changes
           </Button>
         </DialogActions>
       </Dialog>
     </>
-  )
-}
+  );
+};
 
-export default EditVideoDialog
+export default EditVideoDialog;

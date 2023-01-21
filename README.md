@@ -120,7 +120,7 @@ amplify push
 
 Once all the resources are deployed to the cloud, make sure the `src/aws-exports.js` file is generated.
 
-To view deployed services, go to amplify console by running the following command: `amplify console` and select ~~*Amplify Admin UI*~~ *Amplify Studio*.
+To view deployed services, go to amplify console by running the following command: `amplify console` and select ~~_Amplify Admin UI_~~ _Amplify Studio_.
 
 ### Run the project
 

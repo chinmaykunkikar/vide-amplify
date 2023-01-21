@@ -1,5 +1,5 @@
-import { useTheme } from '@material-ui/core'
-import useMediaQuery from '@material-ui/core/useMediaQuery'
+import { useTheme } from "@material-ui/core";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 /**
  * Be careful using this hook. It only works because the number of
@@ -7,13 +7,13 @@ import useMediaQuery from '@material-ui/core/useMediaQuery'
  * breakpoints. See https://reactjs.org/docs/hooks-rules.html#only-call-hooks-at-the-top-level
  */
 export const useWidth = () => {
-  const theme = useTheme()
-  const keys = [...theme.breakpoints.keys].reverse()
+  const theme = useTheme();
+  const keys = [...theme.breakpoints.keys].reverse();
   return (
     keys.reduce((output, key) => {
       // eslint-disable-next-line react-hooks/rules-of-hooks
-      const matches = useMediaQuery(theme.breakpoints.up(key))
-      return !output && matches ? key : output
-    }, null) || 'xs'
-  )
-}
+      const matches = useMediaQuery(theme.breakpoints.up(key));
+      return !output && matches ? key : output;
+    }, null) || "xs"
+  );
+};
