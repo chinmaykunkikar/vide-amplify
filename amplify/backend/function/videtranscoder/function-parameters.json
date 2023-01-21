@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "storage": {
+      "s3videamplifystoragef4154975": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    }
+  },
+  "lambdaLayers": [
+    {
+      "type": "ExternalLayer",
+      "arn": "arn:aws:lambda:ap-south-1:715604230268:layer:bc:3"
+    },
+    {
+      "type": "ExternalLayer",
+      "arn": "arn:aws:lambda:ap-south-1:715604230268:layer:ffmpeg:1"
+    },
+    {
+      "type": "ExternalLayer",
+      "arn": "arn:aws:lambda:ap-south-1:715604230268:layer:aws-cli-layer:1"
+    }
+  ]
+}

@@ -50,7 +50,40 @@
       "service": "Cognito"
     }
   },
-  "function": {},
+  "function": {
+    "videtranscoder": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "BucketName"
+          ],
+          "category": "storage",
+          "resourceName": "s3videamplifystoragef4154975"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_videtranscoder_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "videtranscoder"
+        }
+      ]
+    },
+    "AMPLIFY_function_videtranscoder_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "videtranscoder"
+        }
+      ]
+    }
+  },
   "storage": {
     "s3videamplifystoragef4154975": {
       "dependsOn": [],
