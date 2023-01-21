@@ -1,5 +1,5 @@
 import React from "react";
-import { Box } from "@material-ui/core";
+import { Box } from "@mui/material";
 import UserProfile from "pages/user/UserProfile";
 import { Route, Switch } from "react-router-dom";
 import Footer from "./components/Footer";

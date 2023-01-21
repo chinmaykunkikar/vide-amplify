@@ -1,13 +1,7 @@
 import React from "react";
-import {
-  AppBar,
-  Dialog,
-  IconButton,
-  makeStyles,
-  Toolbar,
-  Typography,
-} from "@material-ui/core";
-import { Close } from "@material-ui/icons";
+import { AppBar, Dialog, IconButton, Toolbar, Typography } from "@mui/material";
+import { Close } from "@mui/icons-material";
+import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles((theme) => ({
   appBar: {

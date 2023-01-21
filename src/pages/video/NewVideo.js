@@ -6,15 +6,15 @@ import {
   CardActions,
   CardContent,
   CircularProgress,
-  makeStyles,
   TextField,
   Typography,
-} from "@material-ui/core";
-import { BackupOutlined } from "@material-ui/icons";
+} from "@mui/material";
+import { BackupOutlined } from "@mui/icons-material";
 import { Amplify, DataStore, Storage } from "aws-amplify";
 import awsconfig from "aws-exports";
 import { UserContext } from "contexts/UserContext";
 import { Video } from "models";
+import { makeStyles } from "@mui/styles";
 
 Amplify.configure(awsconfig);
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { Auth } from "aws-amplify";
-import { Button } from "@material-ui/core";
+import { Button } from "@mui/material";
 
 async function logOut() {
   await Auth.signOut()

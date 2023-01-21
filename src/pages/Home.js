@@ -1,6 +1,7 @@
 import React from "react";
-import { Box, makeStyles, Paper, Typography } from "@material-ui/core";
+import { Box, Paper, Typography } from "@mui/material";
 import VideoList from "./video/VideoList";
+import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles((theme) => ({
   paper: {

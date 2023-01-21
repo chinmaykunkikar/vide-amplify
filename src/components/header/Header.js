@@ -1,21 +1,14 @@
 import React, { useContext } from "react";
-import {
-  AppBar,
-  Box,
-  IconButton,
-  Link,
-  makeStyles,
-  Toolbar,
-  Tooltip,
-} from "@material-ui/core";
+import { AppBar, Box, IconButton, Link, Toolbar, Tooltip } from "@mui/material";
 import {
   AccountCircle,
   HomeOutlined,
   VideoCallOutlined as VideoAddOutlined,
-} from "@material-ui/icons";
+} from "@mui/icons-material";
 import { UserContext } from "contexts/UserContext";
 import { Link as RouterLink } from "react-router-dom";
 import AccountMenu from "./AccountMenu";
+import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles((theme) => ({
   toolbar: { justifyContent: "space-between" },

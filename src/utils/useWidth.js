@@ -1,5 +1,5 @@
-import { useTheme } from "@material-ui/core";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { useTheme } from "@mui/material";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 /**
  * Be careful using this hook. It only works because the number of

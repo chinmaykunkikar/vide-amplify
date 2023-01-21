@@ -10,14 +10,14 @@ import {
   DialogContentText,
   DialogTitle,
   Link,
-  makeStyles,
   Paper,
   TextField,
   Typography,
-} from "@material-ui/core";
+} from "@mui/material";
 import { Auth, DataStore } from "aws-amplify";
 import { User } from "models";
 import { Link as RouterLink } from "react-router-dom";
+import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles((theme) => ({
   paper: {

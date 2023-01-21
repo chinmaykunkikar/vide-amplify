@@ -6,7 +6,7 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
-} from "@material-ui/core";
+} from "@mui/material";
 import { DataStore } from "aws-amplify";
 import { Video } from "models";
 import { useHistory } from "react-router-dom";

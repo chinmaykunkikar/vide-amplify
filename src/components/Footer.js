@@ -6,8 +6,8 @@ import {
   Toolbar,
   Tooltip,
   Typography,
-} from "@material-ui/core";
-import { GitHub } from "@material-ui/icons";
+} from "@mui/material";
+import { GitHub } from "@mui/icons-material";
 
 const Footer = () => {
   return (

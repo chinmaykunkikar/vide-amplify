@@ -6,11 +6,11 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
-  makeStyles,
   TextField,
-} from "@material-ui/core";
+} from "@mui/material";
 import { DataStore } from "aws-amplify";
 import { Video } from "models";
+import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles((theme) => ({
   textField: {

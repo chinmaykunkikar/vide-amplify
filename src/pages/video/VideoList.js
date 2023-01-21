@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import {
-  GridList,
-  GridListTile,
-  GridListTileBar,
+  ImageList,
+  ImageListItem,
+  ImageListItemBar,
   Link,
-  makeStyles,
-} from "@material-ui/core";
+} from "@mui/material";
 import { Amplify, DataStore } from "aws-amplify";
 import awsconfig from "aws-exports";
 import { Video } from "models";
@@ -13,6 +12,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { Link as RouterLink } from "react-router-dom";
 import { useWidth } from "utils/useWidth";
+import { makeStyles } from "@mui/styles";
 
 Amplify.configure(awsconfig);
 
@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   tileBar: {
     background:
       "linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0) 100%)",
-    "& .MuiGridListTileBar-titleWrap": {
+    "& .MuiImageListItemBar-titleWrap": {
       margin: theme.spacing(0, 1.2),
     },
     transform: "translateY(-0.4em)",
@@ -74,7 +74,7 @@ const VideoList = (props) => {
 
   return (
     <div className={classes.root}>
-      <GridList cols={props.cols || getCols()} spacing={8}>
+      <ImageList cols={props.cols || getCols()} gap={8}>
         {videoList
           .filter((currentVideo) => currentVideo.id !== props.currentVideo)
           .filter((currentUser) =>
@@ -83,7 +83,7 @@ const VideoList = (props) => {
               : currentUser
           )
           .map((tile) => (
-            <GridListTile
+            <ImageListItem
               component="div"
               key={tile.id}
               style={{ height: "auto" }}
@@ -97,7 +97,7 @@ const VideoList = (props) => {
                   height="auto"
                 />
               </Link>
-              <GridListTileBar
+              <ImageListItemBar
                 className={classes.tileBar}
                 title={
                   <Link
@@ -111,9 +111,9 @@ const VideoList = (props) => {
                 }
                 subtitle={tile.author}
               />
-            </GridListTile>
+            </ImageListItem>
           ))}
-      </GridList>
+      </ImageList>
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Box, IconButton, Menu, MenuItem, Tooltip } from "@material-ui/core";
+import { Box, IconButton, Menu, MenuItem, Tooltip } from "@mui/material";
 import { Auth } from "aws-amplify";
 import Avatar from "boring-avatars";
 import { UserContext } from "contexts/UserContext";

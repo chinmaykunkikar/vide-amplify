@@ -6,12 +6,12 @@ import {
   Menu,
   MenuItem,
   Tooltip,
-} from "@material-ui/core";
+} from "@mui/material";
 import {
   DeleteForeverOutlined,
   EditOutlined,
   MoreVertOutlined,
-} from "@material-ui/icons";
+} from "@mui/icons-material";
 import { useParams } from "react-router-dom";
 import EditVideoDialog from "./EditVideoDialog";
 import DeleteVideoDialog from "./DeleteVideoDialog";

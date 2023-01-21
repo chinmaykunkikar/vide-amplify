@@ -8,8 +8,8 @@ import {
   Paper,
   TextField,
   Typography,
-} from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+} from "@mui/material";
+import { makeStyles } from "@mui/styles";
 import { Amplify, Auth } from "aws-amplify";
 import awsconfig from "aws-exports";
 import { Link as RouterLink, useHistory } from "react-router-dom";

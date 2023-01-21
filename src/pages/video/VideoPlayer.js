@@ -7,12 +7,11 @@ import {
   ListItem,
   ListItemAvatar,
   ListItemText,
-  makeStyles,
   Paper,
   Tooltip,
   Typography,
-} from "@material-ui/core";
-import { InfoOutlined } from "@material-ui/icons";
+} from "@mui/material";
+import { InfoOutlined } from "@mui/icons-material";
 import { DataStore } from "aws-amplify";
 import Avatar from "boring-avatars";
 import InfoDialog from "components/video/InfoDialog";
@@ -25,6 +24,7 @@ import { Replay } from "vimond-replay";
 import "vimond-replay/index.css";
 import HlsjsVideoStreamer from "vimond-replay/video-streamer/hlsjs";
 import VideoList from "./VideoList";
+import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles((theme) => ({
   root: {

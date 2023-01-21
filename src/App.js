@@ -1,6 +1,6 @@
 import React from "react";
-import { CssBaseline } from "@material-ui/core";
-import { ThemeProvider } from "@material-ui/styles";
+import { CssBaseline } from "@mui/material";
+import { ThemeProvider } from "@mui/material/styles";
 import { BrowserRouter as Router } from "react-router-dom";
 import MainRouter from "./MainRouter";
 import theme from "./utils/theme";
