@@ -195,7 +195,7 @@ const NewVideo = () => {
         </CardContent>
         <CardActions className={classes.actions}>
           <Button
-            color="primary"
+            // color="primary"
             size="large"
             variant="contained"
             disabled={Boolean(uploadProgress)}
