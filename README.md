@@ -1,6 +1,6 @@
-# Vide - A serverless Video on Demand Platform
+# Vide - A Video on Demand Platform
 
-- [Vide - A serverless Video on Demand Platform](#vide---a-serverless-video-on-demand-platform)
+- [Vide - A Video on Demand Platform](#vide---a-video-on-demand-platform)
   - [Concepts](#concepts)
     - [Video on Demand](#video-on-demand)
     - [Adaptie Bitrate Streaming](#adaptie-bitrate-streaming)
@@ -61,7 +61,7 @@ Transcoding allows you to create multiple files from a single source through the
 
 ## Architecture Diagrams
 
-![Serverless 3 tier diagram](https://raw.githubusercontent.com/chinmaykunkikar/vide-amplify/master/static/Diagrams-3-tier.jpg)
+![3 tier diagram](https://raw.githubusercontent.com/chinmaykunkikar/vide-amplify/master/static/Diagrams-3-tier.jpg)
 ![High Level Architecture diagram](https://raw.githubusercontent.com/chinmaykunkikar/vide-amplify/master/static/Diagrams-HLA.jpg)
 
 ---
