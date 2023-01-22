@@ -28,7 +28,7 @@ def handler(event, context):
     TEMP_DIR = "/tmp/"
     TRANSCODER = "hls-encoder.sh"
     DOWNLOAD_BUCKET = event["Records"][0]["s3"]["bucket"]["name"]
-    UPLOAD_BUCKET = "vide103713-staging/public/output"
+    UPLOAD_BUCKET = "vide-amplify-storage-f4154975173650-staging/public/output"
     OBJECT_KEY = urllib.parse.unquote_plus(
         event["Records"][0]["s3"]["object"]["key"], encoding="utf-8"
     )

@@ -25,7 +25,7 @@ source="${1}"
 target="${2}"
 username="${3}"
 base_name="${4}"
-url='https://vide103713-staging.s3.ap-south-1.amazonaws.com/public/output'
+url='https://vide-amplify-storage-f4154975173650-staging.s3.ap-south-1.amazonaws.com/public/output'
 if [[ ! "${target}" ]]; then
   target="${source##*/}" # leave only last component of path
   target="${target%.*}"  # strip extension
